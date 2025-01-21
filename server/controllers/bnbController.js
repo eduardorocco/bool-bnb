@@ -4,7 +4,7 @@ const connection = require('../data/db');
 function index(req, res) {
     let sql = `SELECT properties.*, AVG(reviews.vote) AS avg_vote FROM properties
                 JOIN reviews ON properties.id = reviews.property_id
-                GROUP BY properties.id`
+                GROUP BY properties.id ORDER BY properties.heart DESC`
 
     // if (req.query.search) {
     //     // sql += `WHERE title LIKE '%${req.query.search}%' 
