@@ -12,4 +12,9 @@ router.get('/:id', bnbController.show)
 //ROUTE POST PROPERTY localhost:3000/properties/:id
 router.post('/:id', bnbController.storeProperty)
 
+//ROUTE POST REVIEW localhost:3000/properties/:id/reviews
+router.post('/:id/reviews', bnbController.storeReview)
+
+router.patch('/:id/heart', bnbController.modifyHeart)
+
 module.exports = router

@@ -64,10 +64,6 @@ function show(req, res) {
     })
 }
 
-
-
-
-
 function storeProperty(req, res) {
 
     const owner_id = req.params.id
@@ -128,4 +124,60 @@ function storeProperty(req, res) {
         })
 }
 
-module.exports = { index, show, storeProperty }
+function storeReview(req, res) {
+    const property_id = req.params.id
+    const {
+        user,
+        title,
+        text,
+        days_of_stays,
+        vote
+    } = req.body
+
+    if (
+        !user ||
+        !title ||
+        !days_of_stays ||
+        !vote
+    ) {
+        return res.status(400).json({ message: 'Invalid data' })
+    }
+
+    const sql = `INSERT INTO reviews (property_id, user, title, text, days_of_stays, vote) VALUES (?, ?, ?, ?, ?, ?)`
+
+    connection.query(sql, [
+        property_id,
+        user,
+        title,
+        text,
+        days_of_stays,
+        vote], (err, results) => {
+            if (err) return res.status(500).json({ message: err.message })
+            res.status(201).json({ message: 'Review created' })
+        })
+
+}
+
+
+function modifyHeart(req, res) {
+
+    const id = req.params.id
+
+    let heart = 0
+
+    let sql = `SELECT properties.heart FROM properties WHERE id = ?`
+
+    connection.query(sql, [id], (err, results) => {
+        if (err) return res.status(500).json({ message: err.message })
+        heart = parseInt(results[0].heart) + 1
+        // console.log(results[0].heart, heart);
+        sql = `UPDATE bnb_db.properties SET heart = ${heart} WHERE (id = ${id})`
+        connection.query(sql, (err, results) => {
+            if (err) return res.status(500).json({ message: err.message })
+            res.status(203).json({ message: 'Added heart' })
+        })
+
+
+    })
+}
+module.exports = { index, show, storeProperty, storeReview, modifyHeart }
