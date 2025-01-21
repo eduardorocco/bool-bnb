@@ -5,27 +5,14 @@ function show(req, res) {
 
     const id = req.params.id
 
-    connection.query(sql, [id], (err, results) => {
-        if (err) return res.status(500).json({ message: err.message })
-        if (results.length === 0)
-            return res.status(404).json({
-                error: 'Not Found',
-                message: 'Owner not found',
-            })
-
-        
-        // movie.image = `http://localhost:3000/movies_cover/${movie.image}`
-
         const sql = `SELECT * FROM owners WHERE id = ?`
 
-        connection.query(sql, [id], (err, results) => {
+        connection.query(sql, id, (err, results) => {
             if (err) return res.status(500).json({ message: err.message })
             res.json(results)
         })
 
-    })
-}
-
+    }
 
 function storeOwner(req, res) {
 

@@ -85,6 +85,7 @@ function storeProperty(req, res) {
         heart
     } = req.body
 
+    //FARE IL CONTROLLO
     // if (
     //     !name ||
     //     !vote ||
@@ -97,7 +98,7 @@ function storeProperty(req, res) {
     //     return res.status(400).json({ message: 'Invalid data' })
     // }
 
-    const sql = `INSERT INTO reviews (
+    const sql = `INSERT INTO properties (
         owner_id,
         title,
         description,

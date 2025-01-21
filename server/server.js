@@ -16,6 +16,8 @@ app.get('/', (req, res) => {
 
 app.use('/properties', propertiesRouter)
 
+
+
 app.use('/owners', ownerRouter)
 
 app.use(notFound)
