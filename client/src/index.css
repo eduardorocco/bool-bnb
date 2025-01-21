@@ -16,6 +16,6 @@ ol {
 }
 
 a {
-  color: currentColor;
-  text-decoration: none;
+  color: currentColor !important;
+  text-decoration: none !important;
 }

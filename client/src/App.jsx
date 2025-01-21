@@ -5,6 +5,7 @@ import HomePage from './pages/HomePage'
 import InsertPropertyPage from './pages/InsertPropertyPage'
 import PropertyDetails from './pages/PropertyDetails'
 import SearchPage from './pages/SearchPage'
+import DefaulLayout from "./layouts/DefaulLayout"
 function App() {
 
 
@@ -12,7 +13,7 @@ function App() {
     <GlobalContext.Provider>
       <BrowserRouter>
         <Routes>
-          <Route element>
+          <Route element={<DefaulLayout />}>
             <Route index element={<HomePage />} />
             <Route path="/properties" element={<SearchPage />} />
             <Route path="/properties/:id" element={<PropertyDetails />} />
