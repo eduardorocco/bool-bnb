@@ -21,7 +21,6 @@ function App() {
       .then(res => {
         axios.get(`${API_URL}properties`)
         console.log(res.data);
-        //condizione
         fetchProperties()
         fetchProperty(id)
       })
