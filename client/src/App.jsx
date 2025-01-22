@@ -6,11 +6,13 @@ import InsertPropertyPage from './pages/InsertPropertyPage'
 import PropertyDetails from './pages/PropertyDetails'
 import SearchPage from './pages/SearchPage'
 import DefaulLayout from "./layouts/DefaulLayout"
+
+const API_URL = 'http://localhost:3000/'
 function App() {
 
 
   return (
-    <GlobalContext.Provider>
+    <GlobalContext.Provider value={{ API_URL }}>
       <BrowserRouter>
         <Routes>
           <Route element={<DefaulLayout />}>

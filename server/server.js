@@ -5,8 +5,11 @@ const notFound = require('./middlewares/notFound')
 const errorHandler = require('./middlewares/errorsHandler')
 const propertiesRouter = require('./routers/bnbRouter')
 const ownerRouter = require('./routers/ownerRouter')
+const cors = require('cors')
 
 app.use(express.json())
+
+app.use(cors())
 
 app.use(express.static('public'))
 
@@ -15,8 +18,6 @@ app.get('/', (req, res) => {
 })
 
 app.use('/properties', propertiesRouter)
-
-
 
 app.use('/owners', ownerRouter)
 
