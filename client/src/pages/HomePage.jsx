@@ -5,8 +5,7 @@ import CardProperty from '../components/Card'
 
 export default function HomePage() {
 
-    const [properties, setProperties] = useState([])
-    const { API_URL } = useContext(GlobalContext)
+    const { API_URL, properties, setProperties } = useContext(GlobalContext)
 
     function fetchProperties() {
         axios.get(`${API_URL}properties`)

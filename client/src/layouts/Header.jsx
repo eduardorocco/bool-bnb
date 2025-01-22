@@ -5,7 +5,6 @@ export default function Header() {
             <nav>
                 <NavLink to='/'>Home</NavLink>
                 <NavLink to='/properties'>Pagina con filtri</NavLink>
-                <NavLink to='/properties/1'>Pagina di dettaglio</NavLink>
                 <NavLink to='/owners/1'>Pagina con i form</NavLink>
             </nav>
         </div>
