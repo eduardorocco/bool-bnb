@@ -1,9 +1,6 @@
 import { Link } from 'react-router'
-import GlobalContext from "../context/GlobalContext"
-import { useContext } from 'react'
-function CardProperty({ property }) {
+function CardProperty({ property, callback }) {
 
-    const { addHeart }= useContext(GlobalContext)
 
     const { id, title, room, toilet, square_meter, bed, image, heart, avg_vote, address, type } = property
     return (
@@ -16,7 +13,7 @@ function CardProperty({ property }) {
                     <span>Letti: {bed}</span>
                     <span>Mq: {square_meter}</span>
                     <div>
-                    <button onClick={() => addHeart(id)} className='btn btn-danger'> {heart} </button>
+                    <button onClick={() => callback(id)} className='btn btn-danger'> {heart} </button>
                     </div>
                     
                     <span><strong>{address}</strong></span>

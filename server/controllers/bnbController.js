@@ -2,17 +2,17 @@ const connection = require('../data/db');
 
 //index properties
 function index(req, res) {
-    let sql = `SELECT properties.*, AVG(reviews.vote) AS avg_vote FROM properties
-                JOIN reviews ON properties.id = reviews.property_id
-                GROUP BY properties.id ORDER BY properties.heart DESC`
+    let sql = 'SELECT properties.*, AVG(reviews.vote) AS avg_vote FROM properties JOIN reviews ON properties.id = reviews.property_id'
 
-    // if (req.query.search) {
-    //     // sql += `WHERE title LIKE '%${req.query.search}%' 
-    //     //  OR room LIKE '%${req.query.search}%' 
-    //     //  OR toilet LIKE '%${req.query.search}%`
-    //      sql += `WHERE title LIKE '%${req.query.search}%'`
-    // }
 
+    if (req.query.search) {
+        sql += ` WHERE address LIKE '%${req.query.search}%' `
+        //   OR room LIKE '%${req.query.search}%' 
+        //   OR toilet LIKE '%${req.query.search}%`
+        // sql += `WHERE title LIKE '%${req.query.search}%'`
+    }
+
+    sql += ' GROUP BY properties.id ORDER BY properties.heart DESC'
 
     connection.query(sql, (err, properties) => {
         if (err) {
@@ -24,6 +24,7 @@ function index(req, res) {
         res.json(properties)
     })
 
+    console.log(sql);
 }
 
 
@@ -116,10 +117,10 @@ function storeProperty(req, res) {
         address,
         image,
         type
-        ], (err, results) => {
-            if (err) return res.status(500).json({ message: err.message })
-            res.status(201).json({ message: 'Property created' })
-        })
+    ], (err, results) => {
+        if (err) return res.status(500).json({ message: err.message })
+        res.status(201).json({ message: 'Property created' })
+    })
 }
 
 function storeReview(req, res) {

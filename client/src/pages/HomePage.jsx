@@ -2,10 +2,13 @@ import axios from 'axios'
 import { useState, useEffect, useContext } from 'react'
 import GlobalContext from "../context/GlobalContext"
 import CardProperty from '../components/Card'
+import SearchBar from '../components/SearchBar'
+
 
 export default function HomePage() {
 
-    const { API_URL, properties, setProperties } = useContext(GlobalContext)
+    const { API_URL } = useContext(GlobalContext)
+    const [properties, setProperties] = useState([])
 
     function fetchProperties() {
         axios.get(`${API_URL}properties`)
@@ -17,6 +20,13 @@ export default function HomePage() {
             })
     }
 
+    
+  function addHeart(id) {
+    axios.patch(`${API_URL}properties/${id}/heart`)
+      .then(res => {
+        fetchProperties()
+      })
+  }
 
     useEffect(() => {
         fetchProperties()
@@ -24,10 +34,11 @@ export default function HomePage() {
 
     return (
         <div className="container">
+            <SearchBar/>
             <div className="row">
                 {properties.map(property => {
                     return (
-                        <CardProperty key={property.id} property={property} />
+                        <CardProperty key={property.id} property={property} callback={addHeart} />
                     )
 
                 })}
