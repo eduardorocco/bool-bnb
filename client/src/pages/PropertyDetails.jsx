@@ -5,7 +5,7 @@ import { useParams } from 'react-router'
 
 export default function HomePage() {
     const { id } = useParams()
-    
+
     const { API_URL, property, setProperty, addHeart } = useContext(GlobalContext)
 
     function fetchProperty() {
@@ -16,7 +16,7 @@ export default function HomePage() {
             .catch(err => {
                 console.err(err);
             })
-            
+
     }
 
 
@@ -24,7 +24,7 @@ export default function HomePage() {
         fetchProperty()
     }, [id])
 
-    const { title, description, room, toilet, square_meters, address, type, bed, image, heart, avg_vote } = property
+    const { title, description, room, toilet, square_meters, address, type, bed, image, heart, avg_vote, reviews } = property
 
     return (
         <div className='container'>
@@ -42,6 +42,31 @@ export default function HomePage() {
                         <button onClick={() => addHeart(id)} className='btn btn-danger'> {heart} </button>
                     </li>
                     <li>{avg_vote}</li>
+                </ul>
+                <ul>
+                    {reviews.map(review => {
+                        return (
+                            <>
+                                <li>
+                                    {review.title}
+                                </li>
+                                <li>
+                                    {review.user}
+                                </li>
+                                <li>
+                                    {review.days_of_stays}
+                                </li>
+                                <li>
+                                    {review.text}
+                                </li>
+                                <li>
+                                    {review.days_of_stays}
+                                </li>
+                            </>
+
+
+                        )
+                    })}
                 </ul>
             </div>
         </div>
