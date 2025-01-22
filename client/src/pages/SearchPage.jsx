@@ -11,17 +11,17 @@ export default function SearchPage() {
 
     function fetchProperties() {
         search ?
-        axios.get(`${API_URL}properties`,{
-            params:{
-                search: search
-            }
-        })
-            .then(res => {
-                setProperties(res.data)
+            axios.get(`${API_URL}properties`, {
+                params: {
+                    search: search,
+                }
             })
-            .catch(err => {
-                console.err(err);
-            })
+                .then(res => {
+                    setProperties(res.data)
+                })
+                .catch(err => {
+                    console.err(err);
+                })
             :
             axios.get(`${API_URL}properties`)
                 .then(res => {
@@ -36,10 +36,10 @@ export default function SearchPage() {
     useEffect(() => {
         fetchProperties()
     }, [search])
-    
+
     return (
         <div className="container">
-            <SearchBar/>
+            <SearchBar />
             <div className="row">
                 {properties.map(property => {
                     return (

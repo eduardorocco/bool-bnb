@@ -1,6 +1,6 @@
 const express = require('express')
 const app = express()
-const PORT = 3000
+const PORT = process.env.PORT
 const notFound = require('./middlewares/notFound')
 const errorHandler = require('./middlewares/errorsHandler')
 const propertiesRouter = require('./routers/bnbRouter')
@@ -26,6 +26,6 @@ app.use(notFound)
 app.use(errorHandler)
 
 
-app.listen(PORT,(req, res)=>{
+app.listen(PORT, (req, res) => {
     console.log('server running');
 })

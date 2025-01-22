@@ -4,6 +4,8 @@ const connection = require('../data/db');
 function index(req, res) {
     let sql = 'SELECT properties.*, AVG(reviews.vote) AS avg_vote FROM properties JOIN reviews ON properties.id = reviews.property_id'
 
+    let arrayProperties = []
+
 
     if (req.query.search) {
         sql += ` WHERE address LIKE '%${req.query.search}%' `
@@ -20,11 +22,16 @@ function index(req, res) {
             return
         }
 
+        arrayProperties = [...properties]
 
-        res.json(properties)
+        if (req.query.limit) {
+            arrayProperties = arrayProperties.filter((property, index) => index < req.query.limit)
+        }
+
+        res.json(arrayProperties)
     })
 
-    console.log(sql);
+
 }
 
 

@@ -13,16 +13,20 @@ const API_URL = 'http://localhost:3000/'
 
 function App() {
 
-  const [search, setSearch] = useState('')
+  const [search, setSearch] = useState({})
+  const [city, setCity] = useState('')
+
 
   return (
-    <GlobalContext.Provider value={{ API_URL, search, setSearch}}>
+    <GlobalContext.Provider value={{ API_URL, search, setSearch, city, setCity }}>
       <BrowserRouter>
         <Routes>
           <Route element={<DefaulLayout />}>
             <Route index element={<HomePage />} />
-            <Route path="/properties" element={<SearchPage />} />
-            <Route path="/properties/:id" element={<PropertyDetails />} />
+            <Route path="/properties" >
+              <Route index element={<SearchPage />} />
+              <Route path=":id" element={<PropertyDetails />} />
+            </Route>
             <Route path="/owners/:id" element={<InsertPropertyPage />} />
           </Route>
         </Routes>

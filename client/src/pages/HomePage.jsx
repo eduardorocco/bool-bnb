@@ -16,17 +16,17 @@ export default function HomePage() {
                 setProperties(res.data)
             })
             .catch(err => {
-                console.err(err);
+                console.error(err);
             })
     }
 
-    
-  function addHeart(id) {
-    axios.patch(`${API_URL}properties/${id}/heart`)
-      .then(res => {
-        fetchProperties()
-      })
-  }
+
+    function addHeart(id) {
+        axios.patch(`${API_URL}properties/${id}/heart`)
+            .then(res => {
+                fetchProperties()
+            })
+    }
 
     useEffect(() => {
         fetchProperties()
@@ -34,7 +34,7 @@ export default function HomePage() {
 
     return (
         <div className="container">
-            <SearchBar/>
+            <SearchBar />
             <div className="row">
                 {properties.map(property => {
                     return (
