@@ -77,8 +77,7 @@ function storeProperty(req, res) {
         square_meter,
         address,
         image,
-        type,
-        heart
+        type
     } = req.body
 
     //FARE IL CONTROLLO
@@ -104,8 +103,7 @@ function storeProperty(req, res) {
         square_meter,
         address,
         image,
-        type,
-        heart) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`
+        type) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`
 
     connection.query(sql, [
         owner_id,
@@ -117,8 +115,8 @@ function storeProperty(req, res) {
         square_meter,
         address,
         image,
-        type,
-        heart], (err, results) => {
+        type
+        ], (err, results) => {
             if (err) return res.status(500).json({ message: err.message })
             res.status(201).json({ message: 'Property created' })
         })
