@@ -23,7 +23,7 @@ export default function LoginForm() {
         name: yup.string().min(2, "Lunghezza del nome troppo corta.").required("Il nome è richiesto."),
         surName: yup.string().min(2, "Lunghezza del cognome troppo corta.").required("Il cognome è richiesto."),
         email: yup.string().email("Inserire un' email valida.").required("L' email è richiesta."),
-        number: yup.string().min(10, "Numero di telefono non valido").max(10, "Numero di telefono non valido"),
+        number: yup.string().min(10, "Numero di telefono non valido").max(10, "Numero di telefono non valido").required('Il numero è richiesto'),
         userName: yup.string().min(5, 'Lunghezza minima 5').required("Inserire l'email o l'username"),
         password: yup
             .string()
@@ -35,7 +35,7 @@ export default function LoginForm() {
     })
 
     async function onSubmitLogin(values, action) {
-        const userCheck = await axios.get(`${API_URL}owners/${values.user}`)
+        const userCheck = await axios.get(`${API_URL}users/${values.user}`)
         const userData = userCheck.data[0]
 
         setCheckUser(false)
@@ -67,18 +67,18 @@ export default function LoginForm() {
     }
 
     async function onSubmitRegistration(values, action) {
-        const { name, surName, email, userName, password } = values
+        const { name, surName, email, userName, password, number } = values
 
         const newUser = {
             name: name,
             surname: surName,
             email: email,
-            number: values.number ? values.number : '',
+            number: number,
             username: userName,
             password: password
         }
 
-        const addUser = await axios.post(`${API_URL}owners`, newUser).then((_) => {
+        const addUser = await axios.post(`${API_URL}users`, newUser).then((_) => {
 
         }).catch((err) => {
             console.log(err.response.data)
