@@ -3,6 +3,7 @@ import { useState, useEffect, useContext } from 'react'
 import GlobalContext from "../context/GlobalContext"
 import CardProperty from '../components/Card'
 import SearchBar from '../components/SearchBar'
+import LoginForm from '../components/LoginForm'
 
 
 export default function HomePage() {
@@ -35,6 +36,7 @@ export default function HomePage() {
     return (
         <div className="container">
             <SearchBar />
+            <LoginForm/>
             <div className="row">
                 {properties.map(property => {
                     return (
