@@ -4,7 +4,7 @@ const PORT = process.env.PORT
 const notFound = require('./middlewares/notFound')
 const errorHandler = require('./middlewares/errorsHandler')
 const propertiesRouter = require('./routers/bnbRouter')
-const ownerRouter = require('./routers/ownerRouter')
+const usersRouter = require('./routers/usersRouter')
 const cors = require('cors')
 
 app.use(express.json())
@@ -19,7 +19,7 @@ app.get('/', (req, res) => {
 
 app.use('/properties', propertiesRouter)
 
-app.use('/owners', ownerRouter)
+app.use('/users', usersRouter)
 
 app.use(notFound)
 
