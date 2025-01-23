@@ -23,7 +23,7 @@ export default function LoginForm() {
         name: yup.string().min(2, "Lunghezza del nome troppo corta.").required("Il nome è richiesto."),
         surName: yup.string().min(2, "Lunghezza del cognome troppo corta.").required("Il cognome è richiesto."),
         email: yup.string().email("Inserire un' email valida.").required("L' email è richiesta."),
-        number: yup.string().min(10, "Numero di telefono non valido").max(10, "Numero di telefono non valido"),
+        number: yup.string().min(10, "Numero di telefono non valido").max(10, "Numero di telefono non valido").required('Inserisci il numero'),
         userName: yup.string().min(5, 'Lunghezza minima 5').required("Inserire l'email o l'username"),
         password: yup
             .string()
@@ -35,7 +35,7 @@ export default function LoginForm() {
     })
 
     async function onSubmitLogin(values, action) {
-        const userCheck = await axios.get(`${API_URL}owners/${values.user}`)
+        const userCheck = await axios.get(`${API_URL}users/${values.user}`)
         const userData = userCheck.data[0]
 
         setCheckUser(false)
@@ -54,7 +54,7 @@ export default function LoginForm() {
             return
         }
 
-        if (password !== values.password) {
+        if (password !== values.passwordLog) {
             setCheckUser(true)
             console.log('password errata');
             return
@@ -102,9 +102,6 @@ export default function LoginForm() {
                         <Form>
                             <Input label='Inserisci nome utente o email' name='user' type='text' placeholder="example@email.com" />
                             <Input label='Inserisci una password' name='passwordLog' type='password' placeholder="Ciao1234" />
-                            <div>
-                                <button onClick={() => { setLogin(!login) }}>{login ? "Registrati" : "Accedi"}</button>
-                            </div>
                             <button type='submit' className='btn btn-primary'>Accedi</button>
                         </Form>
                     )}
@@ -119,12 +116,12 @@ export default function LoginForm() {
                                 <Input label='Username&#42;' name='userName' type='text' placeholder="username..." />
                                 <Input label='Password&#42;' name='password' type='password' placeholder="Ciao1234" />
                                 <Input label='Conferma password&#42;' name='confirmPassword' type='password' placeholder="Ciao1234" />
-                                <button onClick={() => { setLogin(!login) }}>{login ? "Registrati" : "Accedi"}</button>
                                 <button type='submit' className='btn btn-primary'>Registrati</button>
                             </Form>
                         )}
                     </Formik>
                 }
+                <button onClick={() => { setLogin(!login) }}>{login ? "Registrati" : "Accedi"}</button>
             </div>
         </div>
 
