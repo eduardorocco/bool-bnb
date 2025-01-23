@@ -146,7 +146,7 @@ function storeProperty(req, res) {
 function storeReview(req, res) {
     const property_id = req.params.id
     const {
-        user,
+        user_id,
         title,
         text,
         days_of_stays,
@@ -162,11 +162,11 @@ function storeReview(req, res) {
         return res.status(400).json({ message: 'Invalid data' })
     }
 
-    const sql = `INSERT INTO reviews (property_id, user, title, text, days_of_stays, vote) VALUES (?, ?, ?, ?, ?, ?)`
+    const sql = `INSERT INTO reviews (property_id, user_id, title, text, days_of_stays, vote) VALUES (?, ?, ?, ?, ?, ?)`
 
     connection.query(sql, [
         property_id,
-        user,
+        user_id,
         title,
         text,
         days_of_stays,

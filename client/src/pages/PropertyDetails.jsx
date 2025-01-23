@@ -65,7 +65,7 @@ export default function PropertyDetails() {
                                                 {review.title}
                                             </li>
                                             <li>
-                                                {review.user}
+                                                {review.user_id}
                                             </li>
                                             <li>
                                                 {review.days_of_stays}

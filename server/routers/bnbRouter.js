@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const bnbController = require('../controllers/bnbController')
-const ownerController = require('../controllers/ownersController')
+
 
 //ROUTE INDEX PROPERTIES localhost:3000/properties
 router.get('/', bnbController.index)

@@ -28,7 +28,7 @@ function App() {
               <Route index element={<SearchPage />} />
               <Route path=":id" element={<PropertyDetails />} />
             </Route>
-            <Route path="/owners/:id" element={<InsertPropertyPage />} />
+            <Route path="/users/:id" element={<InsertPropertyPage />} />
           </Route>
         </Routes>
       </BrowserRouter>
