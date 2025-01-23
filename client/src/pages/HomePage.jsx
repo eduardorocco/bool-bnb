@@ -36,7 +36,6 @@ export default function HomePage() {
     return (
         <div className="container">
             <SearchBar />
-            <LoginForm/>
             <div className="row">
                 {properties.map(property => {
                     return (
