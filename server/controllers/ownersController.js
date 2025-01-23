@@ -3,11 +3,13 @@ const sql = require('mysql2')
 
 function show(req, res) {
 
-    const id = req.params.id
+    const key = req.params.key
 
-        const sql = `SELECT * FROM owners WHERE id = ?`
+        const sql = `SELECT * FROM owners WHERE id = ? 
+        OR username = '${key}' 
+        OR email = '${key}'`
 
-        connection.query(sql, id, (err, results) => {
+        connection.query(sql, key, (err, results) => {
             if (err) return res.status(500).json({ message: err.message })
             res.json(results)
         })

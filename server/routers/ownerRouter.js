@@ -5,6 +5,6 @@ const ownerController = require('../controllers/ownersController')
 
 router.post('/', ownerController.storeOwner)
 
-router.get('/:id', ownerController.show)
+router.get('/:key', ownerController.show)
 
 module.exports = router
