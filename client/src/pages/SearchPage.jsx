@@ -13,7 +13,12 @@ export default function SearchPage() {
         search ?
             axios.get(`${API_URL}properties`, {
                 params: {
-                    search: search,
+                    address: search.address,
+                    type: search.type,
+                    room: search.room,
+                    bed: search.bed,
+                    toilet:search.toilet,
+                    limit: ''
                 }
             })
                 .then(res => {

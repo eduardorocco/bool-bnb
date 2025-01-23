@@ -14,7 +14,7 @@ const API_URL = 'http://localhost:3000/'
 function App() {
 
   const [search, setSearch] = useState({})
-  const [city, setCity] = useState('')
+  const [city, setCity] = useState({ address:'', type:'', room:'', bed:'', toilet:''})
 
 
   return (

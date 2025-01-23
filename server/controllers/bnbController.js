@@ -6,13 +6,10 @@ function index(req, res) {
 
     let arrayProperties = []
 
-
-    if (req.query.search) {
-        sql += ` WHERE address LIKE '%${req.query.search}%' `
-        //   OR room LIKE '%${req.query.search}%' 
-        //   OR toilet LIKE '%${req.query.search}%`
-        // sql += `WHERE title LIKE '%${req.query.search}%'`
+    if (req.query.address) {
+        sql += ` WHERE address LIKE '%${req.query.address}%' `
     }
+
 
     sql += ' GROUP BY properties.id ORDER BY properties.heart DESC'
 
@@ -23,6 +20,22 @@ function index(req, res) {
         }
 
         arrayProperties = [...properties]
+
+        if(req.query.room) {
+            arrayProperties = arrayProperties.filter((property, index) => property.room == req.query.room)
+        }
+
+        if(req.query.bed) {
+            arrayProperties = arrayProperties.filter((property, index) => property.bed == req.query.bed)
+        }
+
+        if(req.query.type) {
+            arrayProperties = arrayProperties.filter((property, index) => property.type === req.query.type)
+        }
+
+        if(req.query.toilet) {
+            arrayProperties = arrayProperties.filter((property, index) => property.toilet == req.query.toilet)
+        }
 
         if (req.query.limit) {
             arrayProperties = arrayProperties.filter((property, index) => index < req.query.limit)
