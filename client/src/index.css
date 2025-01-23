@@ -19,3 +19,41 @@ a {
   color: currentColor !important;
   text-decoration: none !important;
 }
+
+.error {
+  color: rgb(143, 19, 19);
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.input_error {
+  border: 2px solid rgb(143, 19, 19);
+  background-color: rgb(247 225 225);
+  animation: error 0.3s 2;
+}
+
+@keyframes error {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  20% {
+    transform: rotate(-1deg);
+  }
+
+  40% {
+    transform: rotate(1deg);
+  }
+
+  60% {
+    transform: rotate(-1deg);
+  }
+
+  80% {
+    transform: rotate(1deg);
+  }
+
+  100% {
+    transform: rotate(0deg);
+  }
+}
