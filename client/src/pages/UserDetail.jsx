@@ -33,7 +33,7 @@ export default function UserDetail() {
                 <p>Cognome:{surname}</p>
                 <p>Numero:{number}</p>
                 <p>email:{email}</p>
-                <p>Username:{username}</p>
+                <p>Usernamee:{username}</p>
             </div>
             <Link className="btn btn-danger" to={'properties'} >insert properties</Link>
         </>
