@@ -5,6 +5,7 @@
   --main-text-color: white;
   --main-green-color: #C9DBBA;
   --secondary-bg-color: #F5CDA7;
+  --box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.165);
   }
 
 * {
@@ -13,6 +14,7 @@
   padding: 0;
   font-family: "Noto Sans", serif;
 }
+
 
 img {
   width: 100%;

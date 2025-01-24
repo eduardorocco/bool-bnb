@@ -4,6 +4,8 @@ import GlobalContext from "../context/GlobalContext"
 import CardProperty from '../components/Card'
 import SearchBar from '../components/SearchBar'
 import LoginForm from '../components/LoginForm'
+import style from './HomePage.module.css'
+import house from '../assets/houses/house.jpg'
 
 
 export default function HomePage() {
@@ -34,16 +36,24 @@ export default function HomePage() {
     }, [])
 
     return (
-        <div className="container">
-            <SearchBar />
-            <div className="row">
-                {properties.map(property => {
-                    return (
-                        <CardProperty key={property.id} property={property} callback={addHeart} />
-                    )
-
-                })}
+        <>
+            <div className={style.jumbo}>
+                <SearchBar />
+                <figure>
+                    <img src={house} alt="" />
+                </figure>
             </div>
-        </div>
+            <div className="container">
+                <div className="row">
+                    {properties.map(property => {
+                        return (
+                            <CardProperty key={property.id} property={property} callback={addHeart} />
+                        )
+
+                    })}
+                </div>
+            </div>
+        </>
+
     )
 }

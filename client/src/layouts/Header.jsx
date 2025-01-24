@@ -4,7 +4,7 @@ import { useContext } from "react"
 import style from './Header.module.css'
 import whiteLinear from '../assets/logo-gallery/white-linear.png'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faUser } from '@fortawesome/free-regular-svg-icons'
+import { faUser } from '@fortawesome/free-solid-svg-icons'
 
 export default function Header() {
     const { setOverlayLogin, user } = useContext(GlobalContext)
@@ -13,7 +13,7 @@ export default function Header() {
             <nav className={style.navbar}>
                 <Link to={'/'}>
                     <figure className={style.logo_container}>
-                        <img src={whiteLinear} alt="" />
+                        <img className={style.logo} src={whiteLinear} alt="" />
                     </figure>
                 </Link>
                 <div className={style.navlink}>

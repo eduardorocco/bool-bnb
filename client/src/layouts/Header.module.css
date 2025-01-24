@@ -20,10 +20,20 @@
 }
 
 .rounded{
-    background-color: white;
-    color: var(--main-bg-color);
+    background-color: var(--main-green-color);
+    color: white;
     padding: 10px;
     border-radius: 50%;
     line-height: 5px;
+    box-shadow: var(--box-shadow)
     
+}
+
+.button{
+    background: white;
+    color: var(--main-bg-color);
+    border: none;
+    padding: 6px 15px;
+    border-radius: 999px;
+    box-shadow: var(--box-shadow)
 }

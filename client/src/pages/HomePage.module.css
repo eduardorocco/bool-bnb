@@ -1,0 +1,4 @@
+.jumbo{
+    height: 100vh;
+    background-image: linear-gradient(to right,var(--main-bg-color), var(--secondary-bg-color));
+}
