@@ -87,7 +87,7 @@ function show(req, res) {
 
 function storeProperty(req, res) {
 
-    const owner_id = req.params.id
+    const user_id = req.params.id
 
     const {
         title,
@@ -97,6 +97,8 @@ function storeProperty(req, res) {
         toilet,
         square_meter,
         address,
+        city,
+        province,
         image,
         type
     } = req.body
@@ -115,7 +117,7 @@ function storeProperty(req, res) {
     // }
 
     const sql = `INSERT INTO properties (
-        owner_id,
+        user_id,
         title,
         description,
         room,
@@ -123,11 +125,13 @@ function storeProperty(req, res) {
         toilet,
         square_meter,
         address,
+        city,
+        province,
         image,
-        type) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`
+        type) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`
 
     connection.query(sql, [
-        owner_id,
+        user_id,
         title,
         description,
         room,
@@ -135,6 +139,8 @@ function storeProperty(req, res) {
         toilet,
         square_meter,
         address,
+        city,
+        province,
         image,
         type
     ], (err, results) => {
