@@ -1,19 +1,41 @@
-import { NavLink } from "react-router"
+import { Link, NavLink } from "react-router"
 import GlobalContext from "../context/GlobalContext"
 import { useContext } from "react"
+import style from './Header.module.css'
+import whiteLinear from '../assets/logo-gallery/white-linear.png'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faUser } from '@fortawesome/free-regular-svg-icons'
 
 export default function Header() {
-    const {setOverlayLogin, user } = useContext(GlobalContext)
+    const { setOverlayLogin, user } = useContext(GlobalContext)
     return (
-        <div className="container-fluid">
-            <div>
-                <nav className="d-flex align-items-center justify-content-between">
+        <div>
+            <nav className={style.navbar}>
+                <Link to={'/'}>
+                    <figure className={style.logo_container}>
+                        <img src={whiteLinear} alt="" />
+                    </figure>
+                </Link>
+                <div className={style.navlink}>
                     <NavLink to='/'>Home</NavLink>
                     <NavLink to='/properties'>Soggiorni</NavLink>
-                    <NavLink to={`users/${user.id}`}>utente</NavLink>
-                    <button onClick={()=>(setOverlayLogin(true))} className="btn btn-primary">Accedi</button>
-                </nav>
-            </div>
+
+                </div>
+                <div className={style.navlink}>
+                    <NavLink to={`users/${user.id}`}>
+                        <div className={style.rounded}>
+                            <FontAwesomeIcon icon={faUser} />
+                        </div>
+
+                    </NavLink>
+                    <button
+                        onClick={() => (setOverlayLogin(true))}
+                        className={style.button}>
+                        Accedi
+                    </button>
+                </div>
+
+            </nav>
         </div>
     )
 }
