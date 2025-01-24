@@ -41,7 +41,11 @@ export default function InsertPropertyPage() {
     })
 
     async function onSubmit(action, values) {
-        const newProperties = await axios.post(`${API_URL}/users/${id}/properties`, values).then((_) => {
+        values = {
+            ...values,
+            province: values.province.toUppercase()
+        }
+        const newProperties = await axios.post(`${API_URL}users/${id}/properties`, values).then((_) => {
         }).catch((err) => {
             console.log(err.response.data)
         })
@@ -54,13 +58,13 @@ export default function InsertPropertyPage() {
             {({ isSubmitting }) => (
                 <Form>
                     <Input label='Nome della proprietà' name='title' type='text' placeholder="Es. Villetta sul lago di..." />
-                    <Input label='Stanze' name='room' type='number' max='30' placeholder="Es. Villetta sul lago di..." />
-                    <Input label='Posti letto' name='bed' type='number' max='40' placeholder="Es. Villetta sul lago di..." />
-                    <Input label='Bagni' name='toilet' type='number' max='30' placeholder="Es. Villetta sul lago di..." />
+                    <Input label='Stanze' name='room' type='number' max='30' readonly />
+                    <Input label='Posti letto' name='bed' type='number' max='40' readonly />
+                    <Input label='Bagni' name='toilet' type='number' max='30' readonly />
                     <Input label='Dimensioni immobile (mq)' name='square_meter' type='number' max='5000' placeholder='Es. 30' />
                     <Input label='Indirizzo' name='address' type='text' placeholder="via esempio 15..." />
                     <Input label='Città' name='city' type='text' placeholder="Inserisci la città" />
-                    <Input label='Provincia' style="text-transform: uppercase;" name='province' type='text' minlength='2' maxlength='2' />
+                    <div className='toUppercase'><Input label='Provincia' name='province' type='text' minLength='2' maxLength='2' /></div>
                     <Textarea label='Descrizione' name='description' rows="5" placeholder="Inserisci la descrizione qui..." />
                     <button disabled={isSubmitting} type='reset'>Resetta Form</button>
                     <button disabled={isSubmitting} type='submit' className='btn btn-primary'>Carica Immobile</button>
