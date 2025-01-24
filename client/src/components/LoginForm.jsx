@@ -7,7 +7,9 @@ import Input from './Input'
 
 export default function LoginForm() {
     const passwordRules = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{5,}$/
-    const { API_URL, setOverlayLogin } = useContext(GlobalContext)
+
+    const { API_URL, setOverlayLogin, setUser } = useContext(GlobalContext)
+
     const [checkUser, setCheckUser] = useState(false)
     const [login, setLogin] = useState(true)
 
@@ -23,7 +25,7 @@ export default function LoginForm() {
         name: yup.string().min(2, "Lunghezza del nome troppo corta.").required("Il nome è richiesto."),
         surName: yup.string().min(2, "Lunghezza del cognome troppo corta.").required("Il cognome è richiesto."),
         email: yup.string().email("Inserire un' email valida.").required("L' email è richiesta."),
-        number: yup.string().min(10, "Numero di telefono non valido").max(10, "Numero di telefono non valido").required('Il numero è richiesto'),
+        number: yup.string().min(10, "Numero di telefono non valido").max(10, "Numero di telefono non valido").required('Inserisci il numero'),
         userName: yup.string().min(5, 'Lunghezza minima 5').required("Inserire l'email o l'username"),
         password: yup
             .string()
@@ -54,7 +56,7 @@ export default function LoginForm() {
             return
         }
 
-        if (password !== values.password) {
+        if (password !== values.passwordLog) {
             setCheckUser(true)
             console.log('password errata');
             return
@@ -63,6 +65,7 @@ export default function LoginForm() {
         console.log(userCheck.data[0]);
         action.resetForm()
         setOverlayLogin()
+        setUser(userData)
 
     }
 
@@ -123,6 +126,7 @@ export default function LoginForm() {
                         )}
                     </Formik>
                 }
+                <button onClick={() => { setLogin(!login) }}>{login ? "Registrati" : "Accedi"}</button>
             </div>
         </div>
 

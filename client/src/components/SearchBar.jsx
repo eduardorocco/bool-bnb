@@ -7,8 +7,8 @@ export default function SearchBar() {
     const { API_URL, search, setSearch } = useContext(GlobalContext)
     const { city, setCity } = useContext(GlobalContext)
     const navigate = useNavigate();
-    const { pathname } = useLocation()
-    
+    let { pathname } = useLocation()
+
     const initialSearchData =
     {
         address: '',
@@ -48,7 +48,7 @@ export default function SearchBar() {
                 name='address'
             />
 
-            <select
+            {pathname === '/' ? '' : <select
                 value={city.type}
                 name='type'
                 className="form-select"
@@ -59,10 +59,10 @@ export default function SearchBar() {
                 <option value="chalet">chalet</option>
                 <option value="apartment">apartment</option>
                 <option value="loft">loft</option>
-            </select>
+            </select>}
 
 
-            <select
+            {pathname === '/' ? '' : <select
                 value={city.room}
                 name='room'
                 className="form-select"
@@ -74,10 +74,10 @@ export default function SearchBar() {
                 <option value="3">3</option>
                 <option value="4">4</option>
                 <option value="5">5</option>
-            </select>
+            </select>}
 
 
-            <select
+            {pathname === '/' ? '' : <select
                 name='bed'
                 value={city.bed}
                 className="form-select"
@@ -89,10 +89,10 @@ export default function SearchBar() {
                 <option value="3">3</option>
                 <option value="4">4</option>
                 <option value="5">5</option>
-            </select>
+            </select>}
 
 
-            <select
+            {pathname === '/' ? '' : <select
                 value={city.toilet}
                 name='toilet'
                 className="form-select"
@@ -102,7 +102,7 @@ export default function SearchBar() {
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
-            </select>
+            </select>}
 
 
 
