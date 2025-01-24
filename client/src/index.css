@@ -46,6 +46,14 @@ a {
   animation: error 0.3s 2;
 }
 
+textarea {
+  resize: none;
+}
+
+.toUppercase {
+  text-transform: uppercase;
+}
+
 @keyframes error {
   0% {
     transform: rotate(0deg);
