@@ -38,9 +38,12 @@ export default function HomePage() {
     return (
         <>
             <div className={style.jumbo}>
+                <div className={style.searchbar}>
                 <SearchBar />
-                <figure>
-                    <img src={house} alt="" />
+                </div>
+                
+                <figure  className={style.image_container}>
+                    <img className={style.image} src={house} alt="" />
                 </figure>
             </div>
             <div className="container">

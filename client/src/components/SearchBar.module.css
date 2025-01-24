@@ -1,0 +1,49 @@
+.input {
+    background-color: transparent;
+    border: none;
+    margin-left: 100px;
+    font-size: 40px;
+    font-weight: lighter;
+    color: rgb(60, 60, 60);
+    border-bottom: solid rgb(60, 60, 60) 1px;
+    outline: none;
+}
+
+.input::placeholder {
+    color: rgb(60, 60, 60);
+}
+
+.button {
+    font-size: 30px;
+    border: none;
+    background-color: var(--main-bg-color);
+    color: rgb(255, 255, 255);
+    top: 120px;
+    padding: 5px 60px 5px 60px;
+    position: absolute;
+    font-weight: lighter;
+    right: 0;
+    border-top-left-radius: 999px;
+    border-bottom-left-radius: 999px;
+
+}
+
+.button:hover {
+    animation-name: color-change;
+    animation-duration: 3s;
+    
+} 
+
+@keyframes color-change {
+    0% {
+
+       background-color: var(--main-bg-color);
+    }
+    50%{
+        background-color: var(--secondary-bg-color);
+    }
+
+    100% {
+        background-color: var(--main-bg-color);
+    }
+  }

@@ -1,6 +1,10 @@
 import GlobalContext from '../context/GlobalContext';
 import { useContext, useState } from 'react';
 import { useNavigate, useLocation } from 'react-router';
+import style from './SearchBar.module.css'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
+
 
 export default function SearchBar() {
 
@@ -41,8 +45,9 @@ export default function SearchBar() {
     return (
         <form onSubmit={onSubmit} >
             <input
+                className={style.input}
                 type="text"
-                placeholder='Cerca una città...'
+                placeholder='Dove andiamo?'
                 value={city.address}
                 onChange={handleSearch}
                 name='address'
@@ -106,7 +111,7 @@ export default function SearchBar() {
 
 
 
-            <button type='submit' className='btn btn-primary'>Cerca</button>
+            <button type='submit' className={style.button}> <FontAwesomeIcon icon={faMagnifyingGlass} /></button>
 
         </form>
     )
