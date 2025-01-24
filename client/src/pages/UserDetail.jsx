@@ -29,7 +29,7 @@ export default function UserDetail() {
     return (
         <>
             <div>
-                <p>Nome:{name}</p>
+                <p>Noome:{name}</p>
                 <p>Cognome:{surname}</p>
                 <p>Numero:{number}</p>
                 <p>email:{email}</p>
