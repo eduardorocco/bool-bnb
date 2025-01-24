@@ -27,9 +27,9 @@ export default function InsertPropertyPage() {
     const loginSchema = yup.object().shape({
         title: yup.string().required("Inserisci il nome dell'immobile."),
         description: yup.string().min(15, "Dicci qualcosa in più.").required("Inserisci una breve descrizione."),
-        room: yup.number().positive().min(1).required("Selezionare il numero di stanze."),
-        bed: yup.number().positive().min(1).required("Selezionare il numero di letti."),
-        toilet: yup.number().positive().min(1).required("Selezionare il numero di bagni."),
+        room: yup.number().positive().min(1, "L'immobile deve avere almeno una stanza.").required("Selezionare il numero di stanze."),
+        bed: yup.number().positive().min(1, "L'immobile deve avere almeno un letto.").required("Selezionare il numero di letti."),
+        toilet: yup.number().positive().min(1, "L'immobile deve avere almeno un bagno.").required("Selezionare il numero di bagni."),
         square_meter: yup.number().positive().min(2, "Inserire una grandezza abitabile.").max(400, "Inserire una grandezza abitabile.").required("Inserire le dimensioni dell'immobile (in mq)."),
         adress: yup.string().min(5, "Inserire un indirizzo valido.").required("Inserire un indirizzo."),
         city: yup.string().required("Inserire la città."),
@@ -58,10 +58,10 @@ export default function InsertPropertyPage() {
             {({ isSubmitting }) => (
                 <Form>
                     <Input label='Nome della proprietà' name='title' type='text' placeholder="Es. Villetta sul lago di..." />
-                    <Input label='Stanze' name='room' type='number' max='30' readonly />
-                    <Input label='Posti letto' name='bed' type='number' max='40' readonly />
-                    <Input label='Bagni' name='toilet' type='number' max='30' readonly />
-                    <Input label='Dimensioni immobile (mq)' name='square_meter' type='number' max='5000' placeholder='Es. 30' />
+                    <Input label='Stanze' name='room' type='number' />
+                    <Input label='Posti letto' name='bed' type='number' />
+                    <Input label='Bagni' name='toilet' type='number' />
+                    <Input label='Dimensioni immobile (mq)' name='square_meter' type='number' placeholder='Es. 30' />
                     <Input label='Indirizzo' name='address' type='text' placeholder="via esempio 15..." />
                     <Input label='Città' name='city' type='text' placeholder="Inserisci la città" />
                     <div className='toUppercase'><Input label='Provincia' name='province' type='text' minLength='2' maxLength='2' /></div>

@@ -105,7 +105,7 @@ export default function LoginForm() {
                         <Form>
                             <Input label='Inserisci nome utente o email' name='user' type='text' placeholder="example@email.com" />
                             <Input label='Inserisci una password' name='passwordLog' type='password' placeholder="Ciao1234" />
-                            <button disabled={isSubmitting} onClick={() => { setLogin(!login) }}>{login ? "Registrati" : "Accedi"}</button>
+                            <button disabled={isSubmitting} type='reset'>Reset</button>
                             <button disabled={isSubmitting} type='submit' className='btn btn-primary'>Accedi</button>
                         </Form>
                     )}
@@ -120,7 +120,7 @@ export default function LoginForm() {
                                 <Input label='Username&#42;' name='userName' type='text' placeholder="username..." />
                                 <Input label='Password&#42;' name='password' type='password' placeholder="Ciao1234" />
                                 <Input label='Conferma password&#42;' name='confirmPassword' type='password' placeholder="Ciao1234" />
-                                <button disabled={isSubmitting} onClick={() => { setLogin(!login) }}>{login ? "Registrati" : "Accedi"}</button>
+                                <button disabled={isSubmitting} type='reset'>Reset</button>
                                 <button disabled={isSubmitting} type='submit' className='btn btn-primary'>Registrati</button>
                             </Form>
                         )}
