@@ -17,10 +17,12 @@ function App() {
   const [search, setSearch] = useState({})
   const [city, setCity] = useState({ address: '', type: '', room: '', bed: '', toilet: '' })
   const [overlayLogin, setOverlayLogin] = useState(false)
+  const [user, setUser] = useState({})
+ 
 
 
   return (
-    <GlobalContext.Provider value={{ API_URL, search, setSearch, city, setCity, overlayLogin, setOverlayLogin }}>
+    <GlobalContext.Provider value={{ API_URL, search, setSearch, city, setCity, overlayLogin, setOverlayLogin, user, setUser }}>
       <BrowserRouter>
         <Routes>
           <Route element={<DefaulLayout />}>
@@ -29,8 +31,10 @@ function App() {
               <Route index element={<SearchPage />} />
               <Route path=":id" element={<PropertyDetails />} />
             </Route>
-            <Route path="/users/:id" element={< UserDetail />}/>
-            <Route path='/users/:id/properties'element={<InsertPropertyPage/>}/>
+            <Route path={'users/:id'}>
+              <Route index element={< UserDetail/> }/>
+              <Route path="properties" element={< InsertPropertyPage/>}/>
+            </Route>
           </Route>
         </Routes>
       </BrowserRouter>

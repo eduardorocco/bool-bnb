@@ -7,7 +7,9 @@ import Input from './Input'
 
 export default function LoginForm() {
     const passwordRules = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{5,}$/
-    const { API_URL, setOverlayLogin } = useContext(GlobalContext)
+
+    const { API_URL, setOverlayLogin, setUser } = useContext(GlobalContext)
+
     const [checkUser, setCheckUser] = useState(false)
     const [login, setLogin] = useState(true)
 
@@ -63,6 +65,7 @@ export default function LoginForm() {
         console.log(userCheck.data[0]);
         action.resetForm()
         setOverlayLogin()
+        setUser(userData)
 
     }
 
