@@ -1,5 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
 
+:root {
+  --main-bg-color: #75DBCD;
+  --main-text-color: white;
+  --main-green-color: #C9DBBA;
+  --secondary-bg-color: #F5CDA7;
+  }
+
 * {
   box-sizing: border-box;
   margin: 0;
