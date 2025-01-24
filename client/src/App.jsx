@@ -7,6 +7,7 @@ import PropertyDetails from './pages/PropertyDetails'
 import SearchPage from './pages/SearchPage'
 import DefaulLayout from "./layouts/DefaulLayout"
 import { useState } from "react"
+import UserDetail from "./pages/UserDetail"
 
 const API_URL = 'http://localhost:3000/'
 
@@ -14,12 +15,12 @@ const API_URL = 'http://localhost:3000/'
 function App() {
 
   const [search, setSearch] = useState({})
-  const [city, setCity] = useState({ address:'', type:'', room:'', bed:'', toilet:''})
+  const [city, setCity] = useState({ address: '', type: '', room: '', bed: '', toilet: '' })
   const [overlayLogin, setOverlayLogin] = useState(false)
 
 
   return (
-    <GlobalContext.Provider value={{ API_URL, search, setSearch, city, setCity, overlayLogin, setOverlayLogin}}>
+    <GlobalContext.Provider value={{ API_URL, search, setSearch, city, setCity, overlayLogin, setOverlayLogin }}>
       <BrowserRouter>
         <Routes>
           <Route element={<DefaulLayout />}>
@@ -28,7 +29,8 @@ function App() {
               <Route index element={<SearchPage />} />
               <Route path=":id" element={<PropertyDetails />} />
             </Route>
-            <Route path="/users/:id" element={<InsertPropertyPage />} />
+            <Route path="/users/:id" element={< UserDetail />}/>
+            <Route path='/users/:id/properties'element={<InsertPropertyPage/>}/>
           </Route>
         </Routes>
       </BrowserRouter>

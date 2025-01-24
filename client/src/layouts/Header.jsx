@@ -10,7 +10,7 @@ export default function Header() {
                 <nav className="d-flex align-items-center justify-content-between">
                     <NavLink to='/'>Home</NavLink>
                     <NavLink to='/properties'>Soggiorni</NavLink>
-                    <NavLink to='/owners'>utente</NavLink>
+                    <NavLink to='/users/:id'>utente</NavLink>
                     <button onClick={()=>(setOverlayLogin(true))} className="btn btn-primary">Accedi</button>
                 </nav>
             </div>
