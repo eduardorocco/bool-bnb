@@ -41,7 +41,9 @@ export default function HomePage() {
                 <div className={style.searchbar}>
                 <SearchBar />
                 </div>
-                
+                <div>
+                 <p className={style.slogan}>"Scopri, vivi, condividi."</p>
+                </div>
                 <figure  className={style.image_container}>
                     <img className={style.image} src={house} alt="" />
                 </figure>

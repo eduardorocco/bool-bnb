@@ -4,7 +4,7 @@
 }
 
 .image_container{
-    width: 900px;
+    width: 1000px;
     border-radius: 999px;
     position: absolute;
     top: 300px;
@@ -27,4 +27,39 @@
     border-top-left-radius: 999px;
     border-bottom-left-radius: 999px;
     align-content: center;
+}
+
+.slogan{
+    text-align: center;
+    font-weight: lighter;
+    color: var(--white);
+    font-size: 70px;
+    padding-top: 50px;
+}
+
+/* Responsive styles */
+
+
+@media (max-width: 768px) {
+    .image_container {
+        width: 600px;
+        top: 250px;
+    }
+
+    .searchbar {
+        width: 90%;
+        height: 250px;
+        top: 500px;
+    }
+
+    .slogan {
+        font-size: 50px;
+        padding-top: 30px;
+    }
+}
+
+@media (max-width: 480px) {
+    .jumbo {
+        height: 100vh;
+    }
 }

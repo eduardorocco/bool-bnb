@@ -7,6 +7,7 @@
     color: rgb(60, 60, 60);
     border-bottom: solid rgb(60, 60, 60) 1px;
     outline: none;
+    width: 60%;
 }
 
 .input::placeholder {
@@ -16,7 +17,7 @@
 .button {
     font-size: 30px;
     border: none;
-    background-color: var(--main-bg-color);
+    background-image: linear-gradient(to right,var(--main-bg-color), var(--secondary-bg-color));
     color: rgb(255, 255, 255);
     top: 120px;
     padding: 5px 60px 5px 60px;
@@ -25,25 +26,63 @@
     right: 0;
     border-top-left-radius: 999px;
     border-bottom-left-radius: 999px;
+    background-size: 200% 100%;
+    transition: color 0.3s ease;
 
 }
 
 .button:hover {
-    animation-name: color-change;
+    animation-name: gradient-scroll;
     animation-duration: 3s;
-    
-} 
+    animation-timing-function: linear; 
+    animation-iteration-count: infinite; 
+}
 
-@keyframes color-change {
+
+@keyframes gradient-scroll {
     0% {
-
-       background-color: var(--main-bg-color);
+        background-position: 100% 0;
     }
-    50%{
-        background-color: var(--secondary-bg-color);
+    50% {
+        background-position: 0 0; 
     }
-
     100% {
-        background-color: var(--main-bg-color);
+        background-position: 100% 0; 
     }
-  }
+}
+
+  /* Responsive styles */
+
+
+@media (max-width: 768px) {
+    
+    .input {
+        font-size: 30px;
+        margin-left: 50px;
+        width: 90%; 
+    }
+
+    
+    .button {
+        font-size: 25px;
+        padding: 5px 40px 5px 40px;
+        top: 100px; 
+    }
+}
+
+
+@media (max-width: 480px) {
+   
+    .input {
+        font-size: 25px;
+        margin-left: 30px; 
+        width: 80%; 
+    }
+
+    
+    .button {
+        font-size: 22px;
+        padding: 5px 30px 5px 30px;
+        top: 90px;
+    }
+}
