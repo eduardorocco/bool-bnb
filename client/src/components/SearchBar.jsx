@@ -1,17 +1,21 @@
 import GlobalContext from '../context/GlobalContext';
 import { useContext, useState } from 'react';
 import { useNavigate, useLocation } from 'react-router';
-import style from '../assets/modules/SearchBarHomePage.module.css'
+import styleHomePage from '../assets/modules/SearchBarHomePage.module.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
 
 
 export default function SearchBar() {
-
+    
     const { API_URL, search, setSearch } = useContext(GlobalContext)
     const { city, setCity } = useContext(GlobalContext)
     const navigate = useNavigate();
     let { pathname } = useLocation()
+
+    const styles = pathname === '/' ? styleHomePage : ''
+
+    
 
     const initialSearchData =
     {
@@ -45,7 +49,7 @@ export default function SearchBar() {
     return (
         <form onSubmit={onSubmit} >
             <input
-                className={style.input}
+                className={styles.input}
                 type="text"
                 placeholder='Dove andiamo?'
                 value={city.address}
@@ -111,7 +115,7 @@ export default function SearchBar() {
 
 
 
-            <button type='submit' className={style.button}> <FontAwesomeIcon icon={faMagnifyingGlass} /></button>
+            <button type='submit' className={styles.button}> {pathname === '/' ? <FontAwesomeIcon icon={faMagnifyingGlass}/> : 'Filtra'}</button>
 
         </form>
     )
