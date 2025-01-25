@@ -2,13 +2,16 @@ import { Formik, Form } from 'formik'
 import * as yup from 'yup'
 import Input from '../components/Input'
 import Textarea from '../components/Textarea'
+import Select from '../components/Select'
 import { useParams } from "react-router-dom"
 import axios from 'axios'
 import GlobalContext from '../context/GlobalContext'
 import { useContext } from 'react'
 
 export default function InsertPropertyPage() {
+
     const { id } = useParams()
+    console.log(id)
 
     const { API_URL } = useContext(GlobalContext)
 
@@ -31,33 +34,47 @@ export default function InsertPropertyPage() {
         bed: yup.number().positive().min(1, "L'immobile deve avere almeno un letto.").required("Selezionare il numero di letti."),
         toilet: yup.number().positive().min(1, "L'immobile deve avere almeno un bagno.").required("Selezionare il numero di bagni."),
         square_meter: yup.number().positive().min(2, "Inserire una grandezza abitabile.").max(400, "Inserire una grandezza abitabile.").required("Inserire le dimensioni dell'immobile (in mq)."),
-        adress: yup.string().min(5, "Inserire un indirizzo valido.").required("Inserire un indirizzo."),
+        address: yup.string().min(5, "Inserire un indirizzo valido.").required("Inserire un indirizzo."),
         city: yup.string().required("Inserire la città."),
         province: yup.string().min(2, "Inserire una provincia valida.").max(2, "Inserire una provincia valida.").required("Inserisci la provincia."),
-        image: yup.mixed() // bisogna aggiungere required dopo aver capito come fare l'upload
-            .test("is-valid-type", "Not a valid image type", value => isValidFileType(value && value.name.toLowerCase(), "image"))
-            .test("is-valid-size", "Max allowed size is 100KB", value => value && value.size <= MAX_FILE_SIZE),
+        // image: yup.mixed() // bisogna aggiungere required dopo aver capito come fare l'upload
+        //     .test("is-valid-type", "Not a valid image type", value => isValidFileType(value && value.name.toLowerCase(), "image"))
+        //     .test("is-valid-size", "Max allowed size is 100KB", value => value && value.size <= MAX_FILE_SIZE),
         type: yup.string().oneOf(['apartment', 'room', 'villa', 'loft', 'chalet']).required("Scegliere la tipologia di immobile"),
     })
 
-    async function onSubmit(action, values) {
-        values = {
-            ...values,
-            province: values.province.toUppercase()
+    async function onSubmitProperties(values, action) {
+
+        const { title, description, room, bed, toilet, square_meter, address, city, province, type } = values
+        const newProperties = {
+            title: title,
+            description: description,
+            room: room,
+            bed: bed,
+            toilet: toilet,
+            square_meter: square_meter,
+            address: address,
+            city: city,
+            province: province,
+            type: type,
         }
-        const newProperties = await axios.post(`${API_URL}users/${id}/properties`, values).then((_) => {
+        console.log(newProperties)
+        const addProperties = await axios.post(`${API_URL}properties/${id}`, newProperties).then((_) => {
+
         }).catch((err) => {
             console.log(err.response.data)
         })
+
         action.resetForm()
     }
 
     return (
         // bisognerà aggiungere image
-        <Formik initialValues={{ title: '', description: '', room: 0, bed: 0, toilet: 0, square_meter: 0, adress: '', city: '', province: '', type: '' }} validationSchema={loginSchema} onSubmit={onSubmit}>
+        <Formik initialValues={{ title: '', description: '', room: 1, bed: 1, toilet: 1, square_meter: 2, address: '', city: '', province: '', type: '' }} validationSchema={loginSchema} onSubmit={(values, actions) => onSubmitProperties(values, actions)}>
             {({ isSubmitting }) => (
                 <Form>
                     <Input label='Nome della proprietà' name='title' type='text' placeholder="Es. Villetta sul lago di..." />
+                    <Select label="Tipologia di immobile" name="type" />
                     <Input label='Stanze' name='room' type='number' />
                     <Input label='Posti letto' name='bed' type='number' />
                     <Input label='Bagni' name='toilet' type='number' />
@@ -67,11 +84,10 @@ export default function InsertPropertyPage() {
                     <div className='toUppercase'><Input label='Provincia' name='province' type='text' minLength='2' maxLength='2' /></div>
                     <Textarea label='Descrizione' name='description' rows="5" placeholder="Inserisci la descrizione qui..." />
                     <button disabled={isSubmitting} type='reset'>Resetta Form</button>
-                    <button disabled={isSubmitting} type='submit' className='btn btn-primary'>Carica Immobile</button>
+                    <button disabled={isSubmitting} type='submit' className='btn btn-primary'>Crea immobile</button>
                 </Form>
             )}
         </Formik>
     )
 }
 
-// resize: none;
