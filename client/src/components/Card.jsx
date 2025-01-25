@@ -2,7 +2,7 @@ import { Link } from 'react-router'
 function CardProperty({ property, callback }) {
 
 
-    const { id, title, room, toilet, square_meter, bed, image, heart, avg_vote, address, type } = property
+    const { id, title, room, toilet, square_meter, bed, image, heart, avg_vote, address,city, type } = property
     return (
         <div className="card mb-2">
             <div className="card-body">
@@ -17,6 +17,7 @@ function CardProperty({ property, callback }) {
                     </div>
 
                     <span><strong>{address}</strong></span>
+                    <span>{city}</span>
                     <span> {type}</span>
                     <span>{avg_vote}</span>
                 </div>
