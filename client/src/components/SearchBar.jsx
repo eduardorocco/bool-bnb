@@ -1,7 +1,7 @@
 import GlobalContext from '../context/GlobalContext';
 import { useContext, useState } from 'react';
 import { useNavigate, useLocation } from 'react-router';
-import style from './SearchBar.module.css'
+import style from '../assets/modules/SearchBarHomePage.module.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
 

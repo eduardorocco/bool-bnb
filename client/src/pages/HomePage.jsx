@@ -4,7 +4,7 @@ import GlobalContext from "../context/GlobalContext"
 import CardProperty from '../components/Card'
 import SearchBar from '../components/SearchBar'
 import LoginForm from '../components/LoginForm'
-import style from './HomePage.module.css'
+import style from '../assets/modules/HomePage.module.css'
 import house from '../assets/houses/house.jpg'
 
 

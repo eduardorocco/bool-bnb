@@ -1,7 +1,7 @@
 import { Link, NavLink } from "react-router"
 import GlobalContext from "../context/GlobalContext"
 import { useContext } from "react"
-import style from './Header.module.css'
+import style from '../assets/modules/Header.module.css'
 import whiteLinear from '../assets/logo-gallery/white-linear.png'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUser } from '@fortawesome/free-solid-svg-icons'
