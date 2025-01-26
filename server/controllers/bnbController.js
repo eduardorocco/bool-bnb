@@ -21,19 +21,19 @@ function index(req, res) {
 
         arrayProperties = [...properties]
 
-        if(req.query.room) {
+        if (req.query.room) {
             arrayProperties = arrayProperties.filter((property, index) => property.room == req.query.room)
         }
 
-        if(req.query.bed) {
+        if (req.query.bed) {
             arrayProperties = arrayProperties.filter((property, index) => property.bed == req.query.bed)
         }
 
-        if(req.query.type) {
+        if (req.query.type) {
             arrayProperties = arrayProperties.filter((property, index) => property.type === req.query.type)
         }
 
-        if(req.query.toilet) {
+        if (req.query.toilet) {
             arrayProperties = arrayProperties.filter((property, index) => property.toilet == req.query.toilet)
         }
 
