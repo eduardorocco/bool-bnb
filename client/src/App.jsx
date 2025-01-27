@@ -15,14 +15,15 @@ const API_URL = 'http://localhost:3000/'
 function App() {
 
   const [search, setSearch] = useState({})
-  const [city, setCity] = useState({ address: '', type: '', room: '', bed: '', toilet: '' })
+  const [searchCity, setSearchCity] = useState({ city: '', type: '', room: '', bed: '', toilet: '' })
   const [overlayLogin, setOverlayLogin] = useState(false)
   const [user, setUser] = useState({})
- 
+  const isLogin = Object.keys(user).length !== 0;
+
 
 
   return (
-    <GlobalContext.Provider value={{ API_URL, search, setSearch, city, setCity, overlayLogin, setOverlayLogin, user, setUser }}>
+    <GlobalContext.Provider value={{ API_URL, search, setSearch, searchCity, setSearchCity, overlayLogin, setOverlayLogin, user, setUser, isLogin }}>
       <BrowserRouter>
         <Routes>
           <Route element={<DefaulLayout />}>
@@ -32,8 +33,8 @@ function App() {
               <Route path=":id" element={<PropertyDetails />} />
             </Route>
             <Route path={'users/:id'}>
-              <Route index element={< UserDetail/> }/>
-              <Route path="properties" element={< InsertPropertyPage/>}/>
+              <Route index element={< UserDetail />} />
+              <Route path="properties" element={< InsertPropertyPage />} />
             </Route>
           </Route>
         </Routes>

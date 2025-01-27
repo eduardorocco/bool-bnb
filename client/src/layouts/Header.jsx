@@ -7,8 +7,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUser } from '@fortawesome/free-solid-svg-icons'
 
 export default function Header() {
-    const { setOverlayLogin, user, setUser } = useContext(GlobalContext)
-    const isUserEmpty = Object.keys(user).length === 0;
+    const { setOverlayLogin, user, setUser, isLogin } = useContext(GlobalContext)
+
     const navigate = useNavigate()
 
     function logOut() {
@@ -37,7 +37,7 @@ export default function Header() {
                         </div>
 
                     </NavLink>
-                    {isUserEmpty ? <button
+                    {!isLogin ? <button
                         onClick={() => (setOverlayLogin(true))}
                         className={style.button}>
                         Accedi

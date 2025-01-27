@@ -1,4 +1,4 @@
-.card{
+.card {
     position: relative;
     border-radius: 25px;
     display: flex;
@@ -15,7 +15,7 @@
 }
 
 
-.heart{
+.heart {
     align-content: center;
     position: absolute;
     top: 0;
@@ -34,7 +34,7 @@
     border: 2px solid var(--main-bg-color);
 }
 
-.heart:hover{
+.heart:hover {
     background-color: white;
 }
 
@@ -60,11 +60,13 @@
     background-color: white;
     font-weight: bold;
     border: 2px solid var(--main-bg-color);
+    min-width: 36px;
+    text-align: center;
 }
 
 .button {
     border: none;
-    background-image: linear-gradient(to right,var(--main-bg-color), var(--secondary-bg-color));
+    background-image: linear-gradient(to right, var(--main-bg-color), var(--secondary-bg-color));
     padding: 5px 16px;
     border-top-left-radius: 20px;
     border-top-right-radius: 3px;
@@ -74,38 +76,40 @@
     transition: color 0.3s ease;
     align-self: flex-end;
     margin: 5px;
-    
-    
+
+
 }
 
 .button:hover {
     animation-name: gradient-scroll;
     animation-duration: 3s;
-    animation-timing-function: linear; 
-    animation-iteration-count: infinite; 
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
 }
 
 @keyframes gradient-scroll {
     0% {
         background-position: 100% 0;
     }
+
     50% {
-        background-position: 0 0; 
+        background-position: 0 0;
     }
+
     100% {
-        background-position: 100% 0; 
+        background-position: 100% 0;
     }
 }
 
-.card_container{
+.card_container {
     margin: 5px;
 }
 
-.title{
+.title {
     font-weight: bold;
 }
 
-.icon_container{
+.icon_container {
     margin: 5px;
     display: flex;
     flex-direction: column;
@@ -115,7 +119,7 @@
 
 .icon {
     color: black;
-    background-image: linear-gradient(to right,var(--main-bg-color), var(--secondary-bg-color));
+    background-image: linear-gradient(to right, var(--main-bg-color), var(--secondary-bg-color));
     background-size: 150% 100%;
     font-size: smaller;
     font-weight: bolder;
@@ -123,8 +127,8 @@
     padding: 4px;
     margin-right: 10px;
 
-  }
+}
 
-  .type { 
+.type {
     text-transform: capitalize;
-  }
+}
