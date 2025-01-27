@@ -11,10 +11,11 @@
     display: flex;
     gap: 50px;
     align-items: center;
+    font-size: 20px;
 }
 
 .logo_container{
-    width: 120px;
+    width: 150px;
 }
 
 .rounded{
@@ -36,3 +37,6 @@
     box-shadow: var(--box-shadow)
 }
 
+.active {
+    color: red!important;
+}

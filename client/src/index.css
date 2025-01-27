@@ -59,6 +59,12 @@ textarea {
   text-transform: uppercase;
 }
 
+.active {
+  font-weight: bolder;
+  border-bottom: 2px solid white;
+  padding-bottom: 1px;
+}
+
 @keyframes error {
   0% {
     transform: rotate(0deg);
