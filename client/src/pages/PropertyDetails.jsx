@@ -102,7 +102,7 @@ export default function PropertyDetails() {
                                             {review.user_id}
                                         </li>
                                         <li>
-                                            {review.days_of_stays}
+                                            {review.vote}
                                         </li>
                                         <li>
                                             {review.text}
