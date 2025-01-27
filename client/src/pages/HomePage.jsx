@@ -10,7 +10,7 @@ import house from '../assets/houses/house.jpg'
 
 export default function HomePage() {
 
-    const { API_URL } = useContext(GlobalContext)
+    const { API_URL, setUser } = useContext(GlobalContext)
     const [properties, setProperties] = useState([])
 
     function fetchProperties() {
@@ -33,6 +33,13 @@ export default function HomePage() {
 
     useEffect(() => {
         fetchProperties()
+    }, [])
+
+    useEffect(() => {
+        const storedUser = localStorage.getItem("user")
+        if (storedUser) {
+            setUser(JSON.parse(storedUser))
+        }
     }, [])
 
     return (
