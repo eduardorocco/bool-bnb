@@ -17,6 +17,10 @@
   font-family: "Noto Sans", serif;
 }
 
+figure {
+  margin: 0 !important;
+
+}
 
 img {
   width: 100%;

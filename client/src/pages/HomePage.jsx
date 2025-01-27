@@ -38,16 +38,20 @@ export default function HomePage() {
     return (
         <>
             <div className={style.jumbo}>
-                <div className={style.searchbar}>
-                <SearchBar />
-                </div>
                 <div>
-                 <p className={style.slogan}>"Scopri, vivi, condividi."</p>
+                    <p className={style.slogan}>"Scopri, vivi, condividi."</p>
                 </div>
-                <figure  className={style.image_container}>
+
+                <figure className={style.image_container}>
                     <img className={style.image} src={house} alt="" />
                 </figure>
+                <div className={style.searchbar}>
+                    <SearchBar />
+                </div>
+
             </div>
+
+
             <div className="container">
                 <div className="row">
                     {properties.map(property => {

@@ -1,11 +1,10 @@
 .navbar{
-    /* background: var(--main-bg-color); */
     color: var(--main-text-color);
     display: flex;
     align-items: center;
     justify-content: space-between;
     background-image: linear-gradient(to right,var(--main-bg-color), var(--secondary-bg-color));
-    padding: 0 30px 0 30px;
+    padding: 14px 30px;
 }
 
 .navlink{
@@ -16,7 +15,6 @@
 
 .logo_container{
     width: 120px;
-    padding-top: 14px;
 }
 
 .rounded{
