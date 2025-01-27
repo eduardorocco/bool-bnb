@@ -52,7 +52,10 @@ export default function HomePage() {
                 <div className={style.searchbar}>
                     <SearchBar />
                 </div>
+            </div>
 
+            <div className={style.preview}>
+                <img src={`${API_URL}/img/loftMilano.jpg`}/>
             </div>
 
 

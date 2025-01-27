@@ -21,7 +21,10 @@
     right: 0;
     z-index: 1;
     border: none;
-    border-radius: 999px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 5px;
     padding: 5px;
     margin: 5px;
     background-color: rgba(255, 255, 255, 0.879);
@@ -33,7 +36,7 @@
     background-color: white;
 }
 
-.icon {
+.icon_heart {
     width: 35px;
 
 }
@@ -64,7 +67,7 @@
     border-top-right-radius: 3px;
     border-bottom-left-radius: 3px;
     border-bottom-right-radius: 20px;
-    background-size: 200% 100%;
+    background-size: 150% 100%;
     transition: color 0.3s ease;
     align-self: flex-end;
     margin: 5px;
@@ -91,10 +94,34 @@
     }
 }
 
-.text{
+.card_container{
     margin: 5px;
 }
 
 .title{
     font-weight: bold;
 }
+
+.icon_container{
+    margin: 5px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+}
+
+
+.icon {
+    color: black;
+    background-image: linear-gradient(to right,var(--main-bg-color), var(--secondary-bg-color));
+    background-size: 150% 100%;
+    font-size: smaller;
+    font-weight: bolder;
+    border-radius: 6px;
+    padding: 4px;
+    margin-right: 10px;
+
+  }
+
+  .type { 
+    text-transform: capitalize;
+  }

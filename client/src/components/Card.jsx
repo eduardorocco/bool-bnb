@@ -3,32 +3,60 @@ import GlobalContext from '../context/GlobalContext';
 import { useContext } from 'react';
 import heartIcon from '../assets/icon-gallery/heart-salmon.png'
 import style from '../assets/modules/Card.module.css'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faBed } from '@fortawesome/free-solid-svg-icons'
+import { faHome } from '@fortawesome/free-solid-svg-icons'
 
 function CardProperty({ property, callback }) {
 
     const { API_URL } = useContext(GlobalContext)
 
 
-    const { id, title, room, toilet, square_meter, bed, image, heart, avg_vote, address, city, province, type } = property
+    const { id, title, square_meter, bed, image, heart, avg_vote, address, city, province, type } = property
     return (
+
         <div className='col-3'>
+
             <div className={style.card}>
+
                 <div className="card-body">
+
                     <figure className={style.img_container}>
                         <img className={style.img} src={`${API_URL}/img/${image}`} />
                     </figure>
-                    <div className={style.text}>
+
+                    <div className={style.card_container}>
                         <h5 className={style.title}>{title}</h5>
                         <p>
-                            {address}, {city}, ({province})
+                            {address}, <strong>{city}</strong>, ({province})
                         </p>
                     </div>
+
+                    <div className={style.icon_container}>
+                        <div>
+                            <span className={style.icon}> m&#178;</span>
+                            <span>{square_meter}</span>
+                        </div>
+
+                        <div>
+                            <span className={style.icon}><FontAwesomeIcon icon={faBed}/></span>
+                            <span>{bed}</span>
+                        </div>
+
+                        <div>
+                            <span className={style.icon}><FontAwesomeIcon icon={faHome}/></span>
+                            <span className={style.type}>{type}</span>
+                        </div>
+
+                    </div>
+
+
                     <p className={style.vote}>
                         {parseFloat(avg_vote).toFixed(1)}
                     </p>
                     <div>
                         <button className={style.heart} onClick={() => callback(id)}>
-                            <img className={style.icon} src={heartIcon} alt="" />
+                            <img className={style.icon_heart} src={heartIcon} alt="" />
                             <div>
                                 {heart}
                             </div>
