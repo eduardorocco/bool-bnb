@@ -6,6 +6,7 @@ import SearchBar from '../components/SearchBar'
 import LoginForm from '../components/LoginForm'
 import style from '../assets/modules/HomePage.module.css'
 import house from '../assets/houses/house.jpg'
+import hero from '../assets/img/Bool_bnb_hero.png'
 
 
 export default function HomePage() {
@@ -56,7 +57,7 @@ export default function HomePage() {
 
             <div className={style.box}>
             <figure className={style.preview}>
-                <img src={`${API_URL}/img/loftMilano.jpg`}/>
+                <img src={hero}/>
             </figure>
             </div>
 
