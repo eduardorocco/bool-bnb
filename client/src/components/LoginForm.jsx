@@ -62,6 +62,8 @@ export default function LoginForm() {
             return
         }
 
+        localStorage.setItem("user", JSON.stringify(userData))
+
         console.log(userCheck.data[0]);
         action.resetForm()
         setOverlayLogin()
