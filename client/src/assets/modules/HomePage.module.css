@@ -79,6 +79,49 @@
     }
 }
 
+.box{
+    height: 600px;
+    background-image: linear-gradient(to right,var(--main-bg-color), var(--secondary-bg-color));
+    margin-bottom: 60px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
 .preview{
+
     width: 800px;
+}
+
+.box:before {
+    content: "";
+    z-index: -1;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: linear-gradient(to right,var(--main-bg-color), var(--secondary-bg-color) 100% );
+    transform: translate3d(0px, 350px, 0) scale(1.05);
+    filter: blur(8px);
+    opacity: var(0.7);
+    transition: opacity 0.3s;
+}
+
+.box::after {
+    z-index: -1;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: inherit;
+}
+
+.title{
+    font-weight: lighter;
+    color: black;
+    font-size: 50px;
+    padding-top: 50px;
 }
