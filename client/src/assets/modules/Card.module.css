@@ -1,0 +1,100 @@
+.card{
+    position: relative;
+    border-radius: 25px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: var(--box-shadow);
+}
+
+.img {
+    width: 100%;
+    aspect-ratio: 3 /2;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+}
+
+
+.heart{
+    align-content: center;
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 1;
+    border: none;
+    border-radius: 999px;
+    padding: 5px;
+    margin: 5px;
+    background-color: rgba(255, 255, 255, 0.879);
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.heart:hover{
+    background-color: white;
+}
+
+.icon {
+    width: 35px;
+
+}
+
+.vote {
+    align-content: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    border: none;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 3px;
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 20px;
+    font-size: 18px;
+    padding: 5px;
+    margin: 5px;
+    background-color: white;
+    font-weight: bold;
+}
+
+.button {
+    border: none;
+    background-image: linear-gradient(to right,var(--main-bg-color), var(--secondary-bg-color));
+    padding: 5px 16px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 3px;
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 20px;
+    background-size: 200% 100%;
+    transition: color 0.3s ease;
+    align-self: flex-end;
+    margin: 5px;
+    
+    
+}
+
+.button:hover {
+    animation-name: gradient-scroll;
+    animation-duration: 3s;
+    animation-timing-function: linear; 
+    animation-iteration-count: infinite; 
+}
+
+@keyframes gradient-scroll {
+    0% {
+        background-position: 100% 0;
+    }
+    50% {
+        background-position: 0 0; 
+    }
+    100% {
+        background-position: 100% 0; 
+    }
+}
+
+.text{
+    margin: 5px;
+}
+
+.title{
+    font-weight: bold;
+}

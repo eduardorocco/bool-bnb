@@ -8,6 +8,7 @@
   --box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.165);
   --font: "Noto Sans", serif;
   --white: rgba(243, 243, 243, 0.965);
+  --heart-color: #FF5A5F;
 }
 
 * {
@@ -17,6 +18,10 @@
   font-family: "Noto Sans", serif;
 }
 
+figure {
+  margin: 0 !important;
+
+}
 
 img {
   width: 100%;

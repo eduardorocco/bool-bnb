@@ -1,5 +1,5 @@
 .jumbo{
-    height: 100vh;
+    height: calc(100vh - 64px);
     background-image: linear-gradient(to right,var(--main-bg-color), var(--secondary-bg-color));
 }
 
@@ -41,15 +41,19 @@
 
 
 @media (max-width: 768px) {
+    
+    .slogan {
+        font-size: 50px;
+    }
     .image_container {
         width: 600px;
         top: 250px;
     }
 
-    .searchbar {
-        width: 90%;
-        height: 250px;
-        top: 500px;
+    .searchbar {     
+        top: 550px;
+        width: 400px;
+        height: 150px;
     }
 
     .slogan {
@@ -59,7 +63,18 @@
 }
 
 @media (max-width: 480px) {
-    .jumbo {
-        height: 100vh;
+
+    .slogan {
+        font-size: 30px;
+    }
+
+    .image_container{
+        width: 400px;
+    }
+
+    .searchbar {
+        top: 400px;
+        width: 200px;
+        height: 60px;
     }
 }

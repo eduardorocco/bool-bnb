@@ -47,7 +47,7 @@ export default function SearchBar() {
     }
 
     return (
-        <form onSubmit={onSubmit} >
+        <form onSubmit={onSubmit} className={styles.form} >
             <input
                 className={styles.input}
                 type="text"

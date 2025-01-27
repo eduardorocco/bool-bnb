@@ -7,7 +7,11 @@
     color: rgb(60, 60, 60);
     border-bottom: solid rgb(60, 60, 60) 1px;
     outline: none;
-    width: 60%;
+}
+
+.form{
+    display: flex;
+    justify-content: space-between;
 }
 
 .input::placeholder {
@@ -19,11 +23,8 @@
     border: none;
     background-image: linear-gradient(to right,var(--main-bg-color), var(--secondary-bg-color));
     color: rgb(255, 255, 255);
-    top: 120px;
     padding: 5px 60px 5px 60px;
-    position: absolute;
     font-weight: lighter;
-    right: 0;
     border-top-left-radius: 999px;
     border-bottom-left-radius: 999px;
     background-size: 200% 100%;
@@ -65,8 +66,7 @@
     
     .button {
         font-size: 25px;
-        padding: 5px 40px 5px 40px;
-        top: 100px; 
+        padding: 5px 40px 5px 40px; 
     }
 }
 
@@ -74,15 +74,14 @@
 @media (max-width: 480px) {
    
     .input {
-        font-size: 25px;
+        font-size: 16px;
         margin-left: 30px; 
         width: 80%; 
     }
 
     
     .button {
-        font-size: 22px;
-        padding: 5px 30px 5px 30px;
-        top: 90px;
+        font-size: 16px;
+        padding: 5px 20px;
     }
 }

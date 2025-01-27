@@ -1,28 +1,45 @@
 import { Link } from 'react-router'
+import GlobalContext from '../context/GlobalContext';
+import { useContext } from 'react';
+import heartIcon from '../assets/icon-gallery/heart-salmon.png'
+import style from '../assets/modules/Card.module.css'
+
 function CardProperty({ property, callback }) {
 
+    const { API_URL } = useContext(GlobalContext)
 
-    const { id, title, room, toilet, square_meter, bed, image, heart, avg_vote, address,city, type } = property
+
+    const { id, title, room, toilet, square_meter, bed, image, heart, avg_vote, address, city, province, type } = property
     return (
-        <div className="card mb-2">
-            <div className="card-body">
-                <h5 className="card-title">{title}</h5>
-                <div className="card-text">
-                    <span>Stanze: {room}</span>
-                    <span>Bagni: {toilet}</span>
-                    <span>Letti: {bed}</span>
-                    <span>Mq: {square_meter}</span>
+        <div className='col-3'>
+            <div className={style.card}>
+                <div className="card-body">
+                    <figure className={style.img_container}>
+                        <img className={style.img} src={`${API_URL}/img/${image}`} />
+                    </figure>
+                    <div className={style.text}>
+                        <h5 className={style.title}>{title}</h5>
+                        <p>
+                            {address}, {city}, ({province})
+                        </p>
+                    </div>
+                    <p className={style.vote}>
+                        {parseFloat(avg_vote).toFixed(1)}
+                    </p>
                     <div>
-                        <button onClick={() => callback(id)} className='btn btn-danger'> {heart} </button>
+                        <button className={style.heart} onClick={() => callback(id)}>
+                            <img className={style.icon} src={heartIcon} alt="" />
+                            <div>
+                                {heart}
+                            </div>
+                        </button>
                     </div>
 
-                    <span><strong>{address}</strong></span>
-                    <span>{city}</span>
-                    <span> {type}</span>
-                    <span>{avg_vote}</span>
                 </div>
-                <Link className="btn btn-primary" to={`/properties/${id}`}>Dettaglio</Link>
+                <Link className={style.button} to={`/properties/${id}`}>Scopri di più</Link>
             </div>
+
+
         </div>
 
     );

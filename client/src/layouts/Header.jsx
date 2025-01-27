@@ -41,7 +41,7 @@ export default function Header() {
                         onClick={() => (setOverlayLogin(true))}
                         className={style.button}>
                         Accedi
-                    </button> : <button onClick={logOut}>Log Out</button>}
+                    </button> : <button className={style.button} onClick={logOut}>Log Out</button>}
                 </div>
 
             </nav>
