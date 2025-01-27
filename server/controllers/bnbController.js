@@ -2,7 +2,7 @@ const connection = require('../data/db');
 
 //index properties
 function index(req, res) {
-    let sql = 'SELECT properties.*, AVG(reviews.vote) AS avg_vote FROM properties JOIN reviews ON properties.id = reviews.property_id'
+    let sql = 'SELECT properties.*, AVG(reviews.vote) AS avg_vote FROM properties LEFT JOIN reviews ON properties.id = reviews.property_id'
 
     let arrayProperties = []
 
@@ -160,10 +160,11 @@ function storeReview(req, res) {
     } = req.body
 
     if (
-        !user ||
+        !user_id ||
         !title ||
         !days_of_stays ||
-        !vote
+        !vote ||
+        !property_id
     ) {
         return res.status(400).json({ message: 'Invalid data' })
     }

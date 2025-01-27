@@ -39,12 +39,12 @@ function CardProperty({ property, callback }) {
                         </div>
 
                         <div>
-                            <span className={style.icon}><FontAwesomeIcon icon={faBed}/></span>
+                            <span className={style.icon}><FontAwesomeIcon icon={faBed} /></span>
                             <span>{bed}</span>
                         </div>
 
                         <div>
-                            <span className={style.icon}><FontAwesomeIcon icon={faHome}/></span>
+                            <span className={style.icon}><FontAwesomeIcon icon={faHome} /></span>
                             <span className={style.type}>{type}</span>
                         </div>
 
@@ -52,7 +52,7 @@ function CardProperty({ property, callback }) {
 
 
                     <p className={style.vote}>
-                        {parseFloat(avg_vote).toFixed(1)}
+                        {avg_vote ? parseFloat(avg_vote).toFixed(1) : '-'}
                     </p>
                     <div>
                         <button className={style.heart} onClick={() => callback(id)}>

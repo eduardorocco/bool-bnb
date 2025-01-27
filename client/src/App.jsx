@@ -18,11 +18,12 @@ function App() {
   const [searchCity, setSearchCity] = useState({ city: '', type: '', room: '', bed: '', toilet: '' })
   const [overlayLogin, setOverlayLogin] = useState(false)
   const [user, setUser] = useState({})
+  const isLogin = Object.keys(user).length !== 0;
 
 
 
   return (
-    <GlobalContext.Provider value={{ API_URL, search, setSearch, searchCity, setSearchCity, overlayLogin, setOverlayLogin, user, setUser }}>
+    <GlobalContext.Provider value={{ API_URL, search, setSearch, searchCity, setSearchCity, overlayLogin, setOverlayLogin, user, setUser, isLogin }}>
       <BrowserRouter>
         <Routes>
           <Route element={<DefaulLayout />}>
