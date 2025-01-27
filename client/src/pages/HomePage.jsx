@@ -59,17 +59,26 @@ export default function HomePage() {
                 <div className={style.searchbar}>
                     <SearchBar />
                 </div>
+            </div>
 
+            <div className={style.box}>
+            <figure className={style.preview}>
+                <img src={`${API_URL}/img/loftMilano.jpg`}/>
+            </figure>
+            </div>
+
+            <div className='container-fluid'>
+            <h3 className={style.title}>Le più votate:</h3>
             </div>
 
 
             <div className="container-fluid p-6">
                 <div className="row">
+                    
                     {properties.map(property => {
                         return (
                             <CardProperty key={property.id} property={property} callback={addHeart} />
                         )
-
                     })}
                 </div>
             </div>
