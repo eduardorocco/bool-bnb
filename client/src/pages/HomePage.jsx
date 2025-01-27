@@ -14,7 +14,11 @@ export default function HomePage() {
     const [properties, setProperties] = useState([])
 
     function fetchProperties() {
-        axios.get(`${API_URL}properties`)
+        axios.get(`${API_URL}properties`,{
+            params: {
+                limit: 4
+            }
+        })
             .then(res => {
                 setProperties(res.data)
             })
@@ -52,7 +56,7 @@ export default function HomePage() {
             </div>
 
 
-            <div className="container">
+            <div className="container-fluid p-6">
                 <div className="row">
                     {properties.map(property => {
                         return (
