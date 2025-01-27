@@ -64,8 +64,7 @@ export default function HomePage() {
             <div className='container-fluid'>
             <h3 className={style.title}>Le più votate:</h3>
             </div>
-
-
+            <div className={style.shadow}></div>
             <div className="container-fluid p-6">
                 <div className="row">
                     
