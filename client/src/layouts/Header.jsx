@@ -1,4 +1,4 @@
-import { Link, NavLink } from "react-router"
+import { Link, NavLink, useNavigate } from "react-router"
 import GlobalContext from "../context/GlobalContext"
 import { useContext } from "react"
 import style from './Header.module.css'
@@ -7,7 +7,16 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUser } from '@fortawesome/free-regular-svg-icons'
 
 export default function Header() {
-    const { setOverlayLogin, user } = useContext(GlobalContext)
+    const { setOverlayLogin, user, setUser } = useContext(GlobalContext)
+    const isUserEmpty = Object.keys(user).length === 0;
+    const navigate = useNavigate()
+
+    function logOut() {
+        localStorage.removeItem("user")
+        navigate('/')
+        setUser({})
+    }
+
     return (
         <div>
             <nav className={style.navbar}>
@@ -28,11 +37,11 @@ export default function Header() {
                         </div>
 
                     </NavLink>
-                    <button
+                    {isUserEmpty ? <button
                         onClick={() => (setOverlayLogin(true))}
                         className={style.button}>
                         Accedi
-                    </button>
+                    </button> : <button onClick={logOut}>Log Out</button>}
                 </div>
 
             </nav>

@@ -1,10 +1,28 @@
 import { useState, useContext, useEffect } from "react"
-import { Link, useParams } from "react-router"
+import { Link, useNavigate, useParams } from "react-router"
 import GlobalContext from "../context/GlobalContext"
 import axios from "axios"
 export default function UserDetail() {
 
-    const { user, setUser, API_URL } = useContext(GlobalContext)
+    const [user, setUser] = useState({})
+    const navigate = useNavigate()
+
+    useEffect(() => {
+
+        const storedUser = localStorage.getItem("user")
+
+        if (storedUser) {
+
+            setUser(JSON.parse(storedUser))
+        }
+    }, [setUser])
+
+
+    function goBack() {
+        navigate(-1)
+    }
+
+
     // const { id } = useParams()
     //const [user, setUser] = useState({})
 
@@ -28,6 +46,7 @@ export default function UserDetail() {
 
     return (
         <>
+            <button onClick={goBack}>Torna Indietro</button>
             <div>
                 <p>Nome:{name}</p>
                 <p>Cognome:{surname}</p>
