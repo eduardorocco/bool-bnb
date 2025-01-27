@@ -6,8 +6,8 @@ function index(req, res) {
 
     let arrayProperties = []
 
-    if (req.query.address) {
-        sql += ` WHERE address LIKE '%${req.query.address}%' `
+    if (req.query.city) {
+        sql += ` WHERE city LIKE '%${req.query.city}%' `
     }
 
 

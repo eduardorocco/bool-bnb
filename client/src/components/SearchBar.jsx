@@ -7,19 +7,19 @@ import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
 
 
 export default function SearchBar() {
-    
+
     const { API_URL, search, setSearch } = useContext(GlobalContext)
-    const { city, setCity } = useContext(GlobalContext)
+    const { searchCity, setSearchCity } = useContext(GlobalContext)
     const navigate = useNavigate();
     let { pathname } = useLocation()
 
     const styles = pathname === '/' ? styleHomePage : ''
 
-    
+
 
     const initialSearchData =
     {
-        address: '',
+        city: '',
         type: '',
         room: '',
         bed: '',
@@ -30,17 +30,17 @@ export default function SearchBar() {
 
     function handleSearch(e) {
         const el = e.target
-        setCity(
+        setSearchCity(
             {
-                ...city, [el.name]: el.value
+                ...searchCity, [el.name]: el.value
             })
         console.log(e.target.value);
     }
 
     function onSubmit(e) {
-        setCity(initialSearchData)
+        setSearchCity(initialSearchData)
         e.preventDefault()
-        setSearch(city)
+        setSearch(searchCity)
         if (pathname === '/properties') return
         navigate('/properties')
 
@@ -52,13 +52,13 @@ export default function SearchBar() {
                 className={styles.input}
                 type="text"
                 placeholder='Dove andiamo?'
-                value={city.address}
+                value={searchCity.city}
                 onChange={handleSearch}
-                name='address'
+                name='city'
             />
 
             {pathname === '/' ? '' : <select
-                value={city.type}
+                value={searchCity.type}
                 name='type'
                 className="form-select"
                 aria-label="Type"
@@ -72,7 +72,7 @@ export default function SearchBar() {
 
 
             {pathname === '/' ? '' : <select
-                value={city.room}
+                value={searchCity.room}
                 name='room'
                 className="form-select"
                 aria-label="room"
@@ -88,7 +88,7 @@ export default function SearchBar() {
 
             {pathname === '/' ? '' : <select
                 name='bed'
-                value={city.bed}
+                value={searchCity.bed}
                 className="form-select"
                 aria-label="bed"
                 onChange={handleSearch}>
@@ -102,7 +102,7 @@ export default function SearchBar() {
 
 
             {pathname === '/' ? '' : <select
-                value={city.toilet}
+                value={searchCity.toilet}
                 name='toilet'
                 className="form-select"
                 aria-label="toilet"
@@ -115,7 +115,7 @@ export default function SearchBar() {
 
 
 
-            <button type='submit' className={styles.button}> {pathname === '/' ? <FontAwesomeIcon icon={faMagnifyingGlass}/> : 'Filtra'}</button>
+            <button type='submit' className={styles.button}> {pathname === '/' ? <FontAwesomeIcon icon={faMagnifyingGlass} /> : 'Filtra'}</button>
 
         </form>
     )
