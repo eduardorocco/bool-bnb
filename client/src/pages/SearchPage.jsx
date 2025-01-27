@@ -6,7 +6,7 @@ import SearchBar from '../components/SearchBar'
 
 export default function SearchPage() {
 
-    const { API_URL, search } = useContext(GlobalContext)
+    const { API_URL, search, setUser } = useContext(GlobalContext)
     const [properties, setProperties] = useState([])
 
     function fetchProperties() {
@@ -17,7 +17,7 @@ export default function SearchPage() {
                     type: search.type,
                     room: search.room,
                     bed: search.bed,
-                    toilet:search.toilet,
+                    toilet: search.toilet,
                     limit: ''
                 }
             })
@@ -41,6 +41,13 @@ export default function SearchPage() {
     useEffect(() => {
         fetchProperties()
     }, [search])
+
+    useEffect(() => {
+        const storedUser = localStorage.getItem("user")
+        if (storedUser) {
+            setUser(JSON.parse(storedUser))
+        }
+    }, [])
 
     return (
         <div className="container">
