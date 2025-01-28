@@ -7,11 +7,13 @@ import { faSquare } from '@fortawesome/free-solid-svg-icons'
 import { faToilet } from '@fortawesome/free-solid-svg-icons'
 import { useContext } from 'react'
 import GlobalContext from "../context/GlobalContext"
+import { useParams } from 'react-router'
 
 
 export default function CardDetail({property, addHeart }) {
     const { title, room, toilet, square_meter, address, city, province, type, bed, image, heart, avg_vote, reviews } = property
     const { API_URL } = useContext(GlobalContext)
+    const { id } = useParams()
     return (
         <div className='container'>
             < div className='row' >
