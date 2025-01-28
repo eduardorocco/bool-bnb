@@ -24,10 +24,10 @@ export default function PropertyDetails() {
 
     function addHeart(id) {
         axios.patch(`${API_URL}properties/${id}/heart`)
-          .then(res => {
-            fetchProperty()
-          })
-      }
+            .then(res => {
+                fetchProperty()
+            })
+    }
 
 
     useEffect(() => {
@@ -35,6 +35,7 @@ export default function PropertyDetails() {
     }, [id])
 
     const { title, description, room, toilet, square_meters, address, type, bed, image, heart, avg_vote, reviews } = property
+    console.log(reviews)
 
     return (
         <>
@@ -56,37 +57,37 @@ export default function PropertyDetails() {
                             <li>{avg_vote}</li>
                         </ul>
 
-                        
-                            {reviews ?
-                                reviews.map(review => {
-                                    return (
-                                        <ul key={review.id}>
-                                            <li>
-                                                {review.title}
-                                            </li>
-                                            <li>
-                                                {review.user_id}
-                                            </li>
-                                            <li>
-                                                {review.days_of_stays}
-                                            </li>
-                                            <li>
-                                                {review.text}
-                                            </li>
-                                            <li>
-                                                {review.days_of_stays}
-                                            </li>
-                                        </ul>
+
+                        {reviews ?
+                            reviews.map(review => {
+                                return (
+                                    <ul key={review.id}>
+                                        <li>
+                                            {review.title}
+                                        </li>
+                                        <li>
+                                            {review.user_id}
+                                        </li>
+                                        <li>
+                                            {review.days_of_stays}
+                                        </li>
+                                        <li>
+                                            {review.text}
+                                        </li>
+                                        <li>
+                                            {review.days_of_stays}
+                                        </li>
+                                    </ul>
 
 
-                                    )
-                                })
-                                :
-                                <span>
-                                    Non ci sono recensioni
-                                </span>
-                            }
-                        
+                                )
+                            })
+                            :
+                            <span>
+                                Non ci sono recensioni
+                            </span>
+                        }
+
 
                     </div >
                 </div >}

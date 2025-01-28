@@ -38,15 +38,14 @@ export default function LoginForm() {
 
     async function onSubmitLogin(values, action) {
         const userCheck = await axios.get(`${API_URL}users/${values.user}`)
-        const userData = userCheck.data[0]
-
+        const userData = userCheck.data
         setCheckUser(false)
-
         if (!userData) {
             setCheckUser(true)
             console.log('utente non trovato');
             return
         }
+
 
         const { email, username, password } = userData
 
@@ -64,12 +63,13 @@ export default function LoginForm() {
 
         localStorage.setItem("user", JSON.stringify(userData))
 
-        console.log(userCheck.data[0]);
         action.resetForm()
         setOverlayLogin()
         setUser(userData)
 
+        console.log(userData)
     }
+
 
     async function onSubmitRegistration(values, action) {
         const { name, surName, email, userName, password } = values

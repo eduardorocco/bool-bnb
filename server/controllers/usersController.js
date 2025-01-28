@@ -5,16 +5,26 @@ function show(req, res) {
 
     const key = req.params.key
 
-        const sql = `SELECT * FROM users WHERE id = ? 
+    const sql = `SELECT * FROM users WHERE id = ?
         OR username = '${key}' 
         OR email = '${key}'`
 
-        connection.query(sql, key, (err, results) => {
-            if (err) return res.status(500).json({ message: err.message })
-            res.json(results)
-        })
+    connection.query(sql, key, (err, results) => {
+        if (err) return res.status(500).json({ message: err.message })
 
-    }
+        const user = results[0]
+
+        const sql = `SELECT * FROM properties WHERE user_id = ?`
+
+        connection.query(sql, [user.id], (err, results) => {
+            if (err) return res.status(500).json({ message: err.message })
+
+            user.property = results
+            res.json(user)
+        })
+    })
+
+}
 
 function storeOwner(req, res) {
 
@@ -46,4 +56,4 @@ function storeOwner(req, res) {
         res.status(201).json({ message: 'User created' })
     })
 }
-module.exports = {show, storeOwner}
+module.exports = { show, storeOwner }
