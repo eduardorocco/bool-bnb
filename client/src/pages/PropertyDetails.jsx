@@ -89,7 +89,7 @@ export default function PropertyDetails() {
                             <div className={`${style.img_container} col-8`}>
                                 <div>
                                     <button className={style.heart} onClick={() => addHeart(id)}>
-                                        <img className={style.icon_heart} src={heartIcon} alt="" />
+                                        <img className={style.icon_heart} src={heartIcon} />
                                         <div>
                                             {heart}
                                         </div>
@@ -104,104 +104,114 @@ export default function PropertyDetails() {
                             </div>
 
                             <div className={`${style.card} col-4`}>
-                                <div className="card-body">
-                                    <span>{address}, <strong>{city}</strong>, ({province}) </span>
-                                    <div className={style.details}>
-                                        <div className={style.icon_container}>
-                                            <span className={style.icon}> <FontAwesomeIcon icon={faHome} /> </span>
-                                        </div>
-                                        <span className={style.type}>{type}</span>
+
+                                <div className={style.card_body}>
+                                    <div className={style.address}>
+                                        <span>{address}, <strong>{city}</strong>, ({province}) </span>
                                     </div>
 
-                                    <div className={style.details}>
-                                        <div className={style.icon_container}>
-                                            <span className={style.icon}> m&#178;</span>
+                                    <div className='row'>
+                                        <div className={`${style.details} col-4`}>
+                                            <div className={style.icon_container}>
+                                                <span className={style.icon}> <FontAwesomeIcon icon={faHome} /> </span>
+                                            </div>
+                                            <span className={style.type}>{type}</span>
                                         </div>
-                                        <span>{square_meter}</span>
-                                    </div>
 
-                                    <div className={style.details}>
-                                        <div className={style.icon_container}>
-                                            <span className={style.icon}> <FontAwesomeIcon icon={faBed} /> </span>
+                                        <div className={`${style.details} col-4`}>
+                                            <div className={style.icon_container}>
+                                                <span className={style.icon}> m&#178;</span>
+                                            </div>
+                                            <span className={style.text}>{square_meter}</span>
                                         </div>
-                                        <span>{bed}</span>
-                                    </div>
 
-                                    <div className={style.details}>
-                                        <div className={style.icon_container}>
-                                            <span className={style.icon}> <FontAwesomeIcon icon={faSquare} /> </span>
+                                        <div className={`${style.details} col-4`}>
+                                            <div className={style.icon_container}>
+                                                <span className={style.icon}> <FontAwesomeIcon icon={faBed} /> </span>
+                                            </div>
+                                            <span className={style.text}>{bed}</span>
                                         </div>
-                                        <span>{room}</span>
-                                    </div>
 
-
-                                    <div className={style.details}>
-                                        <div className={style.icon_container}>
-                                            <span className={style.icon}> <FontAwesomeIcon icon={faToilet} /> </span>
+                                        <div className={`${style.details} col-4`}>
+                                            <div className={style.icon_container}>
+                                                <span className={style.icon}> <FontAwesomeIcon icon={faSquare} /> </span>
+                                            </div>
+                                            <span className={style.text}>{room}</span>
                                         </div>
-                                        <span>{toilet}</span>
+
+
+                                        <div className={`${style.details} col-4`}>
+                                            <div className={style.icon_container}>
+                                                <span className={style.icon}> <FontAwesomeIcon icon={faToilet} /> </span>
+                                            </div>
+                                            <span className={style.text}>{toilet}</span>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div>
-                            <p className={style.description}>{description}</p>
+                        <div className="container-fluid">
+                            <div className="row">
+                                <div>
+                                    {isLogin &&
+                                        <form onSubmit={onSubmit}>
+                                            <div className="mb-3">
+                                                <label className="form-label">Title</label>
+                                                <input type="text" onChange={handleSearch} name='title' value={formData.title} className="form-control" placeholder="title" />
+                                            </div>
+                                            <div className="mb-3">
+                                                <label className="form-label">text</label>
+                                                <textarea className="form-control" onChange={handleSearch} name='text' value={formData.text} rows="3"></textarea>
+                                            </div>
+                                            <div className="mb-3">
+                                                <label className="form-label">giorni</label>
+                                                <input type="number" name='days_of_stays' onChange={handleSearch} value={formData.days_of_stays} min='1' />
+                                            </div>
+                                            <div className="mb-3">
+                                                <label className="form-label">voto</label>
+                                                <input type="number" min='1' name='vote' onChange={handleSearch} value={formData.vote} max='10' />
+                                            </div>
+                                            <input type="submit" />
+
+
+                                        </form>}
+
+                                    <div>
+                                        {reviews ?
+                                            reviews.map(review => {
+                                                return (
+                                                    <ul key={review.id}>
+                                                        <li>
+                                                            {review.title}
+                                                        </li>
+                                                        <li>
+                                                            {review.user_id}
+                                                        </li>
+                                                        <li>
+                                                            {review.vote}
+                                                        </li>
+                                                        <li>
+                                                            {review.text}
+                                                        </li>
+                                                        <li>
+                                                            {review.days_of_stays}
+                                                        </li>
+                                                    </ul>
+
+
+                                                )
+                                            })
+                                            :
+                                            <span>
+                                                Non ci sono recensioni
+                                            </span>
+                                        }
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div>
-                            {isLogin &&
-                                <form onSubmit={onSubmit}>
-                                    <div className="mb-3">
-                                        <label className="form-label">Title</label>
-                                        <input type="text" onChange={handleSearch} name='title' value={formData.title} className="form-control" placeholder="title" />
-                                    </div>
-                                    <div className="mb-3">
-                                        <label className="form-label">text</label>
-                                        <textarea className="form-control" onChange={handleSearch} name='text' value={formData.text} rows="3"></textarea>
-                                    </div>
-                                    <div className="mb-3">
-                                        <label className="form-label">giorni</label>
-                                        <input type="number" name='days_of_stays' onChange={handleSearch} value={formData.days_of_stays} min='1' />
-                                    </div>
-                                    <div className="mb-3">
-                                        <label className="form-label">voto</label>
-                                        <input type="number" min='1' name='vote' onChange={handleSearch} value={formData.vote} max='10' />
-                                    </div>
-                                    <input type="submit" />
 
 
-                                </form>}
-                        </div>
-                        <div>
-                            {reviews ?
-                                reviews.map(review => {
-                                    return (
-                                        <ul key={review.id}>
-                                            <li>
-                                                {review.title}
-                                            </li>
-                                            <li>
-                                                {review.user_id}
-                                            </li>
-                                            <li>
-                                                {review.vote}
-                                            </li>
-                                            <li>
-                                                {review.text}
-                                            </li>
-                                            <li>
-                                                {review.days_of_stays}
-                                            </li>
-                                        </ul>
-
-
-                                    )
-                                })
-                                :
-                                <span>
-                                    Non ci sono recensioni
-                                </span>
-                            }
-                        </div>
                     </div >
                 </div >}
         </>

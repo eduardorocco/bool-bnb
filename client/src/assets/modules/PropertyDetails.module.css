@@ -4,6 +4,7 @@
 }
 
 .description{
+    padding-top: 50px;
     font-weight: normal;
     font-size: 20px;
 }
@@ -52,32 +53,38 @@
     border-bottom-left-radius: 20px;
 }
 
+.card_body {
+    font-size: 20px;
+}
+
 
 .details{
     display: flex;
-    gap: 10px;
+    gap: 8px;
 }
 
 .icon_container {
     height: 30px;
     width: 30px;
     aspect-ratio: 1 /1;
-    background-size: 150% 100%;
+    background-size: 120% 100%;
     background-image: var(--gradient);
     text-align: center;
     align-content: center;
     border-radius: 6px;
+    margin-bottom: 10px;
 }
 
 
 .icon {
     color: black;
     font-weight: bolder;
-    
+    font-size: 16px;
 }
 
 .type {
     text-transform: capitalize;
+    font-size: 18px;
 }
 
 .vote {
@@ -98,12 +105,18 @@
 }
 
 .card {
-    position: relative;
+    
     box-shadow: var(--box-shadow);
     background-color: white;
-    position: relative;
-    z-index: 1;
     border-top-right-radius: 20px;
     border-bottom-right-radius: 20px;
     padding: 30px;
+}
+
+.text {
+    font-size: 18px;
+}
+
+.address{
+    padding-bottom: 30px!important;
 }
