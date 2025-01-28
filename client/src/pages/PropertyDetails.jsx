@@ -81,68 +81,86 @@ export default function PropertyDetails() {
 
     return (
         <>
-            {property && <CardDetail property={property} addHeart={addHeart}/>}
 
+            {property && <CardDetail property={property} addHeart={addHeart} />}
+            <div className="container">
+                <div className="row">
 
-    
-                                    {isLogin &&
-                                        <form onSubmit={onSubmit}>
-                                            <div className="mb-3">
-                                                <label className="form-label">Title</label>
-                                                <input type="text" onChange={handleSearch} name='title' value={formData.title} className="form-control" placeholder="title" />
-                                            </div>
-                                            <div className="mb-3">
-                                                <label className="form-label">text</label>
-                                                <textarea className="form-control" onChange={handleSearch} name='text' value={formData.text} rows="3"></textarea>
-                                            </div>
-                                            <div className="mb-3">
-                                                <label className="form-label">giorni</label>
+                    <div>
+                        <p>
+                            {description}
+                        </p>
+                    </div>
+                    <div className="col-4">
+                        {isLogin &&
+                            <>
+                                <h5>Lascia una recensione</h5>
+                                <div className={style.card_form_review}>
+
+                                    <form onSubmit={onSubmit}>
+                                        <div className="mb-3">
+                                            <input type="text" onChange={handleSearch} name='title' value={formData.title} className="form-control" placeholder="Titolo della recensione" />
+                                        </div>
+                                        <div className="mb-3">
+                                            <textarea className="form-control" onChange={handleSearch} name='text' value={formData.text} placeholder="Cosa ne pensi?" rows="3"></textarea>
+                                        </div>
+                                        <div className={style.input_container}>
+                                            <div className={style.form_review_flex}>
+                                                <label className="form-label">Durata viaggio</label>
                                                 <input type="number" name='days_of_stays' onChange={handleSearch} value={formData.days_of_stays} min='1' />
                                             </div>
-                                            <div className="mb-3">
+                                            <div className={style.form_review_flex}>
                                                 <label className="form-label">voto</label>
                                                 <input type="number" min='1' name='vote' onChange={handleSearch} value={formData.vote} max='10' />
                                             </div>
-                                            <input type="submit" />
-
-
-                                        </form>}
-
-
-                                    {/* <div>
-                                        {reviews ?
-                                            reviews.map(review => {
-                                                return (
-                                                    <ul key={review.id}>
-                                                        <li>
-                                                            {review.title}
-                                                        </li>
-                                                        <li>
-                                                            {review.user_id}
-                                                        </li>
-                                                        <li>
-                                                            {review.vote}
-                                                        </li>
-                                                        <li>
-                                                            {review.text}
-                                                        </li>
-                                                        <li>
-                                                            {review.days_of_stays}
-                                                        </li>
-                                                    </ul>
-
-
-                                                )
-                                            })
-                                            :
-                                            <span>
-                                                Non ci sono recensioni
-                                            </span>
-                                        }
-                                    </div>
+                                        </div>
+                                        <div className={style.btn_container}>
+                                            <input className={style.button} type="submit" />
+                                        </div>
+                                    </form>
                                 </div>
-                            </div>
-                        </div> */}
+
+                            </>
+                        }
+
+                    </div>
+
+                    <div className="col-8">
+                        <div>
+                            {reviews ?
+                                reviews.map(review => {
+                                    return (
+                                        <ul key={review.id}>
+                                            <li>
+                                                {review.title}
+                                            </li>
+                                            <li>
+                                                {review.username}
+                                            </li>
+                                            <li>
+                                                {review.vote}
+                                            </li>
+                                            <li>
+                                                {review.text}
+                                            </li>
+                                            <li>
+                                                {review.days_of_stays}
+                                            </li>
+                                        </ul>
+
+
+                                    )
+                                })
+                                :
+                                <span>
+                                    Non ci sono recensioni
+                                </span>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {/*  */}
 
         </>
     )

@@ -73,7 +73,11 @@ function show(req, res) {
         const property = results[0]
         // movie.image = `http://localhost:3000/movies_cover/${movie.image}`
 
-        const sql = `SELECT * FROM reviews WHERE property_id = ?`
+        const sql = `SELECT reviews.title, reviews.created_at, reviews.days_of_stays,
+         reviews.vote, users.username, reviews.id,
+         reviews.text  FROM reviews 
+        JOIN users ON users.id = reviews.user_id
+        WHERE property_id = ?`
 
         connection.query(sql, [id], (err, results) => {
             if (err) return res.status(500).json({ message: err.message })
