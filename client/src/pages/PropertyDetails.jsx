@@ -9,6 +9,7 @@ import { faBed } from '@fortawesome/free-solid-svg-icons'
 import { faHome } from '@fortawesome/free-solid-svg-icons'
 import { faSquare } from '@fortawesome/free-solid-svg-icons'
 import { faToilet } from '@fortawesome/free-solid-svg-icons'
+import CardDetail from '../components/CardDetail'
 
 
 export default function PropertyDetails() {
@@ -80,79 +81,10 @@ export default function PropertyDetails() {
 
     return (
         <>
-            {property &&
-                <div className='container'>
-                    < div className='row' >
-                        <h3 className={style.title}>{title}</h3>
-                        <div className={style.container}>
-
-                            <div className={`${style.img_container} col-8`}>
-                                <div>
-                                    <button className={style.heart} onClick={() => addHeart(id)}>
-                                        <img className={style.icon_heart} src={heartIcon} />
-                                        <div>
-                                            {heart}
-                                        </div>
-                                    </button>
-                                </div>
-
-                                <p className={style.vote}>
-                                    {avg_vote ? parseFloat(avg_vote).toFixed(1) : '-'}
-                                </p>
-
-                                <img className={style.img} src={`${API_URL}/img/${image}`} />
-                            </div>
-
-                            <div className={`${style.card} col-4`}>
-
-                                <div className={style.card_body}>
-                                    <div className={style.address}>
-                                        <span>{address}, <strong>{city}</strong>, ({province}) </span>
-                                    </div>
-
-                                    <div className='row'>
-                                        <div className={`${style.details} col-4`}>
-                                            <div className={style.icon_container}>
-                                                <span className={style.icon}> <FontAwesomeIcon icon={faHome} /> </span>
-                                            </div>
-                                            <span className={style.type}>{type}</span>
-                                        </div>
-
-                                        <div className={`${style.details} col-4`}>
-                                            <div className={style.icon_container}>
-                                                <span className={style.icon}> m&#178;</span>
-                                            </div>
-                                            <span className={style.text}>{square_meter}</span>
-                                        </div>
-
-                                        <div className={`${style.details} col-4`}>
-                                            <div className={style.icon_container}>
-                                                <span className={style.icon}> <FontAwesomeIcon icon={faBed} /> </span>
-                                            </div>
-                                            <span className={style.text}>{bed}</span>
-                                        </div>
-
-                                        <div className={`${style.details} col-4`}>
-                                            <div className={style.icon_container}>
-                                                <span className={style.icon}> <FontAwesomeIcon icon={faSquare} /> </span>
-                                            </div>
-                                            <span className={style.text}>{room}</span>
-                                        </div>
+            {property && <CardDetail property={property} addHeart={addHeart}/>}
 
 
-                                        <div className={`${style.details} col-4`}>
-                                            <div className={style.icon_container}>
-                                                <span className={style.icon}> <FontAwesomeIcon icon={faToilet} /> </span>
-                                            </div>
-                                            <span className={style.text}>{toilet}</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="container-fluid">
-                            <div className="row">
-                                <div>
+    
                                     {isLogin &&
                                         <form onSubmit={onSubmit}>
                                             <div className="mb-3">
@@ -176,7 +108,8 @@ export default function PropertyDetails() {
 
                                         </form>}
 
-                                    <div>
+
+                                    {/* <div>
                                         {reviews ?
                                             reviews.map(review => {
                                                 return (
@@ -209,11 +142,8 @@ export default function PropertyDetails() {
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> */}
 
-
-                    </div >
-                </div >}
         </>
     )
 }
