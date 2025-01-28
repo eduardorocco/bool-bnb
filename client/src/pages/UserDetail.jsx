@@ -1,11 +1,13 @@
 import { useContext, useEffect } from "react"
 import { Link, useNavigate } from "react-router"
 import GlobalContext from "../context/GlobalContext"
+import CardProperty from "../components/Card"
 export default function UserDetail() {
 
     const { user, setUser } = useContext(GlobalContext)
     const navigate = useNavigate()
-    const { name, surname, number, email, username } = user
+    const { name, surname, number, email, username, property } = user
+    console.log(property)
 
     useEffect(() => {
         const storedUser = localStorage.getItem("user")
@@ -13,6 +15,7 @@ export default function UserDetail() {
             setUser(JSON.parse(storedUser))
         }
     }, [])
+    console.log(user)
 
 
     function goBack() {
@@ -23,6 +26,7 @@ export default function UserDetail() {
         <>
             <button onClick={goBack}>Torna Indietro</button>
             <div>
+                <h2>Il Tuo Profilo</h2>
                 <p>Nome:{name}</p>
                 <p>Cognome:{surname}</p>
                 <p>Numero:{number}</p>
@@ -30,6 +34,24 @@ export default function UserDetail() {
                 <p>Usernamee:{username}</p>
             </div>
             <Link className="btn btn-danger" to={'properties'} >insert properties</Link>
+            <div>
+                <h3>
+                    Immobili inseriti
+                </h3>
+
+                {property ? property.map((prop) => (
+                    <did key={prop.id} property={property}>
+                        <span>Stanze: {prop.room}</span>
+                        <span>Bagni: {prop.toilet}</span>
+                        <span>Letti: {prop.bed}</span>
+                        <span>Mq: {prop.square_meter}</span>
+                        <span><strong>{prop.address}</strong></span>
+                        <span> {prop.type}</span>
+                        <span>{prop.avg_vote}</span>
+                    </did>
+                )) : <p>Non ci sono proprietà</p>}
+
+            </div>
         </>
 
 
