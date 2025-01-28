@@ -4,7 +4,7 @@
 }
 
 .image_container{
-    width: 1000px;
+    max-width: 1200px;
     border-radius: 999px;
     position: absolute;
     top: 300px;
