@@ -2,6 +2,12 @@ import axios from 'axios'
 import { useState, useEffect, useContext } from 'react'
 import GlobalContext from "../context/GlobalContext"
 import { useParams } from 'react-router'
+import style from '../assets/modules/PropertyDetails.module.css'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCalendarDays } from '@fortawesome/free-solid-svg-icons'
+import CardDetail from '../components/CardDetail'
+import heartIcon from '../assets/icon-gallery/heart-pink.png'
+
 
 export default function PropertyDetails() {
 
@@ -68,51 +74,79 @@ export default function PropertyDetails() {
         fetchProperty()
     }, [id])
 
-    const { title, description, room, toilet, square_meters, address, type, bed, image, heart, avg_vote, reviews } = property
+    const { title, description, room, toilet, square_meter, address, city, province, type, bed, image, heart, avg_vote, reviews } = property
 
     return (
         <>
-            {property &&
-                <div className='container'>
-                    < div className='row' >
-                        <ul>
-                            <li>{title}</li>
-                            <li>{description}</li>
-                            <li>{room}</li>
-                            <li>{toilet}</li>
-                            <li>{square_meters}</li>
-                            <li>{address}</li>
-                            <li>{type}</li>
-                            <li>{bed}</li>
-                            <li>
-                                <button onClick={() => addHeart(id)} className='btn btn-danger'> {heart} </button>
-                            </li>
-                            <li>{avg_vote}</li>
-                        </ul>
 
+            {property && <CardDetail property={property} addHeart={addHeart} />}
+            <div className="container">
+                <div className="row">
 
+                    <div>
+                        <p className={style.description}>
+                            {description}
+                        </p>
+                    </div>
+                    <div className="col-4">
+                        {isLogin &&
+                            <>
+                                <h5>Lascia una recensione</h5>
+                                <div className={style.card_form_review}>
+
+                                    <form onSubmit={onSubmit}>
+                                        <div className="mb-3">
+                                            <input type="text" onChange={handleSearch} name='title' value={formData.title} className="form-control" placeholder="Titolo della recensione" />
+                                        </div>
+                                        <div className="mb-3">
+                                            <textarea className="form-control" onChange={handleSearch} name='text' value={formData.text} placeholder="Cosa ne pensi?" rows="3"></textarea>
+                                        </div>
+                                        <div className={style.input_container}>
+                                            <div className={style.form_review_flex}>
+                                                <label className="form-label">Durata viaggio</label>
+                                                <input type="number" name='days_of_stays' onChange={handleSearch} value={formData.days_of_stays} min='1' />
+                                            </div>
+                                            <div className={style.form_review_flex}>
+                                                <label className="form-label">voto</label>
+                                                <input type="number" min='1' name='vote' onChange={handleSearch} value={formData.vote} max='10' />
+                                            </div>
+                                        </div>
+                                        <div className={style.btn_container}>
+                                            <input className={style.button} type="submit" />
+                                        </div>
+                                    </form>
+                                </div>
+
+                            </>
+                        }
+
+                    </div>
+
+                    <div className={`${style.review_container} col-8`}>
                         {reviews ?
                             reviews.map(review => {
                                 return (
-                                    <ul key={review.id}>
-                                        <li>
-                                            {review.title}
-                                        </li>
-                                        <li>
-                                            {review.user_id}
-                                        </li>
-                                        <li>
-                                            {review.vote}
-                                        </li>
-                                        <li>
+
+                                    <div className={style.card_review}>
+                                        <div className={style.title_container}>
+                                            <div className={style.review_title}>{review.title}</div>
+                                            <div> / </div>
+                                            <div className={style.review_user}>{review.username}</div>
+                                        </div>
+                                        <div>
                                             {review.text}
-                                        </li>
-                                        <li>
-                                            {review.days_of_stays}
-                                        </li>
-                                    </ul>
-
-
+                                        </div>
+                                        <div className={style.flex_review}>
+                                            <div className={style.review_icon}>
+                                                <FontAwesomeIcon icon={faCalendarDays} />
+                                                {review.vote}
+                                            </div>
+                                            <div className={style.review_icon}>
+                                                {review.days_of_stays}
+                                                <img className={style.heart_static} src={heartIcon} alt="" />
+                                            </div>
+                                        </div>
+                                    </div>
                                 )
                             })
                             :
@@ -120,32 +154,11 @@ export default function PropertyDetails() {
                                 Non ci sono recensioni
                             </span>
                         }
-                        {isLogin &&
-                            <form onSubmit={onSubmit}>
-                                <div className="mb-3">
-                                    <label className="form-label">Title</label>
-                                    <input type="text" onChange={handleSearch} name='title' value={formData.title} className="form-control" placeholder="title" />
-                                </div>
-                                <div className="mb-3">
-                                    <label className="form-label">text</label>
-                                    <textarea className="form-control" onChange={handleSearch} name='text' value={formData.text} rows="3"></textarea>
-                                </div>
-                                <div className="mb-3">
-                                    <label className="form-label">giorni</label>
-                                    <input type="number" name='days_of_stays' onChange={handleSearch} value={formData.days_of_stays} min='1' />
-                                </div>
-                                <div className="mb-3">
-                                    <label className="form-label">voto</label>
-                                    <input type="number" min='1' name='vote' onChange={handleSearch} value={formData.vote} max='10' />
-                                </div>
-                                <input type="submit" />
+                    </div>
+                </div>
+            </div>
+            {/*  */}
 
-
-                            </form>}
-
-
-                    </div >
-                </div >}
         </>
     )
 }

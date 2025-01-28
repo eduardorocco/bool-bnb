@@ -1,0 +1,233 @@
+.title{
+    font-weight: lighter;
+    font-size: 35px;
+    padding: var(--p20) 0;
+}
+
+.description{
+    font-weight: normal;
+    font-size: 18px;
+    text-align: justify;
+    margin-bottom: 30px;
+}
+
+.container{
+    display: flex;
+    padding-bottom: 20px;
+}
+
+.heart {
+    align-content: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    border: none;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    border-bottom-left-radius: 5px;
+    padding: 5px;
+    margin: 5px;
+    background-color: rgba(255, 255, 255, 0.879);
+    font-weight: bold;
+    font-size: 18px;
+    border: 2px solid var(--main-bg-color);
+}
+
+.heart:hover {
+    background-color: white;
+}
+
+.icon_heart {
+    width: 35px;
+
+}
+
+.img_container{
+    position: relative;
+    box-shadow: var(--box-shadow);
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+}
+
+.img{
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+}
+
+.card_body {
+    font-size: 20px;
+}
+
+
+.details{
+    display: flex;
+    gap: 8px;
+}
+
+.icon_container {
+    height: 30px;
+    width: 30px;
+    aspect-ratio: 1 /1;
+    background-size: 120% 100%;
+    background-image: var(--gradient);
+    text-align: center;
+    align-content: center;
+    border-radius: 6px;
+    margin-bottom: 10px;
+}
+
+
+.icon {
+    color: black;
+    font-weight: bolder;
+    font-size: 16px;
+}
+
+.type {
+    text-transform: capitalize;
+    font-size: 18px;
+}
+
+.vote {
+    align-content: center;
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 1;
+    border-radius: 3px;
+    font-size: 18px;
+    padding: 5px;
+    margin: 5px;
+    background-color: white;
+    font-weight: bold;
+    border: 2px solid var(--main-bg-color);
+    min-width: 36px;
+    text-align: center;
+}
+
+.card {
+    
+    box-shadow: var(--box-shadow);
+    background-color: white;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    padding: 30px;
+}
+
+.text {
+    font-size: 18px;
+}
+
+.address{
+    padding-bottom: 30px!important;
+}
+
+.form_review_flex{
+    display: flex;
+    flex-direction: column;
+}
+
+.input_container{
+    display: flex;
+    justify-content: space-between;
+}
+
+.button {
+    margin-top: 15px;
+    font-size: 18px;
+    border: none;
+    background-image: var(--gradient);
+    color: black;
+    padding: 3px 16px;
+    font-weight: normal;
+    border-radius: 5px;
+    background-size: 200% 100%;
+    transition: color 0.3s ease;
+
+}
+
+.button:hover {
+    animation-name: gradient-scroll;
+    animation-duration: 3s;
+    animation-timing-function: linear; 
+    animation-iteration-count: infinite; 
+}
+
+@keyframes gradient-scroll {
+    0% {
+        background-position: 100% 0;
+    }
+    50% {
+        background-position: 0 0; 
+    }
+    100% {
+        background-position: 100% 0; 
+    }
+}
+
+.btn_container{
+    display: flex;
+    justify-content: end;
+}
+
+.card_form_review {
+    
+    box-shadow: var(--box-shadow);
+    background-color: white;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    padding: 30px;
+}
+
+.review_container{
+    border-left: 1px solid var(--main-bg-color);
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+}
+
+.card_review{
+    box-shadow: var(--box-shadow);
+    background-color: white;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    padding: 15px;
+    font-size: 14px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+}
+
+.review_title{
+    font-size: 17px;
+    font-weight: bold;
+}
+
+.review_user{
+    font-size: 17px;
+    font-style: italic;
+}
+
+.flex_review{
+    display: flex;
+    justify-content: space-between;
+}
+
+.review_icon{
+    font-size: 15px;
+    display: flex;
+    gap: 5px;
+    align-items: center;
+}
+
+.heart_static{
+    width: 23px;
+}
+
+.title_container{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
