@@ -2,6 +2,14 @@ import axios from 'axios'
 import { useState, useEffect, useContext } from 'react'
 import GlobalContext from "../context/GlobalContext"
 import { useParams } from 'react-router'
+import style from '../assets/modules/PropertyDetails.module.css'
+import heartIcon from '../assets/icon-gallery/heart-salmon.png'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faBed } from '@fortawesome/free-solid-svg-icons'
+import { faHome } from '@fortawesome/free-solid-svg-icons'
+import { faSquare } from '@fortawesome/free-solid-svg-icons'
+import { faToilet } from '@fortawesome/free-solid-svg-icons'
+
 
 export default function PropertyDetails() {
 
@@ -68,82 +76,132 @@ export default function PropertyDetails() {
         fetchProperty()
     }, [id])
 
-    const { title, description, room, toilet, square_meters, address, type, bed, image, heart, avg_vote, reviews } = property
+    const { title, description, room, toilet, square_meter, address, city, province, type, bed, image, heart, avg_vote, reviews } = property
 
     return (
         <>
             {property &&
                 <div className='container'>
                     < div className='row' >
-                        <ul>
-                            <li>{title}</li>
-                            <li>{description}</li>
-                            <li>{room}</li>
-                            <li>{toilet}</li>
-                            <li>{square_meters}</li>
-                            <li>{address}</li>
-                            <li>{type}</li>
-                            <li>{bed}</li>
-                            <li>
-                                <button onClick={() => addHeart(id)} className='btn btn-danger'> {heart} </button>
-                            </li>
-                            <li>{avg_vote}</li>
-                        </ul>
+                        <h3 className={style.title}>{title}</h3>
+                        <div className={style.container}>
 
-
-                        {reviews ?
-                            reviews.map(review => {
-                                return (
-                                    <ul key={review.id}>
-                                        <li>
-                                            {review.title}
-                                        </li>
-                                        <li>
-                                            {review.user_id}
-                                        </li>
-                                        <li>
-                                            {review.vote}
-                                        </li>
-                                        <li>
-                                            {review.text}
-                                        </li>
-                                        <li>
-                                            {review.days_of_stays}
-                                        </li>
-                                    </ul>
-
-
-                                )
-                            })
-                            :
-                            <span>
-                                Non ci sono recensioni
-                            </span>
-                        }
-                        {isLogin &&
-                            <form onSubmit={onSubmit}>
-                                <div className="mb-3">
-                                    <label className="form-label">Title</label>
-                                    <input type="text" onChange={handleSearch} name='title' value={formData.title} className="form-control" placeholder="title" />
+                            <div className={`${style.img_container} col-8`}>
+                                <div>
+                                    <button className={style.heart} onClick={() => addHeart(id)}>
+                                        <img className={style.icon_heart} src={heartIcon} alt="" />
+                                        <div>
+                                            {heart}
+                                        </div>
+                                    </button>
                                 </div>
-                                <div className="mb-3">
-                                    <label className="form-label">text</label>
-                                    <textarea className="form-control" onChange={handleSearch} name='text' value={formData.text} rows="3"></textarea>
+
+                                <p className={style.vote}>
+                                    {avg_vote ? parseFloat(avg_vote).toFixed(1) : '-'}
+                                </p>
+
+                                <img className={style.img} src={`${API_URL}/img/${image}`} />
+                            </div>
+
+                            <div className={`${style.card} col-4`}>
+                                <div className="card-body">
+                                    <span>{address}, <strong>{city}</strong>, ({province}) </span>
+                                    <div className={style.details}>
+                                        <div className={style.icon_container}>
+                                            <span className={style.icon}> <FontAwesomeIcon icon={faHome} /> </span>
+                                        </div>
+                                        <span className={style.type}>{type}</span>
+                                    </div>
+
+                                    <div className={style.details}>
+                                        <div className={style.icon_container}>
+                                            <span className={style.icon}> m&#178;</span>
+                                        </div>
+                                        <span>{square_meter}</span>
+                                    </div>
+
+                                    <div className={style.details}>
+                                        <div className={style.icon_container}>
+                                            <span className={style.icon}> <FontAwesomeIcon icon={faBed} /> </span>
+                                        </div>
+                                        <span>{bed}</span>
+                                    </div>
+
+                                    <div className={style.details}>
+                                        <div className={style.icon_container}>
+                                            <span className={style.icon}> <FontAwesomeIcon icon={faSquare} /> </span>
+                                        </div>
+                                        <span>{room}</span>
+                                    </div>
+
+
+                                    <div className={style.details}>
+                                        <div className={style.icon_container}>
+                                            <span className={style.icon}> <FontAwesomeIcon icon={faToilet} /> </span>
+                                        </div>
+                                        <span>{toilet}</span>
+                                    </div>
                                 </div>
-                                <div className="mb-3">
-                                    <label className="form-label">giorni</label>
-                                    <input type="number" name='days_of_stays' onChange={handleSearch} value={formData.days_of_stays} min='1' />
-                                </div>
-                                <div className="mb-3">
-                                    <label className="form-label">voto</label>
-                                    <input type="number" min='1' name='vote' onChange={handleSearch} value={formData.vote} max='10' />
-                                </div>
-                                <input type="submit" />
+                            </div>
+                        </div>
+                        <div>
+                            <p className={style.description}>{description}</p>
+                        </div>
+                        <div>
+                            {isLogin &&
+                                <form onSubmit={onSubmit}>
+                                    <div className="mb-3">
+                                        <label className="form-label">Title</label>
+                                        <input type="text" onChange={handleSearch} name='title' value={formData.title} className="form-control" placeholder="title" />
+                                    </div>
+                                    <div className="mb-3">
+                                        <label className="form-label">text</label>
+                                        <textarea className="form-control" onChange={handleSearch} name='text' value={formData.text} rows="3"></textarea>
+                                    </div>
+                                    <div className="mb-3">
+                                        <label className="form-label">giorni</label>
+                                        <input type="number" name='days_of_stays' onChange={handleSearch} value={formData.days_of_stays} min='1' />
+                                    </div>
+                                    <div className="mb-3">
+                                        <label className="form-label">voto</label>
+                                        <input type="number" min='1' name='vote' onChange={handleSearch} value={formData.vote} max='10' />
+                                    </div>
+                                    <input type="submit" />
 
 
-                            </form>}
+                                </form>}
+                        </div>
+                        <div>
+                            {reviews ?
+                                reviews.map(review => {
+                                    return (
+                                        <ul key={review.id}>
+                                            <li>
+                                                {review.title}
+                                            </li>
+                                            <li>
+                                                {review.user_id}
+                                            </li>
+                                            <li>
+                                                {review.vote}
+                                            </li>
+                                            <li>
+                                                {review.text}
+                                            </li>
+                                            <li>
+                                                {review.days_of_stays}
+                                            </li>
+                                        </ul>
 
 
+                                    )
+                                })
+                                :
+                                <span>
+                                    Non ci sono recensioni
+                                </span>
+                            }
+                        </div>
                     </div >
                 </div >}
         </>
