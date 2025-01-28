@@ -3,13 +3,10 @@ import { useState, useEffect, useContext } from 'react'
 import GlobalContext from "../context/GlobalContext"
 import { useParams } from 'react-router'
 import style from '../assets/modules/PropertyDetails.module.css'
-import heartIcon from '../assets/icon-gallery/heart-salmon.png'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faBed } from '@fortawesome/free-solid-svg-icons'
-import { faHome } from '@fortawesome/free-solid-svg-icons'
-import { faSquare } from '@fortawesome/free-solid-svg-icons'
-import { faToilet } from '@fortawesome/free-solid-svg-icons'
+import { faCalendarDays } from '@fortawesome/free-solid-svg-icons'
 import CardDetail from '../components/CardDetail'
+import heartIcon from '../assets/icon-gallery/heart-pink.png'
 
 
 export default function PropertyDetails() {
@@ -87,7 +84,7 @@ export default function PropertyDetails() {
                 <div className="row">
 
                     <div>
-                        <p>
+                        <p className={style.description}>
                             {description}
                         </p>
                     </div>
@@ -125,38 +122,38 @@ export default function PropertyDetails() {
 
                     </div>
 
-                    <div className="col-8">
-                        <div>
-                            {reviews ?
-                                reviews.map(review => {
-                                    return (
-                                        <ul key={review.id}>
-                                            <li>
-                                                {review.title}
-                                            </li>
-                                            <li>
-                                                {review.username}
-                                            </li>
-                                            <li>
+                    <div className={`${style.review_container} col-8`}>
+                        {reviews ?
+                            reviews.map(review => {
+                                return (
+
+                                    <div className={style.card_review}>
+                                        <div className={style.title_container}>
+                                            <div className={style.review_title}>{review.title}</div>
+                                            <div> / </div>
+                                            <div className={style.review_user}>{review.username}</div>
+                                        </div>
+                                        <div>
+                                            {review.text}
+                                        </div>
+                                        <div className={style.flex_review}>
+                                            <div className={style.review_icon}>
+                                                <FontAwesomeIcon icon={faCalendarDays} />
                                                 {review.vote}
-                                            </li>
-                                            <li>
-                                                {review.text}
-                                            </li>
-                                            <li>
+                                            </div>
+                                            <div className={style.review_icon}>
                                                 {review.days_of_stays}
-                                            </li>
-                                        </ul>
-
-
-                                    )
-                                })
-                                :
-                                <span>
-                                    Non ci sono recensioni
-                                </span>
-                            }
-                        </div>
+                                                <img className={style.heart_static} src={heartIcon} alt="" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                )
+                            })
+                            :
+                            <span>
+                                Non ci sono recensioni
+                            </span>
+                        }
                     </div>
                 </div>
             </div>

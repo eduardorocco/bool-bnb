@@ -5,9 +5,10 @@
 }
 
 .description{
-    padding-top: 50px;
     font-weight: normal;
-    font-size: var(--p20);
+    font-size: 18px;
+    text-align: justify;
+    margin-bottom: 30px;
 }
 
 .container{
@@ -175,7 +176,58 @@
     
     box-shadow: var(--box-shadow);
     background-color: white;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    padding: 30px;
+}
+
+.review_container{
+    border-left: 1px solid var(--main-bg-color);
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+}
+
+.card_review{
+    box-shadow: var(--box-shadow);
+    background-color: white;
     border-top-right-radius: 20px;
     border-bottom-right-radius: 20px;
-    padding: 30px;
+    padding: 15px;
+    font-size: 14px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+}
+
+.review_title{
+    font-size: 17px;
+    font-weight: bold;
+}
+
+.review_user{
+    font-size: 17px;
+    font-style: italic;
+}
+
+.flex_review{
+    display: flex;
+    justify-content: space-between;
+}
+
+.review_icon{
+    font-size: 15px;
+    display: flex;
+    gap: 5px;
+    align-items: center;
+}
+
+.heart_static{
+    width: 23px;
+}
+
+.title_container{
+    display: flex;
+    gap: 10px;
+    align-items: center;
 }
