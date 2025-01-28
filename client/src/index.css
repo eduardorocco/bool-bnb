@@ -9,6 +9,7 @@
   --font: "Noto Sans", serif;
   --white: rgba(243, 243, 243, 0.965);
   --heart-color: #FF5A5F;
+  --gradient: linear-gradient(to right,var(--main-bg-color), var(--secondary-bg-color));
 }
 
 * {
@@ -57,6 +58,12 @@ textarea {
 
 .toUppercase input {
   text-transform: uppercase;
+}
+
+.active {
+  font-weight: bolder;
+  border-bottom: 2px solid white;
+  padding-bottom: 1px;
 }
 
 @keyframes error {
