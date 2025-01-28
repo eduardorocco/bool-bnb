@@ -5,6 +5,8 @@
     flex-direction: column;
     box-shadow: var(--box-shadow);
     background-color: white;
+    position: relative;
+    z-index: 1;
 }
 
 .img {

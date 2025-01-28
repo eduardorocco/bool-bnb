@@ -5,6 +5,8 @@
     flex-direction:row-reverse;
     padding: 12px;
     justify-content: space-between;
+    position: relative;
+    z-index: 1;
 }
 .logo{
     width: 80px;

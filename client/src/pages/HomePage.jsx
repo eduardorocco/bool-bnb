@@ -7,6 +7,9 @@ import LoginForm from '../components/LoginForm'
 import style from '../assets/modules/HomePage.module.css'
 import house from '../assets/houses/house.jpg'
 import hero from '../assets/img/Bool_bnb_hero.png'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faArrowRight } from '@fortawesome/free-solid-svg-icons'
+import { Link } from 'react-router'
 
 
 export default function HomePage() {
@@ -15,7 +18,7 @@ export default function HomePage() {
     const [properties, setProperties] = useState([])
 
     function fetchProperties() {
-        axios.get(`${API_URL}properties`,{
+        axios.get(`${API_URL}properties`, {
             params: {
                 limit: 4
             }
@@ -41,7 +44,7 @@ export default function HomePage() {
     }, [])
 
     return (
-        <>
+        <main>
             <div className={style.jumbo}>
                 <div>
                     <p className={style.slogan}>"Scopri, vivi, condividi."</p>
@@ -56,18 +59,15 @@ export default function HomePage() {
             </div>
 
             <div className={style.box}>
-            <figure className={style.preview}>
-                <img src={hero}/>
-            </figure>
+                <figure className={style.preview}>
+                    <img src={hero} />
+                </figure>
             </div>
 
-            <div className='container-fluid'>
-            <h3 className={style.title}>Le più votate:</h3>
-            </div>
-            <div className={style.shadow}></div>
-            <div className="container-fluid p-6">
+            <div className={`${style.card_container} container-fluid p-6`}>
+                <h3 className={style.title}>Le più amate:</h3>
                 <div className="row">
-                    
+
                     {properties.map(property => {
                         return (
                             <CardProperty key={property.id} property={property} callback={addHeart} />
@@ -75,7 +75,10 @@ export default function HomePage() {
                     })}
                 </div>
             </div>
-        </>
+            <div className={`${style.shadow} container-fluid`}>
+                <Link className={style.showmore} to='/properties'>Mostra di più <FontAwesomeIcon className={style.arrow} icon={faArrowRight} /></Link>
+            </div>
+        </main>
 
     )
 }

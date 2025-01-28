@@ -9,6 +9,7 @@
   --font: "Noto Sans", serif;
   --white: rgba(243, 243, 243, 0.965);
   --heart-color: #FF5A5F;
+  --gradient: linear-gradient(to right,var(--main-bg-color), var(--secondary-bg-color));
 }
 
 * {
