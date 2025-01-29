@@ -91,24 +91,24 @@ export default function PropertyDetails() {
                     <div className="col-4">
                         {isLogin ?
                             <>
-                                <h5>Lascia una recensione</h5>
+                                <h5 className={`${style.title_20} text-center`}>Lascia una recensione</h5>
                                 <div className={style.card_form_review}>
 
                                     <form onSubmit={onSubmit}>
                                         <div className="mb-3">
-                                            <input type="text" required onChange={handleSearch} name='title' value={formData.title} className="form-control" placeholder="Titolo della recensione*" />
+                                            <input type="text" required onChange={handleSearch} name='title' value={formData.title} className={`${style.input_title} form-control`} placeholder="Titolo della recensione*" />
                                         </div>
                                         <div className="mb-3">
-                                            <textarea className="form-control" onChange={handleSearch} name='text' value={formData.text} placeholder="Cosa ne pensi?" rows="3"></textarea>
+                                            <textarea className={`${style.input_textarea} form-control`} onChange={handleSearch} name='text' value={formData.text} placeholder="Cosa ne pensi?" rows="4"></textarea>
                                         </div>
                                         <div className={style.input_container}>
                                             <div className={style.form_review_flex}>
                                                 <label className="form-label">Durata viaggio</label>
-                                                <input type="number" name='days_of_stays' onChange={handleSearch} value={formData.days_of_stays} min='1' />
+                                                <input className={style.input_number} type="number" name='days_of_stays' onChange={handleSearch} value={formData.days_of_stays} min='1' />
                                             </div>
                                             <div className={style.form_review_flex}>
-                                                <label className="form-label">voto</label>
-                                                <input type="number" min='1' name='vote' onChange={handleSearch} value={formData.vote} max='10' />
+                                                <label className="form-label">Voto</label>
+                                                <input className={style.input_number} type="number" min='1' name='vote' onChange={handleSearch} value={formData.vote} max='10' />
                                             </div>
                                         </div>
                                         <div className={style.btn_container}>
@@ -130,6 +130,7 @@ export default function PropertyDetails() {
                     </div>
 
                     <div className={`${style.review_container} col-8`}>
+                        <h5 className='text-center'>Recensioni</h5>
                         {reviews ?
                             reviews.map(review => {
                                 return (

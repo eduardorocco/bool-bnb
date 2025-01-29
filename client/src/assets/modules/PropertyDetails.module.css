@@ -231,3 +231,33 @@
     gap: 10px;
     align-items: center;
 }
+
+.title_20{
+    padding-bottom: var(--p20);
+}
+
+.input_number{
+    width: 45px;
+    aspect-ratio: 1 / 1;
+    border-radius: 5px;
+    text-align: center;
+    border: none;
+    outline: 1px solid gray;
+}
+
+.input_title{
+    border: none;
+    outline: 1px solid gray;
+}
+
+.input_textarea{
+    border: none;
+    outline: 1px solid gray;
+}
+
+.input_number:hover,
+.input_title:hover,
+.input_textarea:hover{
+    outline: 1px var(--main-bg-color) solid;
+    box-shadow: 0px 0px 3px 3px var(--main-bg-color);
+}
