@@ -1,10 +1,9 @@
-.input {
-
-}
-
-.form{
+.form {
     display: flex;
     justify-content: space-between;
+    padding: 20px;
+    border: 1px solid black;
+    border-radius: 999px;
 }
 
 .input::placeholder {
@@ -14,7 +13,7 @@
 .button {
     font-size: 30px;
     border: none;
-    background-image: linear-gradient(to right,var(--main-bg-color), var(--secondary-bg-color));
+    background-image: linear-gradient(to right, var(--main-bg-color), var(--secondary-bg-color));
     color: rgb(255, 255, 255);
     padding: 5px 60px 5px 60px;
     font-weight: lighter;
@@ -28,8 +27,8 @@
 .button:hover {
     animation-name: gradient-scroll;
     animation-duration: 3s;
-    animation-timing-function: linear; 
-    animation-iteration-count: infinite; 
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
 }
 
 
@@ -37,42 +36,44 @@
     0% {
         background-position: 100% 0;
     }
+
     50% {
-        background-position: 0 0; 
+        background-position: 0 0;
     }
+
     100% {
-        background-position: 100% 0; 
+        background-position: 100% 0;
     }
 }
 
-  /* Responsive styles */
+/* Responsive styles */
 
 
 @media (max-width: 768px) {
-    
+
     .input {
         font-size: 30px;
         margin-left: 50px;
-        width: 90%; 
+        width: 90%;
     }
 
-    
+
     .button {
         font-size: 25px;
-        padding: 5px 40px 5px 40px; 
+        padding: 5px 40px 5px 40px;
     }
 }
 
 
 @media (max-width: 480px) {
-   
+
     .input {
         font-size: 16px;
-        margin-left: 30px; 
-        width: 80%; 
+        margin-left: 30px;
+        width: 80%;
     }
 
-    
+
     .button {
         font-size: 16px;
         padding: 5px 20px;
