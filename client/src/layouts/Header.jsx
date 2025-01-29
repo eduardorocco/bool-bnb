@@ -41,9 +41,10 @@ export default function Header() {
                     <Link to={`users/${user.id}`}>
                         <div className={styles.rounded}>
                             <FontAwesomeIcon icon={faUser} />
+                            {/* <span>{user.username}</span> */}
                         </div>
                     </Link>
-                    
+
                     {!isLogin ? <button
                         onClick={() => (setOverlayLogin(true))}
                         className={styles.button}>

@@ -48,6 +48,7 @@ export default function SearchBar() {
 
     return (
         <form onSubmit={onSubmit} className={styles.form} >
+            {pathname === '/properties' && search.city && <p>hai filtrato per {search.city}</p>}
             <input
                 className={styles.input}
                 type="text"
@@ -116,6 +117,7 @@ export default function SearchBar() {
 
 
             <button type='submit' className={styles.button}> {pathname === '/' ? <FontAwesomeIcon icon={faMagnifyingGlass} /> : 'Filtra'}</button>
+
 
         </form>
     )
