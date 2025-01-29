@@ -1,4 +1,4 @@
-import { Link } from 'react-router'
+import { Link, useLocation } from 'react-router'
 import GlobalContext from '../context/GlobalContext';
 import { useContext } from 'react';
 import heartIcon from '../assets/icon-gallery/heart-salmon.png'
@@ -10,12 +10,12 @@ import { faHome } from '@fortawesome/free-solid-svg-icons'
 function CardProperty({ property, callback }) {
 
     const { API_URL } = useContext(GlobalContext)
-
+    const { pathname } = useLocation()
 
     const { id, title, square_meter, bed, image, heart, avg_vote, address, city, province, type } = property
     return (
 
-        <div className='col-3'>
+        <div className={pathname === '/' ? 'col-3' : 'col-2'  }>
 
             <div className={style.card}>
 
