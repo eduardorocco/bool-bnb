@@ -6,7 +6,7 @@ import Select from '../components/Select'
 import { useParams } from "react-router-dom"
 import axios from 'axios'
 import GlobalContext from '../context/GlobalContext'
-import { useContext } from 'react'
+import { useContext, useState } from 'react'
 
 export default function InsertPropertyPage() {
 
@@ -14,6 +14,7 @@ export default function InsertPropertyPage() {
     console.log(id)
 
     const { API_URL } = useContext(GlobalContext)
+    const [newImage, setNewImage] = useState(null)
 
     const MAX_FILE_SIZE = 102400; //100KB
 
@@ -68,26 +69,60 @@ export default function InsertPropertyPage() {
         action.resetForm()
     }
 
+    const handleSubmit = async (e) => {
+        e.preventDefault()
+        const formData = new FormData()
+        formData.append('image', newImage)
+
+        const response = await axios.post(`${API_URL}api/upload`, formData, {
+            headers: { 'content-Type': 'multipart/form-data' }
+        }).then((_) => {
+            console.log('L\'immagine è stata caricata')
+        }).catch((err) => {
+            console.log(err)
+        })
+
+    }
+
+
+    function onImageChange(e) {
+        setNewImage(e.target.files[0])
+    }
+
+    console.log(newImage)
+
+
     return (
-        
-        <Formik initialValues={{ title: '', description: '', room: 1, bed: 1, toilet: 1, square_meter: 2, address: '', city: '', province: '', type: '' }} validationSchema={propertySchema} onSubmit={(values, actions) => onSubmitProperties(values, actions)}>
-            {({ isSubmitting }) => (
-                <Form>
-                    <Input label='Nome della proprietà' name='title' type='text' placeholder="Es. Villetta sul lago di..." />
-                    <Select label="Tipologia di immobile" name="type" />
-                    <Input label='Stanze' name='room' type='number' />
-                    <Input label='Posti letto' name='bed' type='number' />
-                    <Input label='Bagni' name='toilet' type='number' />
-                    <Input label='Dimensioni immobile (mq)' name='square_meter' type='number' placeholder='Es. 30' />
-                    <Input label='Indirizzo' name='address' type='text' placeholder="via esempio 15..." />
-                    <Input label='Città' name='city' type='text' placeholder="Inserisci la città" />
-                    <div className='toUppercase'><Input label='Provincia' name='province' type='text' minLength='2' maxLength='2' /></div>
-                    <Textarea label='Descrizione' name='description' rows="5" placeholder="Inserisci la descrizione qui..." />
-                    <button disabled={isSubmitting} type='reset'>Resetta Form</button>
-                    <button disabled={isSubmitting} type='submit' className='btn btn-primary'>Crea immobile</button>
-                </Form>
-            )}
-        </Formik>
+        <>
+            <Formik initialValues={{ title: '', description: '', room: 1, bed: 1, toilet: 1, square_meter: 2, address: '', city: '', province: '', type: '' }} validationSchema={propertySchema} onSubmit={(values, actions) => onSubmitProperties(values, actions)}>
+                {({ isSubmitting }) => (
+                    <>
+                        <Form>
+                            <Input label='Nome della proprietà' name='title' type='text' placeholder="Es. Villetta sul lago di..." />
+                            <Select label="Tipologia di immobile" name="type" />
+                            <Input label='Stanze' name='room' type='number' />
+                            <Input label='Posti letto' name='bed' type='number' />
+                            <Input label='Bagni' name='toilet' type='number' />
+                            <Input label='Dimensioni immobile (mq)' name='square_meter' type='number' placeholder='Es. 30' />
+                            <Input label='Indirizzo' name='address' type='text' placeholder="via esempio 15..." />
+                            <Input label='Città' name='city' type='text' placeholder="Inserisci la città" />
+                            <div className='toUppercase'><Input label='Provincia' name='province' type='text' minLength='2' maxLength='2' /></div>
+                            <Textarea label='Descrizione' name='description' rows="5" placeholder="Inserisci la descrizione qui..." />
+                            <button disabled={isSubmitting} type='reset'>Resetta Form</button>
+                            <button disabled={isSubmitting} type='submit' className='btn btn-primary'>Crea immobile</button>
+                        </Form>
+                    </>
+                )}
+            </Formik>
+            <form onSubmit={handleSubmit}>
+                <label htmlFor="image">Carica un immagine</label>
+                <input type='file' id='image' name='image' onChange={onImageChange} />
+                <input type="submit" value='Carica' />
+            </form>
+        </>
+
+
+
     )
 }
 

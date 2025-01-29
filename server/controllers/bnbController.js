@@ -117,7 +117,7 @@ function storeProperty(req, res) {
         isNaN(square_meter) ||
         !address ||
         !city ||
-        !province 
+        !province
 
     ) {
         return res.status(400).json({ message: 'Invalid data' })
@@ -155,6 +155,7 @@ function storeProperty(req, res) {
         res.status(201).json({ message: 'Property created' })
     })
 }
+
 
 function storeReview(req, res) {
     const property_id = req.params.id
