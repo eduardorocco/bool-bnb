@@ -20,7 +20,7 @@ export default function Header() {
     return (
         <div>
             <nav className={style.navbar}>
-                
+
                 <Link to={'/'}>
                     <figure className={style.logo_container}>
                         <img className={style.logo} src={whiteLinear} alt="" />
@@ -36,9 +36,10 @@ export default function Header() {
                     <Link to={`users/${user.id}`}>
                         <div className={style.rounded}>
                             <FontAwesomeIcon icon={faUser} />
+                            {/* <span>{user.username}</span> */}
                         </div>
                     </Link>
-                    
+
                     {!isLogin ? <button
                         onClick={() => (setOverlayLogin(true))}
                         className={style.button}>
