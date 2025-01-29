@@ -77,7 +77,7 @@ export default function HomePage() {
 
                     {properties.map(property => {
                         return (
-                            <CardProperty key={property.id} property={property} callback={addHeart} />
+                            <CardProperty key={property.id} property={property} callback={() => (addHeart(property.id))} />
                         )
                     })}
                 </div>

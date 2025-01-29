@@ -20,23 +20,25 @@ export default function Header() {
     return (
         <div>
             <nav className={style.navbar}>
+                
                 <Link to={'/'}>
                     <figure className={style.logo_container}>
                         <img className={style.logo} src={whiteLinear} alt="" />
                     </figure>
                 </Link>
+
                 <div className={style.navlink}>
                     <NavLink to='/'>Home</NavLink>
                     <NavLink to='/properties'>Soggiorni</NavLink>
-
                 </div>
+
                 <div className={style.navlink}>
-                    <NavLink to={`users/${user.id}`}>
+                    <Link to={`users/${user.id}`}>
                         <div className={style.rounded}>
                             <FontAwesomeIcon icon={faUser} />
                         </div>
-
-                    </NavLink>
+                    </Link>
+                    
                     {!isLogin ? <button
                         onClick={() => (setOverlayLogin(true))}
                         className={style.button}>

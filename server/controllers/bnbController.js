@@ -56,7 +56,7 @@ function show(req, res) {
 
     const sql = `SELECT properties.*, AVG(vote) AS avg_vote 
 		FROM properties
-		JOIN reviews
+		LEFT JOIN reviews
 		ON properties.id = reviews.property_id 
 		WHERE properties.id = ?
 		GROUP BY properties.id
@@ -107,18 +107,21 @@ function storeProperty(req, res) {
         type
     } = req.body
 
-    //FARE IL CONTROLLO
-    // if (
-    //     !name ||
-    //     !vote ||
-    //     isNaN(intVote) ||
-    //     intVote < 0 ||
-    //     intVote > 5 ||
-    //     name?.length > 255 ||
-    //     typeof text !== 'string'
-    // ) {
-    //     return res.status(400).json({ message: 'Invalid data' })
-    // }
+
+    if (
+        !title ||
+        !description ||
+        isNaN(room) ||
+        isNaN(bed) ||
+        isNaN(toilet) ||
+        isNaN(square_meter) ||
+        !address ||
+        !city ||
+        !province 
+
+    ) {
+        return res.status(400).json({ message: 'Invalid data' })
+    }
 
     const sql = `INSERT INTO properties (
         user_id,

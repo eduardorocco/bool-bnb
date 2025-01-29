@@ -14,7 +14,7 @@ export default function PropertyDetails() {
 
     const { id } = useParams()
 
-    const { API_URL, isLogin, user } = useContext(GlobalContext)
+    const { API_URL, isLogin, user, setOverlayLogin } = useContext(GlobalContext)
 
     const initialFormData = {
         title: '',
@@ -89,14 +89,14 @@ export default function PropertyDetails() {
                         </p>
                     </div>
                     <div className="col-4">
-                        {isLogin &&
+                        {isLogin ?
                             <>
                                 <h5>Lascia una recensione</h5>
                                 <div className={style.card_form_review}>
 
                                     <form onSubmit={onSubmit}>
                                         <div className="mb-3">
-                                            <input type="text" onChange={handleSearch} name='title' value={formData.title} className="form-control" placeholder="Titolo della recensione" />
+                                            <input type="text" required onChange={handleSearch} name='title' value={formData.title} className="form-control" placeholder="Titolo della recensione*" />
                                         </div>
                                         <div className="mb-3">
                                             <textarea className="form-control" onChange={handleSearch} name='text' value={formData.text} placeholder="Cosa ne pensi?" rows="3"></textarea>
@@ -118,8 +118,15 @@ export default function PropertyDetails() {
                                 </div>
 
                             </>
-                        }
-
+                            :
+                            <>
+                                <p>Per fare una recensione devi prima accedere</p>
+                                <button
+                                onClick={() => (setOverlayLogin(true))}
+                                className={style.button}>
+                                Accedi
+                            </button>
+                            </>}
                     </div>
 
                     <div className={`${style.review_container} col-8`}>
@@ -127,7 +134,7 @@ export default function PropertyDetails() {
                             reviews.map(review => {
                                 return (
 
-                                    <div className={style.card_review}>
+                                    <div key={review.id} className={style.card_review}>
                                         <div className={style.title_container}>
                                             <div className={style.review_title}>{review.title}</div>
                                             <div> / </div>
@@ -150,9 +157,9 @@ export default function PropertyDetails() {
                                 )
                             })
                             :
-                            <span>
-                                Non ci sono recensioni
-                            </span>
+                            <div className='text-center'>
+                                <strong>Non ci sono ancora recensioni</strong>
+                            </div>
                         }
                     </div>
                 </div>

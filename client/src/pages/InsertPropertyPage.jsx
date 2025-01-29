@@ -27,7 +27,7 @@ export default function InsertPropertyPage() {
         return fileName && validFileExtensions[fileType].indexOf(fileName.split('.').pop()) > -1;
     }
 
-    const loginSchema = yup.object().shape({
+    const propertySchema = yup.object().shape({
         title: yup.string().required("Inserisci il nome dell'immobile."),
         description: yup.string().min(15, "Dicci qualcosa in più.").required("Inserisci una breve descrizione."),
         room: yup.number().positive().min(1, "L'immobile deve avere almeno una stanza.").required("Selezionare il numero di stanze."),
@@ -69,8 +69,8 @@ export default function InsertPropertyPage() {
     }
 
     return (
-        // bisognerà aggiungere image
-        <Formik initialValues={{ title: '', description: '', room: 1, bed: 1, toilet: 1, square_meter: 2, address: '', city: '', province: '', type: '' }} validationSchema={loginSchema} onSubmit={(values, actions) => onSubmitProperties(values, actions)}>
+        
+        <Formik initialValues={{ title: '', description: '', room: 1, bed: 1, toilet: 1, square_meter: 2, address: '', city: '', province: '', type: '' }} validationSchema={propertySchema} onSubmit={(values, actions) => onSubmitProperties(values, actions)}>
             {({ isSubmitting }) => (
                 <Form>
                     <Input label='Nome della proprietà' name='title' type='text' placeholder="Es. Villetta sul lago di..." />
