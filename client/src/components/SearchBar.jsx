@@ -4,7 +4,7 @@ import { useNavigate, useLocation } from 'react-router';
 import styleHomePage from '../assets/modules/SearchBarHomePage.module.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
-
+import stylePages from '../assets/modules/SearchBarPages.module.css'
 
 export default function SearchBar() {
 
@@ -13,7 +13,7 @@ export default function SearchBar() {
     const navigate = useNavigate();
     let { pathname } = useLocation()
 
-    const styles = pathname === '/' ? styleHomePage : ''
+    const styles = pathname === '/' ? styleHomePage : stylePages
 
 
 

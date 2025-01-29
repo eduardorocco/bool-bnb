@@ -1,0 +1,80 @@
+.input {
+
+}
+
+.form{
+    display: flex;
+    justify-content: space-between;
+}
+
+.input::placeholder {
+    color: rgb(60, 60, 60);
+}
+
+.button {
+    font-size: 30px;
+    border: none;
+    background-image: linear-gradient(to right,var(--main-bg-color), var(--secondary-bg-color));
+    color: rgb(255, 255, 255);
+    padding: 5px 60px 5px 60px;
+    font-weight: lighter;
+    border-top-left-radius: 999px;
+    border-bottom-left-radius: 999px;
+    background-size: 200% 100%;
+    transition: color 0.3s ease;
+
+}
+
+.button:hover {
+    animation-name: gradient-scroll;
+    animation-duration: 3s;
+    animation-timing-function: linear; 
+    animation-iteration-count: infinite; 
+}
+
+
+@keyframes gradient-scroll {
+    0% {
+        background-position: 100% 0;
+    }
+    50% {
+        background-position: 0 0; 
+    }
+    100% {
+        background-position: 100% 0; 
+    }
+}
+
+  /* Responsive styles */
+
+
+@media (max-width: 768px) {
+    
+    .input {
+        font-size: 30px;
+        margin-left: 50px;
+        width: 90%; 
+    }
+
+    
+    .button {
+        font-size: 25px;
+        padding: 5px 40px 5px 40px; 
+    }
+}
+
+
+@media (max-width: 480px) {
+   
+    .input {
+        font-size: 16px;
+        margin-left: 30px; 
+        width: 80%; 
+    }
+
+    
+    .button {
+        font-size: 16px;
+        padding: 5px 20px;
+    }
+}
