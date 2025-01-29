@@ -38,6 +38,14 @@ export default function SearchPage() {
 
     }
 
+    function addHeart(id) {
+        axios.patch(`${API_URL}properties/${id}/heart`)
+            .then(res => {
+                fetchProperties()
+            })
+    }
+
+
     useEffect(() => {
         fetchProperties()
     }, [search])
@@ -48,7 +56,7 @@ export default function SearchPage() {
             <div className="row">
                 {properties.map(property => {
                     return (
-                        <CardProperty key={property.id} property={property} />
+                        <CardProperty key={property.id} property={property} callback={() => (addHeart(property.id))} />
                     )
 
                 })}

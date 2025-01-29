@@ -55,7 +55,7 @@ function CardProperty({ property, callback }) {
                         {avg_vote ? parseFloat(avg_vote).toFixed(1) : '-'}
                     </p>
                     <div>
-                        <button className={style.heart} onClick={() => callback(id)}>
+                        <button className={style.heart} onClick={() => callback()}>
                             <img className={style.icon_heart} src={heartIcon} alt="" />
                             <div>
                                 {heart}
