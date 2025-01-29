@@ -1,53 +1,32 @@
-import { useState, useContext, useEffect } from "react"
-import { Link, useNavigate, useParams } from "react-router"
+import { useContext, useEffect } from "react"
+import { Link, useNavigate } from "react-router"
 import GlobalContext from "../context/GlobalContext"
-import axios from "axios"
+import CardProperty from "../components/Card"
 export default function UserDetail() {
 
-    const [user, setUser] = useState({})
+    const { user, setUser } = useContext(GlobalContext)
     const navigate = useNavigate()
+    const { name, surname, number, email, username, property } = user
+    console.log(property)
 
     useEffect(() => {
-
         const storedUser = localStorage.getItem("user")
-
         if (storedUser) {
-
             setUser(JSON.parse(storedUser))
         }
-    }, [setUser])
+    }, [])
+    console.log(user)
 
 
     function goBack() {
         navigate(-1)
     }
 
-
-    // const { id } = useParams()
-    //const [user, setUser] = useState({})
-
-
-
-    // function fetchUser() {
-    //     axios.get(`${API_URL}users/${id}`)
-    //         .then(res => {
-    //             setUser(res.data[0])
-    //         }).catch(err => {
-    //             console.err(err)
-    //         })
-    // }
-
-    // useEffect(() => {
-    //     fetchUser()
-    // }, [id])
-
-
-    const { name, surname, number, email, username } = user
-
     return (
         <>
             <button onClick={goBack}>Torna Indietro</button>
             <div>
+                <h2>Il Tuo Profilo</h2>
                 <p>Nome:{name}</p>
                 <p>Cognome:{surname}</p>
                 <p>Numero:{number}</p>
@@ -55,6 +34,24 @@ export default function UserDetail() {
                 <p>Usernamee:{username}</p>
             </div>
             <Link className="btn btn-danger" to={'properties'} >insert properties</Link>
+            <div>
+                <h3>
+                    Immobili inseriti
+                </h3>
+
+                {property ? property.map((prop) => (
+                    <did key={prop.id} property={property}>
+                        <span>Stanze: {prop.room}</span>
+                        <span>Bagni: {prop.toilet}</span>
+                        <span>Letti: {prop.bed}</span>
+                        <span>Mq: {prop.square_meter}</span>
+                        <span><strong>{prop.address}</strong></span>
+                        <span> {prop.type}</span>
+                        <span>{prop.avg_vote}</span>
+                    </did>
+                )) : <p>Non ci sono proprietà</p>}
+
+            </div>
         </>
 
 
