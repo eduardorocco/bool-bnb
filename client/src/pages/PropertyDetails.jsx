@@ -81,7 +81,6 @@ export default function PropertyDetails() {
         }
     }, [])
 
-    const { title, description, room, toilet, square_meter, address, city, province, type, bed, image, heart, avg_vote, reviews } = property
     const { description, reviews, user_id } = property
 
     return (
