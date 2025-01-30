@@ -8,7 +8,11 @@
 
 .hat{
     text-align: center;
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid var(--grey-hover);
+    text-align: center;
+    margin: 0 -40px 20px -40px;
+    padding-bottom: 20px;
+    font-weight: bold;
 }
 
 .close_button{
@@ -16,5 +20,62 @@
     top: 10px;
     left: 10px;
     border: none;
-    background-color: none;
+    cursor: pointer;
+}
+
+.form_container {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    row-gap: 30px;
+}
+
+.welcome{
+    font-weight: bold;
+}
+
+.form{
+   display: flex;
+   flex-direction: column;
+   font-weight: bold;
+   justify-content: center;
+   width: 250px;
+   align-self: center;
+}
+
+.button_container{
+    padding-top: 20px;
+    display: flex;
+    align-self: center;
+    gap: 20px;
+}
+
+.button_form{
+    padding: 5px 15px;
+    border-radius: 10px;
+    border: none;
+    background-image: var(--gradient);
+    background-size: 130% 100%;
+    font-weight: bold;
+}
+
+.button_form:hover {
+    animation-name: gradient-scroll;
+    animation-duration: 3s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+
+@keyframes gradient-scroll {
+    0% {
+        background-position: 100% 0;
+    }
+
+    50% {
+        background-position: 0 0;
+    }
+
+    100% {
+        background-position: 100% 0;
+    }
 }

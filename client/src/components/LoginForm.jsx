@@ -101,46 +101,72 @@ export default function LoginForm() {
         <div className='bg-dark bg-opacity-50 fixed-top fixed-bottom d-flex justify-content-center align-items-center'>
             <div className={style.container}>
                 <div className={style.hat}>
-                    <button
+                    <div
                         className={style.close_button}
                         onClick={() => (setOverlayLogin())}>
                         <FontAwesomeIcon icon={faXmark} />
-                    </button>
+                    </div>
                     <p>Accedi o registrati</p>
                 </div>
-                <h5>Ti diamo il benvenuto su Boolbnb</h5>
-
                 {checkUser &&
                     <span>
                         I dati inseriti non sono corretti
                     </span>}
-                {login ? <Formik initialValues={{ user: '', passwordLog: '' }} validationSchema={loginSchema} onSubmit={onSubmitLogin}>
-                    {({ isSubmitting }) => (
-                        <Form>
-                            <Input label='Inserisci nome utente o email' name='user' type='text' placeholder="example@email.com" />
-                            <Input label='Inserisci una password' name='passwordLog' type='password' placeholder="Ciao1234" />
-                            <button disabled={isSubmitting} type='reset'>Reset</button>
-                            <button disabled={isSubmitting} type='submit' className='btn btn-primary'>Accedi</button>
-                        </Form>
-                    )}
-                </Formik> :
-                    <Formik initialValues={{ name: '', surName: '', email: '', number: '', userName: '', password: '', confirmPassword: '' }} validationSchema={registrationSchema} onSubmit={onSubmitRegistration}>
+                <div className={style.form_container}>
+                    <h5 className={style.welcome}>Ti diamo il benvenuto su Boolbnb</h5>
+                    {login ? <Formik initialValues={{ user: '', passwordLog: '' }} validationSchema={loginSchema} onSubmit={onSubmitLogin}>
                         {({ isSubmitting }) => (
-                            <Form>
-                                <Input label='Nome&#42;' name='name' type='text' placeholder="Inserisci il nome" />
-                                <Input label='Cognome&#42;' name='surName' type='text' placeholder="Inserisci il cofnome" />
-                                <Input label="Email&#42;" name='email' type='email' placeholder="example@email.com" />
-                                <Input label="Numero di telefono" name='number' type='text' placeholder="xxxxxxxxx" />
-                                <Input label='Username&#42;' name='userName' type='text' placeholder="username..." />
-                                <Input label='Password&#42;' name='password' type='password' placeholder="Ciao1234" />
-                                <Input label='Conferma password&#42;' name='confirmPassword' type='password' placeholder="Ciao1234" />
-                                <button disabled={isSubmitting} type='reset'>Reset</button>
-                                <button disabled={isSubmitting} type='submit' className='btn btn-primary'>Registrati</button>
+                            <Form className={style.form}>
+                                <div>
+                                    <Input
+                                        label='Username o e-mail'
+                                        name='user'
+                                        type='text'
+                                        placeholder="example@email.com"
+                                        className={style.form_el} />
+
+                                    <Input label='Password'
+                                        name='passwordLog'
+                                        type='password'
+                                        placeholder="Ciao1234"
+                                        className={style.form_el} />
+
+                                </div>
+                                <div className={style.button_container}>
+                                    <button
+                                        disabled={isSubmitting}
+                                        type='submit'
+                                        className={style.button_form}>
+                                        Accedi
+                                    </button>
+                                    <button
+                                        onClick={() => { setLogin(!login) }}
+                                        className={style.button_form} > {login ?
+                                            "Registrati" : "Accedi"}
+                                    </button>
+                                </div>
+
                             </Form>
                         )}
-                    </Formik>
-                }
-                <button onClick={() => { setLogin(!login) }}>{login ? "Registrati" : "Accedi"}</button>
+                    </Formik> :
+                        <Formik initialValues={{ name: '', surName: '', email: '', number: '', userName: '', password: '', confirmPassword: '' }} validationSchema={registrationSchema} onSubmit={onSubmitRegistration}>
+                            {({ isSubmitting }) => (
+                                <Form className={style.form}>
+                                    <Input label='Nome&#42;' name='name' type='text' placeholder="Inserisci il nome" />
+                                    <Input label='Cognome&#42;' name='surName' type='text' placeholder="Inserisci il cofnome" />
+                                    <Input label="Email&#42;" name='email' type='email' placeholder="example@email.com" />
+                                    <Input label="Numero di telefono" name='number' type='text' placeholder="xxxxxxxxx" />
+                                    <Input label='Username&#42;' name='userName' type='text' placeholder="username..." />
+                                    <Input label='Password&#42;' name='password' type='password' placeholder="Ciao1234" />
+                                    <Input label='Conferma password&#42;' name='confirmPassword' type='password' placeholder="Ciao1234" />
+                                    <div className={style.button_container}>
+                                        <button disabled={isSubmitting} className={style.button_form} type='submit'>Registrati</button>
+                                    </div>
+                                </Form>
+                            )}
+                        </Formik>
+                    }
+                </div>
             </div>
         </div>
 

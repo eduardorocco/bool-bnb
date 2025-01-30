@@ -1,17 +1,17 @@
 .form {
+    margin: 30px 0px 120px;
     display: flex;
     justify-content: space-between;
     padding: 10px;
     box-shadow: var(--box-shadow);
     border-radius: 999px;
-    margin-bottom: 50px;
 }
 
 .input {
     border-radius: 999px;
     border: none;
     outline: none;
-    padding: 0 10px;
+    padding: 0 20px;
 }
 
 .input:hover {
@@ -88,4 +88,9 @@
         font-size: 16px;
         padding: 5px 20px;
     }
+}
+
+.searched_el{
+    position: absolute;
+    top: 230px;
 }
