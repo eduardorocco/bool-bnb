@@ -15,7 +15,7 @@ function CardProperty({ property, callback }) {
     const { id, title, square_meter, bed, image, heart, avg_vote, address, city, province, type } = property
     return (
 
-        <div className={pathname === '/' ? 'col-3' : 'col-2'  }>
+        <div className={pathname === '/' ? 'col-3' : 'col-6 col-lg-4 col-xxl-2'  }>
 
             <div className={style.card}>
 
