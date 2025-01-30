@@ -7,6 +7,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCalendarDays } from '@fortawesome/free-solid-svg-icons'
 import CardDetail from '../components/CardDetail'
 import heartIcon from '../assets/icon-gallery/heart-pink.png'
+import FormMail from '../components/formMail'
 
 
 export default function PropertyDetails() {
@@ -35,9 +36,8 @@ export default function PropertyDetails() {
                 console.log(id);
             })
             .catch(err => {
-                console.err(err);
+                console.error(err);
             })
-
     }
 
     function addHeart(id) {
@@ -82,6 +82,7 @@ export default function PropertyDetails() {
     }, [])
 
     const { title, description, room, toilet, square_meter, address, city, province, type, bed, image, heart, avg_vote, reviews } = property
+    const { description, reviews, user_id } = property
 
     return (
         <>
@@ -123,7 +124,7 @@ export default function PropertyDetails() {
                                         </div>
                                     </form>
                                 </div>
-
+                                <FormMail userId={user_id} />
                             </>
                             :
                             <>
@@ -137,37 +138,41 @@ export default function PropertyDetails() {
                     </div>
 
                     <div className={`${style.review_container} col-8`}>
-                        <h5 className='text-center'>Recensioni</h5>
-                        {reviews ?
-                            reviews.map(review => {
-                                return (
+                        {reviews && reviews.length > 0 && <h5 className='text-center'>Recensioni</h5>}
+                        {
 
-                                    <div key={review.id} className={style.card_review}>
-                                        <div className={style.title_container}>
-                                            <div className={style.review_title}>{review.title}</div>
-                                            <div> / </div>
-                                            <div className={style.review_user}>{review.username}</div>
-                                        </div>
-                                        <div>
-                                            {review.text}
-                                        </div>
-                                        <div className={style.flex_review}>
-                                            <div className={style.review_icon}>
-                                                <FontAwesomeIcon icon={faCalendarDays} />
-                                                {review.vote}
+
+                            reviews && reviews.length > 0 ?
+                                reviews.map((review, i) => {
+                                    return (
+                                        <div key={i}>
+                                            <div key={review.id} className={style.card_review}>
+                                                <div className={style.title_container}>
+                                                    <div className={style.review_title}>{review.title}</div>
+                                                    <div> / </div>
+                                                    <div className={style.review_user}>{review.username}</div>
+                                                </div>
+                                                <div>
+                                                    {review.text}
+                                                </div>
+                                                <div className={style.flex_review}>
+                                                    <div className={style.review_icon}>
+                                                        <FontAwesomeIcon icon={faCalendarDays} />
+                                                        {review.vote}
+                                                    </div>
+                                                    <div className={style.review_icon}>
+                                                        {review.days_of_stays}
+                                                        <img className={style.heart_static} src={heartIcon} alt="" />
+                                                    </div>
+                                                </div>
                                             </div>
-                                            <div className={style.review_icon}>
-                                                {review.days_of_stays}
-                                                <img className={style.heart_static} src={heartIcon} alt="" />
-                                            </div>
                                         </div>
-                                    </div>
-                                )
-                            })
-                            :
-                            <div className='text-center'>
-                                <strong>Non ci sono ancora recensioni</strong>
-                            </div>
+                                    )
+                                })
+                                :
+                                <div className='text-center'>
+                                    <strong>Non ci sono ancora recensioni</strong>
+                                </div>
                         }
                     </div>
                 </div>

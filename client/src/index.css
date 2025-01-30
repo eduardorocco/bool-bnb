@@ -9,7 +9,7 @@
   --font: "Noto Sans", serif;
   --white: rgba(243, 243, 243, 0.965);
   --heart-color: #FF5A5F;
-  --gradient: linear-gradient(to right,var(--main-bg-color), var(--secondary-bg-color));
+  --gradient: linear-gradient(to right, var(--main-bg-color), var(--secondary-bg-color));
   --p20: 20px;
   --grey-hover: rgb(229, 229, 229);
 }
@@ -54,7 +54,7 @@ a {
   animation: error 0.3s 2;
 }
 
-textarea {
+.textarea {
   resize: none;
 }
 

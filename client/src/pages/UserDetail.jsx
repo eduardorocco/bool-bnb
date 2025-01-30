@@ -40,7 +40,7 @@ export default function UserDetail() {
                 </h3>
 
                 {property ? property.map((prop) => (
-                    <did key={prop.id} property={property}>
+                    <div key={prop.id} property={property}>
                         <span>Stanze: {prop.room}</span>
                         <span>Bagni: {prop.toilet}</span>
                         <span>Letti: {prop.bed}</span>
@@ -48,7 +48,7 @@ export default function UserDetail() {
                         <span><strong>{prop.address}</strong></span>
                         <span> {prop.type}</span>
                         <span>{prop.avg_vote}</span>
-                    </did>
+                    </div>
                 )) : <p>Non ci sono proprietà</p>}
 
             </div>

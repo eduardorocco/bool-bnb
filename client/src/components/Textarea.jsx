@@ -6,7 +6,7 @@ const CustomTextarea = ({ label, ...props }) => {
     return (
         <div className="formComponents">
             <label>{label}<span> &#42;</span></label>
-            <textarea {...props} {...field} className={meta.touched && meta.error ? "inputError" : ""} />
+            <textarea {...props} {...field} className={meta.touched && meta.error ? "inputError textarea" : "textarea"} />
             {meta.touched && meta.error && <div className="error">{meta.error}</div>}
         </div>
     )
