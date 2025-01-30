@@ -130,6 +130,7 @@ export default function PropertyDetails() {
                     </div>
 
                     <div className={`${style.review_container} col-8`}>
+                        {reviews && reviews.length > 0 && <h5 className='text-center'>Recensioni</h5>}
                         {
 
 
@@ -137,7 +138,6 @@ export default function PropertyDetails() {
                                 reviews.map((review, i) => {
                                     return (
                                         <div key={i}>
-                                            <h5 className='text-center'>Recensioni</h5>
                                             <div key={review.id} className={style.card_review}>
                                                 <div className={style.title_container}>
                                                     <div className={style.review_title}>{review.title}</div>
