@@ -1,13 +1,18 @@
-import { Link, NavLink, useNavigate } from "react-router"
+import { Link, NavLink, useLocation, useNavigate } from "react-router"
 import GlobalContext from "../context/GlobalContext"
 import { useContext } from "react"
-import style from '../assets/modules/Header.module.css'
+import styleHomePage from '../assets/modules/Header.module.css'
 import whiteLinear from '../assets/logo-gallery/white-linear.png'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUser } from '@fortawesome/free-solid-svg-icons'
+import stylePages from '../assets/modules/HeaderPages.module.css'
+import blackLinear from '../assets/logo-gallery/black-linear.png'
 
 export default function Header() {
     const { setOverlayLogin, user, setUser, isLogin } = useContext(GlobalContext)
+    let { pathname } = useLocation()
+    const styles = pathname === '/' ? styleHomePage : stylePages
+    const logo = pathname === '/' ? whiteLinear : blackLinear
 
     const navigate = useNavigate()
 
@@ -19,22 +24,22 @@ export default function Header() {
 
     return (
         <div>
-            <nav className={style.navbar}>
-
+            <nav className={styles.navbar}>
+                
                 <Link to={'/'}>
-                    <figure className={style.logo_container}>
-                        <img className={style.logo} src={whiteLinear} alt="" />
+                    <figure className={styles.logo_container}>
+                        <img className={styles.logo} src={logo} alt="" />
                     </figure>
                 </Link>
 
-                <div className={style.navlink}>
+                <div className={styles.navlink}>
                     <NavLink to='/'>Home</NavLink>
                     <NavLink to='/properties'>Soggiorni</NavLink>
                 </div>
 
-                <div className={style.navlink}>
+                <div className={styles.navlink}>
                     <Link to={`users/${user.id}`}>
-                        <div className={style.rounded}>
+                        <div className={styles.rounded}>
                             <FontAwesomeIcon icon={faUser} />
                             {/* <span>{user.username}</span> */}
                         </div>
@@ -42,9 +47,9 @@ export default function Header() {
 
                     {!isLogin ? <button
                         onClick={() => (setOverlayLogin(true))}
-                        className={style.button}>
+                        className={styles.button}>
                         Accedi
-                    </button> : <button className={style.button} onClick={logOut}>Log Out</button>}
+                    </button> : <button className={styles.button} onClick={logOut}>Log Out</button>}
                 </div>
 
             </nav>

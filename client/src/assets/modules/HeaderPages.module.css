@@ -1,10 +1,9 @@
 .navbar {
-    color: white;
+    color: black;
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 14px 30px;
-    background-image: var(--gradient);
     transition: all 0.3s;
 }
 
@@ -21,23 +20,22 @@
 }
 
 .rounded {
-    background-color: var(--main-green-color);
-    color: white;
+    color: black;
     padding: 10px;
     border-radius: 50%;
     line-height: 5px;
-    box-shadow: var(--box-shadow)
+    border: 1px solid black;
 }
 
 .button {
     background: white;
-    color: var(--main-bg-color);
+    color: black;
     border: none;
+    border: 1px solid black;
     padding: 6px 15px;
     border-radius: 999px;
-    box-shadow: var(--box-shadow)
 }
-
-.active {
-    color: red !important;
+.rounded:hover,
+.button:hover{
+    background-color: rgb(239, 239, 239);
 }

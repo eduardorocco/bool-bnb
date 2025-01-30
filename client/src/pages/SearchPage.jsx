@@ -58,7 +58,7 @@ export default function SearchPage() {
     }, [])
 
     return (
-        <div className="container">
+        <div className="container-fluid">
             <SearchBar />
             <div className="row">
                 {properties.map(property => {

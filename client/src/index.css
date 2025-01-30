@@ -63,7 +63,6 @@ textarea {
 
 .active {
   font-weight: bolder;
-  border-bottom: 2px solid white;
   padding-bottom: 1px;
 }
 
