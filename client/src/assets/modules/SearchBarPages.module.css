@@ -13,7 +13,8 @@
     outline: none;
     padding: 0 10px;
 }
-.input:hover{
+
+.input:hover {
     background-color: var(--grey-hover);
 }
 
