@@ -8,7 +8,11 @@
 
 .hat{
     text-align: center;
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid var(--grey-hover);
+    height: 30px;
+    text-align: center;
+    margin: 0 -40px 20px -40px;
+    font-weight: bold;
 }
 
 .close_button{
@@ -16,5 +20,5 @@
     top: 10px;
     left: 10px;
     border: none;
-    background-color: none;
+    cursor: pointer;
 }

@@ -101,11 +101,11 @@ export default function LoginForm() {
         <div className='bg-dark bg-opacity-50 fixed-top fixed-bottom d-flex justify-content-center align-items-center'>
             <div className={style.container}>
                 <div className={style.hat}>
-                    <button
+                    <div
                         className={style.close_button}
                         onClick={() => (setOverlayLogin())}>
                         <FontAwesomeIcon icon={faXmark} />
-                    </button>
+                    </div>
                     <p>Accedi o registrati</p>
                 </div>
                 <h5>Ti diamo il benvenuto su Boolbnb</h5>
