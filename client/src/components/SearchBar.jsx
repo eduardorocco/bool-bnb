@@ -49,7 +49,6 @@ export default function SearchBar() {
     return (
         <div className={`container `}>
             <form onSubmit={onSubmit} className={styles.form} >
-                {pathname === '/properties' && search.city && <p>hai filtrato per {search.city}</p>}
                 <input
                     className={styles.input}
                     type="text"

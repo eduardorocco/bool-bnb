@@ -3,6 +3,7 @@ import { useState, useEffect, useContext } from 'react'
 import GlobalContext from "../context/GlobalContext"
 import CardProperty from '../components/Card'
 import SearchBar from '../components/SearchBar'
+import style from '../assets/modules/SearchBarPages.module.css' 
 
 export default function SearchPage() {
 
@@ -45,6 +46,10 @@ export default function SearchPage() {
             })
     }
 
+    function capitalizeFirstLetter(val) {
+        return String(val).charAt(0).toUpperCase() + String(val).slice(1);
+    }
+
 
     useEffect(() => {
         fetchProperties()
@@ -60,6 +65,15 @@ export default function SearchPage() {
     return (
         <div className="container-fluid">
             <SearchBar />
+            {search.city ? <strong className={style.searched_el}>
+                {properties.length === 1 ? 'Trovato' : 'Trovati'}
+                &nbsp;
+                {properties.length}
+                &nbsp;
+                {properties.length === 1 ? 'alloggio' : 'alloggi'}
+                 : per la città di {capitalizeFirstLetter(search.city)}
+                 </strong> : 
+                 ''}
             <div className="row row-gap-4">
                 {properties.map(property => {
                     return (

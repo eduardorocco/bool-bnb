@@ -25,7 +25,7 @@ export default function Header() {
     return (
         <div>
             <nav className={styles.navbar}>
-                
+
                 <Link to={'/'}>
                     <figure className={styles.logo_container}>
                         <img className={styles.logo} src={logo} alt="" />
@@ -34,7 +34,9 @@ export default function Header() {
 
                 <div className={styles.navlink}>
                     <NavLink to='/'>Home</NavLink>
-                    <NavLink to='/properties'>Soggiorni</NavLink>
+                    <NavLink to='/properties'>
+                        Soggiorni
+                    </NavLink>
                 </div>
 
                 <div className={styles.navlink}>
