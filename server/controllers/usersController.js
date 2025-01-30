@@ -16,6 +16,7 @@ function show(req, res) {
 
         const sql = `SELECT * FROM properties WHERE user_id = ?`
 
+        if (!user) return res.status(404).json({ message: 'User not found' })
         connection.query(sql, [user.id], (err, results) => {
             if (err) return res.status(500).json({ message: err.message })
 
