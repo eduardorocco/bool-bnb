@@ -11,7 +11,6 @@ import { useContext, useState } from 'react'
 export default function InsertPropertyPage() {
 
     const { id } = useParams()
-    console.log(id)
 
     const { API_URL } = useContext(GlobalContext)
     const [newImage, setNewImage] = useState(null)
@@ -46,7 +45,8 @@ export default function InsertPropertyPage() {
 
     async function onSubmitProperties(values, action) {
 
-        const { title, description, room, bed, toilet, square_meter, address, city, province, type } = values
+
+        const { title, description, room, bed, toilet, square_meter, address, city, province, type, image } = values
         const newProperties = {
             title: title,
             description: description,
@@ -58,19 +58,14 @@ export default function InsertPropertyPage() {
             city: city,
             province: province,
             type: type,
+            image: newImage.name
         }
-        console.log(newProperties)
         const addProperties = await axios.post(`${API_URL}properties/${id}`, newProperties).then((_) => {
 
         }).catch((err) => {
             console.log(err.response.data)
         })
 
-        action.resetForm()
-    }
-
-    const handleSubmit = async (e) => {
-        e.preventDefault()
         const formData = new FormData()
         formData.append('image', newImage)
 
@@ -82,19 +77,26 @@ export default function InsertPropertyPage() {
             console.log(err)
         })
 
+        action.resetForm()
     }
+
+    // const handleSubmit = async (e) => {
+    //     e.preventDefault()
+
+
+    // }
 
 
     function onImageChange(e) {
         setNewImage(e.target.files[0])
     }
 
-    console.log(newImage)
+
 
 
     return (
         <>
-            <Formik initialValues={{ title: '', description: '', room: 1, bed: 1, toilet: 1, square_meter: 2, address: '', city: '', province: '', type: '' }} validationSchema={propertySchema} onSubmit={(values, actions) => onSubmitProperties(values, actions)}>
+            <Formik initialValues={{ title: '', description: '', room: 1, bed: 1, toilet: 1, square_meter: 2, address: '', city: '', province: '', type: '', image: '' }} validationSchema={propertySchema} onSubmit={(values, actions) => onSubmitProperties(values, actions)}>
                 {({ isSubmitting }) => (
                     <>
                         <Form>
@@ -110,17 +112,12 @@ export default function InsertPropertyPage() {
                             <Textarea label='Descrizione' name='description' rows="5" placeholder="Inserisci la descrizione qui..." />
                             <button disabled={isSubmitting} type='reset'>Resetta Form</button>
                             <button disabled={isSubmitting} type='submit' className='btn btn-primary'>Crea immobile</button>
+                            <Input type='file' id='image' name='image' onChange={onImageChange} />
                         </Form>
                     </>
                 )}
             </Formik>
-            <form onSubmit={handleSubmit}>
-                <label htmlFor="image">Carica un immagine</label>
-                <input type='file' id='image' name='image' onChange={onImageChange} />
-                <input type="submit" value='Carica' />
-            </form>
         </>
-
 
 
     )
