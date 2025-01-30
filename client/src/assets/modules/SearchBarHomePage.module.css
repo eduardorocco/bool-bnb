@@ -29,6 +29,8 @@
     border-bottom-left-radius: 999px;
     background-size: 200% 100%;
     transition: color 0.3s ease;
+    position: relative;
+    right: -20px;
 
 }
 
