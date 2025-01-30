@@ -4,6 +4,9 @@ import axios from 'axios'
 import GlobalContext from '../context/GlobalContext'
 import { useContext, useState } from 'react'
 import Input from './Input'
+import style from '../assets/modules/LoginForm.module.css'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faXmark } from '@fortawesome/free-solid-svg-icons'
 
 export default function LoginForm() {
     const passwordRules = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{5,}$/
@@ -96,8 +99,17 @@ export default function LoginForm() {
 
     return (
         <div className='bg-dark bg-opacity-50 fixed-top fixed-bottom d-flex justify-content-center align-items-center'>
-            <div className="card p-5">
-                <button onClick={() => (setOverlayLogin())} className='btn btn-danger position-absolute top-0 right-0'>X</button>
+            <div className={style.container}>
+                <div className={style.hat}>
+                    <button
+                        className={style.close_button}
+                        onClick={() => (setOverlayLogin())}>
+                        <FontAwesomeIcon icon={faXmark} />
+                    </button>
+                    <p>Accedi o registrati</p>
+                </div>
+                <h5>Ti diamo il benvenuto su Boolbnb</h5>
+
                 {checkUser &&
                     <span>
                         I dati inseriti non sono corretti
