@@ -14,7 +14,7 @@ export default function PropertyDetails() {
 
     const { id } = useParams()
 
-    const { API_URL, isLogin, user, setOverlayLogin } = useContext(GlobalContext)
+    const { API_URL, isLogin, user, setOverlayLogin, setUser } = useContext(GlobalContext)
 
     const initialFormData = {
         title: '',
@@ -74,6 +74,13 @@ export default function PropertyDetails() {
         fetchProperty()
     }, [id])
 
+    useEffect(() => {
+        const storedUser = localStorage.getItem("user")
+        if (storedUser) {
+            setUser(JSON.parse(storedUser))
+        }
+    }, [])
+
     const { title, description, room, toilet, square_meter, address, city, province, type, bed, image, heart, avg_vote, reviews } = property
 
     return (
@@ -122,10 +129,10 @@ export default function PropertyDetails() {
                             <>
                                 <p>Per fare una recensione devi prima accedere</p>
                                 <button
-                                onClick={() => (setOverlayLogin(true))}
-                                className={style.button}>
-                                Accedi
-                            </button>
+                                    onClick={() => (setOverlayLogin(true))}
+                                    className={style.button}>
+                                    Accedi
+                                </button>
                             </>}
                     </div>
 
