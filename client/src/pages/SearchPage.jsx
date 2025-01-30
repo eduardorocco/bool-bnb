@@ -60,7 +60,7 @@ export default function SearchPage() {
     return (
         <div className="container-fluid">
             <SearchBar />
-            <div className="row">
+            <div className="row row-gap-4">
                 {properties.map(property => {
                     return (
                         <CardProperty key={property.id} property={property} callback={() => (addHeart(property.id))} />

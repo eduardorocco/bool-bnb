@@ -62,8 +62,8 @@ export default function SearchBar() {
                 {pathname === '/' ? '' : <select
                     value={searchCity.type}
                     name='type'
-                    className="form-select"
                     aria-label="Type"
+                    className={styles.input}
                     onChange={handleSearch}>
                     <option value={''}>Tipologia</option>
                     <option value="villa">villa</option>
@@ -76,8 +76,8 @@ export default function SearchBar() {
                 {pathname === '/' ? '' : <select
                     value={searchCity.room}
                     name='room'
-                    className="form-select"
                     aria-label="room"
+                    className={styles.input}
                     onChange={handleSearch}>
                     <option value={''}>Stanze</option>
                     <option value="1">1</option>
@@ -91,8 +91,8 @@ export default function SearchBar() {
                 {pathname === '/' ? '' : <select
                     name='bed'
                     value={searchCity.bed}
-                    className="form-select"
                     aria-label="bed"
+                    className={styles.input}
                     onChange={handleSearch}>
                     <option value={''} >Letti</option>
                     <option value="1">1</option>
@@ -106,8 +106,8 @@ export default function SearchBar() {
                 {pathname === '/' ? '' : <select
                     value={searchCity.toilet}
                     name='toilet'
-                    className="form-select"
                     aria-label="toilet"
+                    className={styles.input}
                     onChange={handleSearch}>
                     <option value=''>Bagni</option>
                     <option value="1">1</option>
@@ -117,7 +117,7 @@ export default function SearchBar() {
 
 
 
-                <button type='submit' className={styles.button}> {pathname === '/' ? <FontAwesomeIcon icon={faMagnifyingGlass} /> : 'Filtra'}</button>
+                <button type='submit' className={styles.button}><FontAwesomeIcon icon={faMagnifyingGlass} /></button>
 
 
             </form>
