@@ -37,5 +37,5 @@
 }
 .rounded:hover,
 .button:hover{
-    background-color: rgb(239, 239, 239);
+    background-color: var(--grey-hover);
 }
