@@ -74,7 +74,7 @@ export default function PropertyDetails() {
         fetchProperty()
     }, [id])
 
-    const { title, description, room, toilet, square_meter, address, city, province, type, bed, image, heart, avg_vote, reviews } = property
+    const { description, reviews } = property
 
     return (
         <>
@@ -122,39 +122,45 @@ export default function PropertyDetails() {
                             <>
                                 <p>Per fare una recensione devi prima accedere</p>
                                 <button
-                                onClick={() => (setOverlayLogin(true))}
-                                className={style.button}>
-                                Accedi
-                            </button>
+                                    onClick={() => (setOverlayLogin(true))}
+                                    className={style.button}>
+                                    Accedi
+                                </button>
                             </>}
                     </div>
 
                     <div className={`${style.review_container} col-8`}>
-                        <h5 className='text-center'>Recensioni</h5>
-                        {reviews ?
+                        {console.log(reviews)}
+                        {
+                        
+                        
+                        reviews && reviews.length > 0 ?
                             reviews.map(review => {
                                 return (
+                                    <>
+                                        <h5 className='text-center'>Recensioni</h5>
+                                        <div key={review.id} className={style.card_review}>
+                                            <div className={style.title_container}>
+                                                <div className={style.review_title}>{review.title}</div>
+                                                <div> / </div>
+                                                <div className={style.review_user}>{review.username}</div>
+                                            </div>
+                                            <div>
+                                                {review.text}
+                                            </div>
+                                            <div className={style.flex_review}>
+                                                <div className={style.review_icon}>
+                                                    <FontAwesomeIcon icon={faCalendarDays} />
+                                                    {review.vote}
+                                                </div>
+                                                <div className={style.review_icon}>
+                                                    {review.days_of_stays}
+                                                    <img className={style.heart_static} src={heartIcon} alt="" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </>
 
-                                    <div key={review.id} className={style.card_review}>
-                                        <div className={style.title_container}>
-                                            <div className={style.review_title}>{review.title}</div>
-                                            <div> / </div>
-                                            <div className={style.review_user}>{review.username}</div>
-                                        </div>
-                                        <div>
-                                            {review.text}
-                                        </div>
-                                        <div className={style.flex_review}>
-                                            <div className={style.review_icon}>
-                                                <FontAwesomeIcon icon={faCalendarDays} />
-                                                {review.vote}
-                                            </div>
-                                            <div className={style.review_icon}>
-                                                {review.days_of_stays}
-                                                <img className={style.heart_static} src={heartIcon} alt="" />
-                                            </div>
-                                        </div>
-                                    </div>
                                 )
                             })
                             :
