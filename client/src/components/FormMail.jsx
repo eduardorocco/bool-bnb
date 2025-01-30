@@ -2,15 +2,21 @@ import axios from "axios"
 import { useState, useContext } from "react"
 import GlobalContext from "../context/GlobalContext"
 
-export default function FormMail() {
+export default function FormMail({ userId }) {
 
     const { API_URL, user } = useContext(GlobalContext)
+    const [userEmail, setUserEmail] = useState()
 
     const initialMailInfo = {
         name: '',
         message: '',
-        recipient: "ciao@ciao.com"
     }
+
+    axios.get(`${API_URL}users/${userId}`).then((res) => {
+        setUserEmail(res.data.email)
+    }).catch((err) => {
+        console.error(err)
+    })
 
 
     const [mailInfo, setMailInfo] = useState(initialMailInfo)
@@ -26,7 +32,8 @@ export default function FormMail() {
         e.preventDefault()
         const sendEmail = {
             ...mailInfo,
-            email: user.email
+            email: user.email,
+            recipient: userEmail
         }
         axios.post(`${API_URL}send/`, sendEmail).then((res) => {
             console.log('messaggio inviato')
