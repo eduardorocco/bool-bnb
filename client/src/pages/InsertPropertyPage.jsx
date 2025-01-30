@@ -7,12 +7,13 @@ import { useParams } from "react-router-dom"
 import axios from 'axios'
 import GlobalContext from '../context/GlobalContext'
 import { useContext, useState } from 'react'
+import { useEffect } from 'react'
 
 export default function InsertPropertyPage() {
 
     const { id } = useParams()
 
-    const { API_URL } = useContext(GlobalContext)
+    const { API_URL, setUser } = useContext(GlobalContext)
     const [newImage, setNewImage] = useState(null)
 
     const MAX_FILE_SIZE = 102400; //100KB
@@ -46,7 +47,7 @@ export default function InsertPropertyPage() {
     async function onSubmitProperties(values, action) {
 
 
-        const { title, description, room, bed, toilet, square_meter, address, city, province, type, image } = values
+        const { title, description, room, bed, toilet, square_meter, address, city, province, type } = values
         const newProperties = {
             title: title,
             description: description,
@@ -89,7 +90,15 @@ export default function InsertPropertyPage() {
 
     function onImageChange(e) {
         setNewImage(e.target.files[0])
+        console.log(e.target.files)
     }
+
+    useEffect(() => {
+        const storedUser = localStorage.getItem("user")
+        if (storedUser) {
+            setUser(JSON.parse(storedUser))
+        }
+    }, [])
 
 
 
@@ -112,7 +121,7 @@ export default function InsertPropertyPage() {
                             <Textarea label='Descrizione' name='description' rows="5" placeholder="Inserisci la descrizione qui..." />
                             <button disabled={isSubmitting} type='reset'>Resetta Form</button>
                             <button disabled={isSubmitting} type='submit' className='btn btn-primary'>Crea immobile</button>
-                            <Input type='file' id='image' name='image' onChange={onImageChange} />
+                            <input type='file' id='image' name='image' onChange={onImageChange} />
                         </Form>
                     </>
                 )}
