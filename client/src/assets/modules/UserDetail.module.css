@@ -18,16 +18,7 @@
     background-color: white;
     border-top-right-radius: 20px;
     border-bottom-right-radius: 20px;
-    padding: 30px;
-    margin-bottom: 30px;
-}
-
-.container_newProp {
-    box-shadow: var(--box-shadow);
-    background-color: white;
-    border-top-right-radius: 20px;
-    border-bottom-right-radius: 20px;
-    padding: 30px;
+    padding: 0 30px 20px 30px;
     margin-bottom: 30px;
 }
 
@@ -39,23 +30,9 @@
     padding: 10px 20px;
 }
 
-.title_prop {
-    font-weight: lighter;
-    color: black;
-}
-
-.card_newProp {
-    display: flex;
-    justify-content: space-between;
-    align-items: space-between;
-    flex-direction: column;
-    margin-bottom: 30px;
-    padding: 10px 20px;
-}
-
 .profile_img {
-    width: 120px;
-    height: 120px;
+    width: 150px;
+    height: 150px;
 }
 
 .card_user {
@@ -63,9 +40,9 @@
     justify-content: space-between;
     align-items: space-between;
     flex-direction: column;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
     row-gap: 5px;
-    padding: 10px 20px;
+    padding: 10px;
 }
 
 .title {
@@ -74,9 +51,27 @@
     border-bottom: solid 1px var(--main-bg-color);
 }
 
+.container_newProp {
+    box-shadow: var(--box-shadow);
+    background-color: white;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    padding: 30px;
+}
+
+.title_prop {
+    font-weight: lighter;
+    color: black;
+}
+
+.card_newProp {}
+
+.card_propInsert {}
+
 .btn_property {
     display: flex;
     justify-content: flex-end;
+    padding-right: 25px;
 }
 
 .button_newProp {
@@ -117,4 +112,9 @@
     100% {
         background-position: 100% 0;
     }
+}
+
+p {
+    font-size: 18px;
+    font-weight: lighter;
 }

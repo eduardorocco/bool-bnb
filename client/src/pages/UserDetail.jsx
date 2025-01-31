@@ -35,11 +35,11 @@ export default function UserDetail() {
                         <img className={style.profile_img} src={profile} alt="" />
                     </div>
                     <div className={style.card_user}>
-                        <p>Nome: {name}</p>
-                        <p>Cognome: {surname}</p>
-                        <p>Numero: {number}</p>
-                        <p>email: {email}</p>
-                        <p>Usernamee: {username}</p>
+                        <p><strong>Nome: </strong>{name}</p>
+                        <p><strong>Cognome: </strong>{surname}</p>
+                        <p><strong>Numero: </strong>{number}</p>
+                        <p><strong>email: </strong>{email}</p>
+                        <p><strong>Username: </strong>{username}</p>
                     </div>
                     <div className={style.btn_property}>
                         <Link className={`${style.button_newProp} btn btn-danger`} to={'properties'} >Inserisci immobile</Link>
@@ -54,7 +54,7 @@ export default function UserDetail() {
                         </h3>
 
                         {property ? property.map((prop) => (
-                            <div key={prop.id} property={property}>
+                            <div className={style.card_propInsert} key={prop.id} property={property}>
                                 <p><strong>{prop.address}</strong></p>
                                 <p> {prop.type}</p>
                                 <p>{prop.avg_vote}</p>
