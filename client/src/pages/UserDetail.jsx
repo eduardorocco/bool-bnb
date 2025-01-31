@@ -1,7 +1,6 @@
 import { useContext, useEffect } from "react"
 import { Link, useNavigate } from "react-router"
 import GlobalContext from "../context/GlobalContext"
-import CardProperty from "../components/Card"
 export default function UserDetail() {
 
     const { user, setUser } = useContext(GlobalContext)
