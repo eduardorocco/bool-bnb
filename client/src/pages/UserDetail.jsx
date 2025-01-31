@@ -64,21 +64,36 @@ export default function UserDetail() {
                                 </div>
                                 <div className="col-2">
                                     <div className={style.icon_container}>
-                                        <p><FontAwesomeIcon className={style.icon} icon={faHome} /> {prop.type}</p>
+                                        <FontAwesomeIcon className={style.icon} icon={faHome} />
+
                                     </div>
+                                    <span>{prop.type}</span>
                                 </div>
                                 <span>{prop.avg_vote}</span>
                                 <div className="col-2">
-                                    <span><FontAwesomeIcon className={style.icon} icon={faSquare} /> {prop.room}</span>
+                                    <div className={style.icon_container}>
+                                        <FontAwesomeIcon className={style.icon} icon={faSquare} />
+                                    </div>
+                                    <span> {prop.room}</span>
                                 </div>
                                 <div className="col-2">
-                                    <span><FontAwesomeIcon className={style.icon} icon={faToilet} /> {prop.toilet}</span>
+                                    <div className={style.icon_container}>
+                                        <FontAwesomeIcon className={style.icon} icon={faToilet} />
+                                    </div>
+                                    <span> {prop.toilet}</span>
                                 </div>
                                 <div className="col-2">
-                                    <span><FontAwesomeIcon className={style.icon} icon={faBed} /> {prop.bed}</span>
+                                    <div className={style.icon_container}>
+                                        <FontAwesomeIcon className={style.icon} icon={faBed} />
+                                    </div>
+                                    <span> {prop.bed}</span>
+
                                 </div>
                                 <div className="col-2">
-                                    <span><strong className={style.icon}>m&#178;</strong> {prop.square_meter}</span>
+                                    <div className={style.icon_container}>
+                                        <span><strong className={style.icon}>m&#178;</strong> </span>
+                                    </div>
+                                    <span>{prop.square_meter}</span>
                                 </div>
                             </div>
                         )) : <p>Non ci sono proprietà</p>}

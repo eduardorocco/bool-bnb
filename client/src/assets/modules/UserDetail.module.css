@@ -65,11 +65,17 @@
     margin-bottom: 20px;
 }
 
-.card_newProp {}
 
 .card_propInsert {
     display: flex;
     justify-content: space-between;
+}
+
+.card_propInsert div {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+
 }
 
 .btn_property {
@@ -118,9 +124,28 @@
     }
 }
 
-p,
+.icon_container {
+    height: 30px;
+    width: 30px;
+    aspect-ratio: 1 /1;
+    background-size: 120% 100%;
+    background-image: var(--gradient);
+    border-radius: 6px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+
+.icon {
+    color: black;
+    font-weight: bolder;
+    font-size: 16px;
+}
+
+/* p,
 span {
     font-size: 18px;
     font-weight: lighter;
     margin-right: 10px;
-}
+} */

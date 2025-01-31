@@ -6,13 +6,16 @@ import { Outlet } from "react-router";
 import GlobalContext from "../context/GlobalContext";
 
 export default function DefaulLayout() {
-    const { overlayLogin} = useContext(GlobalContext)
+    const { overlayLogin } = useContext(GlobalContext)
     return (
         <>
             <Header />
-            <Outlet />
+            <main>
+                <Outlet />
+            </main>
+
             <Footer />
-            {overlayLogin && <LoginForm/>}
+            {overlayLogin && <LoginForm />}
         </>
 
     )
