@@ -15,7 +15,7 @@ export default function PropertyDetails() {
 
     const { id } = useParams()
 
-    const { API_URL, isLogin, user, setOverlayLogin } = useContext(GlobalContext)
+    const { API_URL, isLogin, user, setOverlayLogin, setUser } = useContext(GlobalContext)
 
     const initialFormData = {
         title: '',
@@ -74,6 +74,13 @@ export default function PropertyDetails() {
         fetchProperty()
     }, [id])
 
+    useEffect(() => {
+        const storedUser = localStorage.getItem("user")
+        if (storedUser) {
+            setUser(JSON.parse(storedUser))
+        }
+    }, [])
+
     const { description, reviews, user_id } = property
 
     return (
@@ -130,6 +137,7 @@ export default function PropertyDetails() {
                     </div>
 
                     <div className={`${style.review_container} col-8`}>
+                        {reviews && reviews.length > 0 && <h5 className='text-center'>Recensioni</h5>}
                         {
 
 
@@ -137,7 +145,6 @@ export default function PropertyDetails() {
                                 reviews.map((review, i) => {
                                     return (
                                         <div key={i}>
-                                            <h5 className='text-center'>Recensioni</h5>
                                             <div key={review.id} className={style.card_review}>
                                                 <div className={style.title_container}>
                                                     <div className={style.review_title}>{review.title}</div>

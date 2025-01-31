@@ -17,6 +17,7 @@ app.use(cors({
 
 
 app.use(express.json())
+app.use(fileUpload())
 
 // Limita il numero di richieste per prevenire spam (max 5 richieste ogni 10 minuti)
 const limiter = rateLimit({
