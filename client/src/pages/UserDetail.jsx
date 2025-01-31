@@ -4,13 +4,17 @@ import GlobalContext from "../context/GlobalContext"
 import style from '../assets/modules/UserDetail.module.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons'
+import { faBed } from '@fortawesome/free-solid-svg-icons'
+import { faHome } from '@fortawesome/free-solid-svg-icons'
+import { faSquare } from '@fortawesome/free-solid-svg-icons'
+import { faToilet } from '@fortawesome/free-solid-svg-icons'
 import profile from '../assets/logo-label/Bool_bnb_logo_gradient 2.png'
 
 export default function UserDetail() {
 
     const { user, setUser } = useContext(GlobalContext)
     const navigate = useNavigate()
-    const { name, surname, number, email, username, property } = user
+    const { name, surname, number, email, username, property, city } = user
     console.log(property)
 
     useEffect(() => {
@@ -55,13 +59,27 @@ export default function UserDetail() {
 
                         {property ? property.map((prop) => (
                             <div className={style.card_propInsert} key={prop.id} property={property}>
-                                <p><strong>{prop.address}</strong></p>
-                                <p> {prop.type}</p>
-                                <p>{prop.avg_vote}</p>
-                                <p>Stanze: {prop.room}</p>
-                                <p>Bagni: {prop.toilet}</p>
-                                <p>Letti: {prop.bed}</p>
-                                <p>Mq: {prop.square_meter}</p>
+                                <div className="col-3">
+                                    <p><strong>{prop.address}, {prop.city}</strong></p>
+                                </div>
+                                <div className="col-2">
+                                    <div className={style.icon_container}>
+                                        <p><FontAwesomeIcon className={style.icon} icon={faHome} /> {prop.type}</p>
+                                    </div>
+                                </div>
+                                <span>{prop.avg_vote}</span>
+                                <div className="col-2">
+                                    <span><FontAwesomeIcon className={style.icon} icon={faSquare} /> {prop.room}</span>
+                                </div>
+                                <div className="col-2">
+                                    <span><FontAwesomeIcon className={style.icon} icon={faToilet} /> {prop.toilet}</span>
+                                </div>
+                                <div className="col-2">
+                                    <span><FontAwesomeIcon className={style.icon} icon={faBed} /> {prop.bed}</span>
+                                </div>
+                                <div className="col-2">
+                                    <span><strong className={style.icon}>m&#178;</strong> {prop.square_meter}</span>
+                                </div>
                             </div>
                         )) : <p>Non ci sono proprietà</p>}
                     </div>

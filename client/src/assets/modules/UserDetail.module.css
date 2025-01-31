@@ -18,7 +18,7 @@
     background-color: white;
     border-top-right-radius: 20px;
     border-bottom-right-radius: 20px;
-    padding: 0 30px 20px 30px;
+    padding: 0 0px 20px 30px;
     margin-bottom: 30px;
 }
 
@@ -62,11 +62,15 @@
 .title_prop {
     font-weight: lighter;
     color: black;
+    margin-bottom: 20px;
 }
 
 .card_newProp {}
 
-.card_propInsert {}
+.card_propInsert {
+    display: flex;
+    justify-content: space-between;
+}
 
 .btn_property {
     display: flex;
@@ -114,7 +118,9 @@
     }
 }
 
-p {
+p,
+span {
     font-size: 18px;
     font-weight: lighter;
+    margin-right: 10px;
 }
