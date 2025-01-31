@@ -60,7 +60,7 @@ export default function FormMail({ userId }) {
                 onSubmit={onSubmit}>
                 {({ isSubmitting }) => (
 
-                    <div className={style.review_container}>
+                    <>
                         <h5 className={`${style.title_20} text-center`}>Contatta il propietario</h5>
                         <Form className={style.card_review}>
                             <div className={style.form_review_flex}>
@@ -86,7 +86,9 @@ export default function FormMail({ userId }) {
                                 </button>
                             </div>
                         </Form>
-                    </div>
+                    </>
+
+
 
                 )}
             </Formik>}

@@ -95,7 +95,11 @@ export default function PropertyDetails() {
                             {description}
                         </p>
                     </div>
-                    <div className="col-4">
+                    <div className={`col-4 ${style.email_container}`}>
+                        {isLogin ? <FormMail userId={user_id} /> : <p>Per contattare il proprietario devi prima accedere</p>}
+                    </div>
+
+                    <div className={`${style.review_container} col-8`}>
                         {isLogin ?
                             <>
                                 <h5 className={`${style.title_20} text-center`}>Lascia una recensione</h5>
@@ -123,7 +127,7 @@ export default function PropertyDetails() {
                                         </div>
                                     </form>
                                 </div>
-                                <FormMail userId={user_id} />
+
                             </>
                             :
                             <>
@@ -134,10 +138,7 @@ export default function PropertyDetails() {
                                     Accedi
                                 </button>
                             </>}
-                    </div>
-
-                    <div className={`${style.review_container} col-8`}>
-                        {reviews && reviews.length > 0 && <h5 className='text-center'>Recensioni</h5>}
+                        {reviews && reviews.length > 0 && <h5 className='text-center'>Recensioni({reviews && reviews.length})</h5>}
                         {
 
 

@@ -1,17 +1,17 @@
-.title{
+.title {
     font-weight: lighter;
     font-size: 35px;
     padding: var(--p20) 0;
 }
 
-.description{
+.description {
     font-weight: normal;
     font-size: 18px;
     text-align: justify;
     margin-bottom: 30px;
 }
 
-.container{
+.container {
     display: flex;
     padding-bottom: 20px;
     min-height: 480px;
@@ -45,7 +45,7 @@
 
 }
 
-.img_container{
+.img_container {
     position: relative;
     box-shadow: var(--box-shadow);
     border-top-left-radius: 20px;
@@ -54,7 +54,7 @@
 
 }
 
-.img{
+.img {
     border-top-left-radius: 20px;
     border-bottom-left-radius: 20px;
     object-fit: cover;
@@ -63,8 +63,8 @@
 
 }
 
-.img_s{
-    
+.img_s {
+
     object-position: center;
     max-width: 780px;
     height: 480px;
@@ -74,7 +74,7 @@
     font-size: 20px;
 }
 
-.details{
+.details {
     display: flex;
     gap: 8px;
 }
@@ -121,7 +121,7 @@
 }
 
 .card {
-    
+
     box-shadow: var(--box-shadow);
     background-color: white;
     border-top-right-radius: 20px;
@@ -133,16 +133,16 @@
     font-size: 18px;
 }
 
-.address{
-    padding-bottom: 30px!important;
+.address {
+    padding-bottom: 30px !important;
 }
 
-.form_review_flex{
+.form_review_flex {
     display: flex;
     flex-direction: column;
 }
 
-.input_container{
+.input_container {
     display: flex;
     justify-content: space-between;
 }
@@ -158,50 +158,59 @@
     border-radius: 5px;
     background-size: 200% 100%;
     transition: color 0.3s ease;
+    width: 100px;
 
 }
 
 .button:hover {
     animation-name: gradient-scroll;
     animation-duration: 3s;
-    animation-timing-function: linear; 
-    animation-iteration-count: infinite; 
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
 }
 
 @keyframes gradient-scroll {
     0% {
         background-position: 100% 0;
     }
+
     50% {
-        background-position: 0 0; 
+        background-position: 0 0;
     }
+
     100% {
-        background-position: 100% 0; 
+        background-position: 100% 0;
     }
 }
 
-.btn_container{
+.btn_container {
     display: flex;
     justify-content: end;
 }
 
 .card_form_review {
-    
+
     box-shadow: var(--box-shadow);
     background-color: white;
-    border-top-left-radius: 20px;
-    border-bottom-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
     padding: 30px;
 }
 
-.review_container{
+.review_container {
     border-left: 1px solid var(--main-bg-color);
     display: flex;
     flex-direction: column;
     row-gap: 20px;
 }
 
-.card_review{
+.email_container {
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+}
+
+.card_review {
     box-shadow: var(--box-shadow);
     background-color: white;
     border-top-right-radius: 20px;
@@ -213,43 +222,43 @@
     row-gap: 20px;
 }
 
-.review_title{
+.review_title {
     font-size: 17px;
     font-weight: bold;
 }
 
-.review_user{
+.review_user {
     font-size: 17px;
     font-style: italic;
 }
 
-.flex_review{
+.flex_review {
     display: flex;
     justify-content: space-between;
 }
 
-.review_icon{
+.review_icon {
     font-size: 15px;
     display: flex;
     gap: 5px;
     align-items: center;
 }
 
-.heart_static{
+.heart_static {
     width: 23px;
 }
 
-.title_container{
+.title_container {
     display: flex;
     gap: 10px;
     align-items: center;
 }
 
-.title_20{
+.title_20 {
     padding-bottom: var(--p20);
 }
 
-.input_number{
+.input_number {
     width: 45px;
     aspect-ratio: 1 / 1;
     border-radius: 5px;
@@ -258,19 +267,19 @@
     outline: 1px solid gray;
 }
 
-.input_title{
+.input_title {
     border: none;
     outline: 1px solid gray;
 }
 
-.input_textarea{
+.input_textarea {
     border: none;
     outline: 1px solid gray;
 }
 
 .input_number:hover,
 .input_title:hover,
-.input_textarea:hover{
+.input_textarea:hover {
     outline: 1px var(--main-bg-color) solid;
     box-shadow: 0px 0px 3px 3px var(--main-bg-color);
 }
