@@ -14,7 +14,6 @@ export default function UserDetail() {
             setUser(JSON.parse(storedUser))
         }
     }, [])
-    console.log(user)
 
 
     function goBack() {

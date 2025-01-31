@@ -5,6 +5,7 @@ import Textarea from "./Textarea"
 import Input from "./Input"
 import { Formik, Form } from 'formik'
 import * as yup from 'yup'
+import style from '../assets/modules/MailForm.module.css'
 
 export default function FormMail({ userId }) {
 
@@ -53,21 +54,33 @@ export default function FormMail({ userId }) {
 
     return (
         <>
-            {user && <Formik initialValues={{ name: '', message: '' }} validationSchema={emailSchema} onSubmit={onSubmit}>
+            {user && <Formik
+                initialValues={{ name: '', message: '' }}
+                validationSchema={emailSchema}
+                onSubmit={onSubmit}>
                 {({ isSubmitting }) => (
-                    <Form>
+                    <div className={style.container}>
+                        <Form className={style.form_container}>
                         <Input
                             label='Inserisci il nome'
                             name='name'
                             type='text'
-                            placeholder="nome cognome" />
+                            placeholder="nome cognome"
+                            className={style.form_el}
+                        />
 
                         <Textarea label='Messaggio'
                             name='message'
                             placeholder="Richiedi la prenotazione o altre info al proprietario..."
-                            rows="5" />
-                        <button type="submit">Invia</button>
+                            rows="5"
+                            className={style.form_el} />
+                        <button type="submit"
+                            className={style.button_form}>
+                            Invia
+                        </button>
                     </Form>
+                    </div>
+                    
                 )}
             </Formik>}
         </>

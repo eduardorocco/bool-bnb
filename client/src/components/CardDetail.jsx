@@ -26,6 +26,7 @@ export default function CardDetail({ property, addHeart }) {
                     <div className={style.container}>
 
                         <div className={`${style.img_container} col-8`}>
+                            
                             <div>
                                 <button className={style.heart} onClick={() => addHeart(id)}>
                                     <img className={style.icon_heart} src={heartIcon} />
@@ -38,8 +39,12 @@ export default function CardDetail({ property, addHeart }) {
                             <p className={style.vote}>
                                 {avg_vote ? parseFloat(avg_vote).toFixed(1) : '-'}
                             </p>
-
+                            
                             <img className={style.img} src={`${API_URL}/img/${image}`} />
+                            
+
+
+
                         </div>
 
                         <div className={`${style.card} col-4`}>
