@@ -67,7 +67,7 @@ export default function SearchBar() {
                     <option value={''}>Tipologia</option>
                     <option value="villa">villa</option>
                     <option value="chalet">chalet</option>
-                    <option value="apartment">apartment</option>
+                    <option value="apartment">appartmento</option>
                     <option value="loft">loft</option>
                 </select>}
 

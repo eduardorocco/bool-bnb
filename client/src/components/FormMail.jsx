@@ -59,28 +59,35 @@ export default function FormMail({ userId }) {
                 validationSchema={emailSchema}
                 onSubmit={onSubmit}>
                 {({ isSubmitting }) => (
-                    <div className={style.container}>
-                        <Form className={style.form_container}>
-                        <Input
-                            label='Inserisci il nome'
-                            name='name'
-                            type='text'
-                            placeholder="nome cognome"
-                            className={style.form_el}
-                        />
 
-                        <Textarea label='Messaggio'
-                            name='message'
-                            placeholder="Richiedi la prenotazione o altre info al proprietario..."
-                            rows="5"
-                            className={style.form_el} />
-                        <button type="submit"
-                            className={style.button_form}>
-                            Invia
-                        </button>
-                    </Form>
+                    <div className={style.review_container}>
+                        <h5 className={`${style.title_20} text-center`}>Contatta il propietario</h5>
+                        <Form className={style.card_review}>
+                            <div className={style.form_review_flex}>
+                                <Input
+                                    label='Inserisci il nome'
+                                    name='name'
+                                    type='text'
+                                    placeholder="nome cognome"
+                                    className={style.review_title}
+                                />
+
+                                <Textarea label='Messaggio'
+                                    name='message'
+                                    placeholder="Richiedi la prenotazione o altre info al proprietario..."
+                                    rows="5"
+                                    className={style.form_el} />
+
+                            </div>
+                            <div className={style.btn_container}>
+                                <button type="submit"
+                                    className={style.button}>
+                                    Invia
+                                </button>
+                            </div>
+                        </Form>
                     </div>
-                    
+
                 )}
             </Formik>}
         </>

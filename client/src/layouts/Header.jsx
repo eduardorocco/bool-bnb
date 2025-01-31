@@ -40,12 +40,21 @@ export default function Header() {
                 </div>
 
                 <div className={styles.navlink}>
-                    <Link to={`users/${user.id}`}>
-                        <div className={styles.rounded}>
-                            <FontAwesomeIcon icon={faUser} />
-                            {/* <span>{user.username}</span> */}
-                        </div>
-                    </Link>
+                    {
+                        isLogin ? <Link to={`users/${user.id}`}>
+                            <div className={styles.rounded}>
+                                <FontAwesomeIcon icon={faUser} />
+                                {/* <span>{user.username}</span> */}
+                            </div>
+                        </Link> :
+                            <div onClick={() => (setOverlayLogin(true))}>
+                                <div className={styles.rounded}>
+                                    <FontAwesomeIcon icon={faUser} />
+                                    {/* <span>{user.username}</span> */}
+                                </div>
+                            </div>
+                    }
+
 
                     {!isLogin ? <button
                         onClick={() => (setOverlayLogin(true))}

@@ -26,7 +26,14 @@
     padding: 10px;
     border-radius: 50%;
     line-height: 5px;
-    box-shadow: var(--box-shadow)
+    box-shadow: var(--box-shadow);
+    cursor: pointer;
+}
+
+.rounded:hover {
+    background-color: #c0d1b3;
+    color: white;
+    box-shadow: var(--box-shadow);
 }
 
 .button {
@@ -35,6 +42,11 @@
     border: none;
     padding: 6px 15px;
     border-radius: 999px;
+    box-shadow: var(--box-shadow)
+}
+
+.button:hover {
+    background: var(--grey-hover);
     box-shadow: var(--box-shadow)
 }
 

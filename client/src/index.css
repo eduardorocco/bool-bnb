@@ -11,7 +11,7 @@
   --heart-color: #FF5A5F;
   --gradient: linear-gradient(to right, var(--main-bg-color), var(--secondary-bg-color));
   --p20: 20px;
-  --grey-hover: rgb(229, 229, 229);
+  --grey-hover: rgb(247, 244, 244);
 }
 
 * {

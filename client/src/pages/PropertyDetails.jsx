@@ -157,10 +157,10 @@ export default function PropertyDetails() {
                                                 <div className={style.flex_review}>
                                                     <div className={style.review_icon}>
                                                         <FontAwesomeIcon icon={faCalendarDays} />
-                                                        {review.vote}
+                                                        {review.days_of_stays}
                                                     </div>
                                                     <div className={style.review_icon}>
-                                                        {review.days_of_stays}
+                                                        {review.vote}
                                                         <img className={style.heart_static} src={heartIcon} alt="" />
                                                     </div>
                                                 </div>
