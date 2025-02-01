@@ -41,8 +41,12 @@ export default function SearchBar() {
         setSearchCity(initialSearchData)
         e.preventDefault()
         setSearch(searchCity)
-        if (pathname === '/properties') return
-        navigate('/properties')
+        const filteredSearchCity = Object.fromEntries(
+            Object.entries(searchCity).filter(([key, value]) => value)
+        );
+        const queryParams = new URLSearchParams(filteredSearchCity).toString();
+        // if (pathname === '/properties') return
+        navigate(`/properties?${queryParams}`)
 
     }
 

@@ -32,7 +32,7 @@ function App() {
               <Route index element={<SearchPage />} />
               <Route path=":slug" element={<PropertyDetails />} />
             </Route>
-            <Route path={'users/:id'}>
+            <Route path={'users/:slug'}>
               <Route index element={< UserDetail />} />
               <Route path="properties" element={< InsertPropertyPage />} />
             </Route>

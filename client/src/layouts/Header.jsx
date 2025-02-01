@@ -41,7 +41,7 @@ export default function Header() {
 
                 <div className={styles.navlink}>
                     {
-                        isLogin ? <Link to={`users/${user.id}`}>
+                        isLogin ? <Link to={`users/${user.username}`}>
                             <div className={styles.rounded}>
                                 <FontAwesomeIcon icon={faUser} />
                                 {/* <span>{user.username}</span> */}
