@@ -51,14 +51,17 @@ function index(req, res) {
 //show property
 function show(req, res) {
 
-    const id = req.params.id
+    let id = req.params.id
 
+    if (isNaN(id)) {
+        id = id.trim().replaceAll('-', ' ')
+    }
 
     const sql = `SELECT properties.*, AVG(vote) AS avg_vote 
 		FROM properties
 		LEFT JOIN reviews
 		ON properties.id = reviews.property_id 
-		WHERE properties.id = ?
+		WHERE properties.title = ?
 		GROUP BY properties.id
     `
 
@@ -72,6 +75,8 @@ function show(req, res) {
 
         const property = results[0]
         // movie.image = `http://localhost:3000/movies_cover/${movie.image}`
+
+        id = property.id
 
         const sql = `SELECT reviews.title, reviews.created_at, reviews.days_of_stays,
          reviews.vote, users.username, reviews.id,

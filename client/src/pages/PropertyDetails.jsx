@@ -12,10 +12,12 @@ import FormMail from '../components/formMail'
 
 export default function PropertyDetails() {
 
-
-    const { id } = useParams()
+    const { slug } = useParams()
 
     const { API_URL, isLogin, user, setOverlayLogin, setUser } = useContext(GlobalContext)
+
+
+
 
     const initialFormData = {
         title: '',
@@ -30,14 +32,15 @@ export default function PropertyDetails() {
 
 
     function fetchProperty() {
-        axios.get(`${API_URL}properties/${id}`)
+        axios.get(`${API_URL}properties/${slug}`)
             .then(res => {
                 setProperty(res.data)
-                console.log(id);
+                console.log(res.data.title.replaceAll(' ', '-').toLowerCase())
             })
             .catch(err => {
                 console.error(err);
             })
+
     }
 
     function addHeart(id) {
@@ -58,7 +61,7 @@ export default function PropertyDetails() {
     function onSubmit(e) {
         e.preventDefault()
 
-        axios.post(`${API_URL}properties/${id}/reviews`, formData)
+        axios.post(`${API_URL}properties/${slug}/reviews`, formData)
             .then(res => {
                 console.log(res);
                 setFormData(initialFormData)
@@ -72,7 +75,7 @@ export default function PropertyDetails() {
 
     useEffect(() => {
         fetchProperty()
-    }, [id])
+    }, [slug])
 
     useEffect(() => {
         const storedUser = localStorage.getItem("user")
@@ -82,6 +85,7 @@ export default function PropertyDetails() {
     }, [])
 
     const { description, reviews, user_id } = property
+
 
     return (
         <>
@@ -96,7 +100,7 @@ export default function PropertyDetails() {
                         </p>
                     </div>
                     <div className={`col-4 ${style.email_container}`}>
-                        {isLogin ? <FormMail userId={user_id} /> : <p>Per contattare il proprietario devi prima accedere</p>}
+                        {isLogin && user_id ? <FormMail userId={user_id} /> : <p>Per contattare il proprietario devi prima accedere</p>}
                     </div>
 
                     <div className={`${style.review_container} col-8`}>

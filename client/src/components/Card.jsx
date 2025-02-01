@@ -13,6 +13,7 @@ function CardProperty({ property, callback }) {
     const { pathname } = useLocation()
 
     const { id, title, square_meter, bed, image, heart, avg_vote, address, city, province, type } = property
+
     return (
 
         <div className={pathname === '/' ? 'col-3' : 'col-6 col-lg-4 col-xxl-2'}>
@@ -64,7 +65,7 @@ function CardProperty({ property, callback }) {
                     </div>
 
                 </div>
-                <Link className={style.button} to={`/properties/${id}`}>Scopri di più</Link>
+                <Link className={style.button} to={`/properties/${title.replaceAll(' ', '-').toLowerCase()}`}>Scopri di più</Link>
             </div>
 
 
