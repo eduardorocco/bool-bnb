@@ -339,4 +339,15 @@
 }
 
 
-@media (max-width: 768px) {}
+@media (max-width: 768px) {
+    .container {
+        display: flex;
+        flex-direction: column;
+        padding-bottom: 20px;
+        min-height: 480px;
+    }
+
+    .card_body{
+        font-size: 15px;
+    }
+}

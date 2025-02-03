@@ -103,18 +103,18 @@ export default function PropertyDetails() {
                 </div>
                 <div className="row">
 
-                    <div className="col-4">
+                    <div className="col-12 col-md-4 ">
 
                         <div className={style.host_card}>
 
                             <div className="row">
 
-                                <div className={` col-4 ${style.host_title}`}>
+                                <div className={` col-12 col-md-4 ${style.host_title}`}>
                                     {host.username}
                                     <FontAwesomeIcon className={style.host_placeholder} icon={faUserTie} />
                                 </div>
 
-                                <div className={` col-8 ${style.host_title}`}>
+                                <div className={` col-md-8 col-12 ${style.host_title}`}>
                                     <p>recensioni</p>
                                     {reviews && reviews.length}
                                     <hr />
@@ -130,7 +130,7 @@ export default function PropertyDetails() {
 
 
 
-                    {user.id !== user_id ? <div className={`${style.review_container} col-8`}>
+                    {user.id !== user_id ? <div className={`${style.review_container} col-12 col-md-8 `}>
 
                         {isLogin ?
                             <>

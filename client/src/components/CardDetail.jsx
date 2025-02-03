@@ -28,7 +28,7 @@ export default function CardDetail({ property, addHeart }) {
 
                     <div className={style.container}>
 
-                        <div className={`${style.img_container} col-8`}>
+                        <div className={`${style.img_container} col-12 col-md-8`}>
 
                             <div>
                                 <button className={style.heart} onClick={() => addHeart(id)}>
@@ -50,7 +50,7 @@ export default function CardDetail({ property, addHeart }) {
 
                         </div>
 
-                        <div className={`${style.card} col-4`}>
+                        <div className={`${style.card} col-12 col-md-4`}>
 
                             <div className={style.card_body}>
                                 <div className={style.address}>
