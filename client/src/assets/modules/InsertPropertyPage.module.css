@@ -104,3 +104,11 @@
     flex-direction: column;
     margin-top: 10px;
 }
+
+/* .form_group_checkbox {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    margin-top: 10px;
+    justify-content: space-between;
+} */

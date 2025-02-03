@@ -44,12 +44,27 @@ export default function InsertPropertyPage() {
         //     .test("is-valid-type", "Not a valid image type", value => isValidFileType(value && value.name.toLowerCase(), "image"))
         //     .test("is-valid-size", "Max allowed size is 100KB", value => value && value.size <= MAX_FILE_SIZE),
         type: yup.string().oneOf(['apartment', 'room', 'villa', 'loft', 'chalet']).required("Scegliere la tipologia di immobile"),
+        distance_centre: yup.number().positive().min(0, "Inserire la distanza dal centro città.").required("Inserire la distanza dal centro città."),
+        price: yup.number().positive().min(1, "Inserire il prezzo dell'immobile.").required("Inserire il prezzo dell'immobile."),
+        swim: yup.boolean(),
+        tv: yup.boolean(),
+        animals: yup.boolean(),
+        high_chair: yup.boolean(),
+        cleaner: yup.boolean(),
+        heating: yup.boolean(),
+        air_conditioning: yup.boolean(),
+        essential: yup.boolean(),
+        gym: yup.boolean(),
+        courtyard: yup.boolean(),
+        washing_machine: yup.boolean(),
+        parking: yup.boolean()
+
     })
 
     async function onSubmitProperties(values, action) {
 
 
-        const { title, description, room, bed, toilet, square_meter, address, city, province, type } = values
+        const { title, description, room, bed, toilet, square_meter, address, city, province, type, distance_centre, price, swim, tv, animals, high_chair, cleaner, heating, air_conditioning, essential, gym, courtyard, washing_machine, parking } = values
         const newProperties = {
             title: title,
             description: description,
@@ -61,7 +76,21 @@ export default function InsertPropertyPage() {
             city: city,
             province: province,
             type: type,
-            image: newImage.name
+            image: newImage.name,
+            distance_centre: distance_centre,
+            price: price,
+            swim: swim,
+            tv: tv,
+            animals: animals,
+            high_chair: high_chair,
+            cleaner: cleaner,
+            heating: heating,
+            air_conditioning: air_conditioning,
+            essential: essential,
+            gym: gym,
+            courtyard: courtyard,
+            washing_machine: washing_machine,
+            parking: parking
         }
         const addProperties = await axios.post(`${API_URL}properties/${user.id}`, newProperties).then((_) => {
 
@@ -107,7 +136,7 @@ export default function InsertPropertyPage() {
 
     return (
         <>
-            <Formik initialValues={{ title: '', description: '', room: 1, bed: 1, toilet: 1, square_meter: 2, address: '', city: '', province: '', type: '', image: '' }} validationSchema={propertySchema} onSubmit={(values, actions) => onSubmitProperties(values, actions)}>
+            <Formik initialValues={{ title: '', description: '', room: 1, bed: 1, toilet: 1, square_meter: 2, address: '', city: '', province: '', type: '', image: '', distance_centre: 0, price: 1, swim: false, tv: false, animals: false, high_chair: false, cleaner: false, heating: false, air_conditioning: false, essential: false, gym: false, courtyard: false, washing_machine: false, parking: false }} validationSchema={propertySchema} onSubmit={(values, actions) => onSubmitProperties(values, actions)}>
                 {({ isSubmitting }) => (
 
                     <div className={`container ${style.form_container}`}>
@@ -131,6 +160,10 @@ export default function InsertPropertyPage() {
                                         <Input label='Bagni' name='toilet' type='number' />
                                         <Input label='Dimensioni (mq)' name='square_meter' type='number' placeholder='Es. 30' />
                                     </div>
+                                    <div className={style.form_group}>
+                                        <Input label='Prezzo' name='price' type='number' />
+                                        <Input label='Distanza dal centro (km)' name='distance_centre' type='number' placeholder='Es. 5' />
+                                    </div>
 
                                     <div className={style.form_group}>
                                         <Input label='Indirizzo' name='address' type='text' placeholder="via esempio 15..." />
@@ -142,6 +175,24 @@ export default function InsertPropertyPage() {
                                     <div className={style.img_input}>
                                         <label htmlFor="">Carica immagine: </label>
                                         <input type='file' id='image' name='image' onChange={onImageChange} />
+                                    </div>
+
+                                    <div className={style.form_group}>
+                                        <Input label='piscina' name='swim' type='checkbox' />
+                                        <Input label='tv' name='tv' type='checkbox' />
+                                        <Input label='animali' name='animals' type='checkbox' />
+                                        <Input label='lavatrice' name='washing_machine' type='checkbox' />
+                                        <Input label='aria condizionata' name='air_conditioning' type='checkbox' />
+                                        <Input label='posate' name='essential' type='checkbox' />
+
+                                    </div>
+                                    <div className={style.form_group}>
+                                        <Input label='prodotti per pulire' name='cleaner' type='checkbox' />
+                                        <Input label='riscaldamento' name='heating' type='checkbox' />
+                                        <Input label='palestra' name='gym' type='checkbox' />
+                                        <Input label='giardino' name='courtyard' type='checkbox' />
+                                        <Input label='parcheggio' name='parking' type='checkbox' />
+                                        <Input label='attrezzato per bambini' name='high_chair' type='checkbox' />
                                     </div>
 
                                     <div className={style.form_input}>
