@@ -45,21 +45,56 @@
     cursor: pointer;
 }
 
-@media (max-width: 768px) {
-    .navlink {
-        font-size: 16px;
-        gap: 30px;
-    }
+.navbar_mobile {
+    display: none;
 }
 
-@media (max-width: 576px) {
-    .navlink {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        font-size: 16px;
-        gap: 10px;
-        text-align: center;
-    }
+.fakebtn {
+    cursor: pointer;
 }
+
+.searchbar_mobile {
+    display: none;
+}
+
+.searchcontainer {
+    padding: 20px;
+    /* background-image: var(--gradient); */
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        display: none;
+    }
+
+    .navbar_mobile {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        padding: 14px 30px;
+        /* background-image: var(--gradient); */
+        background-color: white;
+        transition: all 0.3s;
+        position: fixed;
+        bottom: 0;
+        z-index: 1000;
+        width: 100%;
+        box-shadow: 0px -5px 5px 0px rgba(0, 0, 0, 0.1);
+
+    }
+
+    .navbar_mobile>* {
+        text-align: center;
+        line-height: 25px;
+
+    }
+
+    .searchbar_mobile {
+        display: block;
+        background-color: white;
+    }
+
+
+}
+
+@media (max-width: 576px) {}
