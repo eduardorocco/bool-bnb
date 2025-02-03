@@ -12,6 +12,7 @@ export default function FormMail({ userId }) {
 
     const { API_URL, user, isLoading, setIsLoading } = useContext(GlobalContext)
     const [userEmail, setUserEmail] = useState()
+    const [text, setText] = useState('')
 
     // const initialMailInfo = {
     //     name: '',
@@ -48,8 +49,16 @@ export default function FormMail({ userId }) {
         const addMessage = await axios.post(`${API_URL}send/`, sendEmail).then((res) => {
             console.log('messaggio inviato')
             setIsLoading(false)
+            setText('Messaggio inviato con successo!')
+            setTimeout(() => {
+                setText('')
+            }, 3000)
         }).catch((err) => {
             console.error(err)
+            setText('errore riprova piu tardi!')
+            setTimeout(() => {
+                setText('')
+            }, 3000)
         })
 
         action.resetForm()
@@ -83,6 +92,10 @@ export default function FormMail({ userId }) {
 
                             </div>
                             <div className={style.btn_container}>
+                                <div>
+                                    {text && <p>{text}</p>}
+                                </div>
+
                                 <button type="submit"
                                     className={style.button}>
                                     Invia

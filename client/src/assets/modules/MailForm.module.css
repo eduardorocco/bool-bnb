@@ -4,7 +4,7 @@
     position: relative;
 }
 
-.form_review_flex > * {
+.form_review_flex>* {
     margin-bottom: 20px;
 }
 
@@ -50,7 +50,8 @@
 
 .btn_container {
     display: flex;
-    justify-content: end;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .card_form_review {
