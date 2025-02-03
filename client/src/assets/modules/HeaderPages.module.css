@@ -44,3 +44,22 @@
 .insertprop {
     cursor: pointer;
 }
+
+@media (max-width: 768px) {
+    .navlink {
+        font-size: 16px;
+        gap: 30px;
+    }
+}
+
+@media (max-width: 576px) {
+    .navlink {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        font-size: 16px;
+        gap: 10px;
+        text-align: center;
+    }
+}

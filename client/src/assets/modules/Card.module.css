@@ -7,6 +7,7 @@
     background-color: white;
     position: relative;
     z-index: 1;
+    margin-bottom: 20px;
 }
 
 .img {
@@ -134,4 +135,86 @@
 
 .type {
     text-transform: capitalize;
+}
+
+
+@media (max-width: 992px) {
+    .card {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .img {
+        aspect-ratio: 16 / 9;
+    }
+
+    .heart {
+        font-size: 14px;
+    }
+
+    .vote {
+        font-size: 14px;
+    }
+
+    .icon {
+        font-size: small;
+    }
+
+    .button {
+        padding: 5px 10px;
+    }
+}
+
+@media (max-width: 768px) {
+    .card {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .img {
+        aspect-ratio: 16 / 9;
+    }
+
+    .heart {
+        font-size: 14px;
+    }
+
+    .vote {
+        font-size: 14px;
+    }
+
+    .icon {
+        font-size: small;
+    }
+
+    .button {
+        padding: 5px 10px;
+    }
+}
+
+@media (max-width: 576px) {
+    .card {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .img {
+        aspect-ratio: 16 / 9;
+    }
+
+    .heart {
+        font-size: 14px;
+    }
+
+    .vote {
+        font-size: 14px;
+    }
+
+    .icon {
+        font-size: small;
+    }
+
+    .button {
+        padding: 5px 10px;
+    }
 }

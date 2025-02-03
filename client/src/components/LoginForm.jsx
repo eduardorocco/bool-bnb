@@ -152,13 +152,13 @@ export default function LoginForm() {
                         <Formik initialValues={{ name: '', surName: '', email: '', number: '', userName: '', password: '', confirmPassword: '' }} validationSchema={registrationSchema} onSubmit={onSubmitRegistration}>
                             {({ isSubmitting }) => (
                                 <Form className={style.form}>
-                                    <Input label='Nome&#42;' name='name' type='text' placeholder="Inserisci il nome" />
-                                    <Input label='Cognome&#42;' name='surName' type='text' placeholder="Inserisci il cofnome" />
-                                    <Input label="Email&#42;" name='email' type='email' placeholder="example@email.com" />
-                                    <Input label="Numero di telefono" name='number' type='text' placeholder="xxxxxxxxx" />
-                                    <Input label='Username&#42;' name='userName' type='text' placeholder="username..." />
-                                    <Input label='Password&#42;' name='password' type='password' placeholder="Ciao1234" />
-                                    <Input label='Conferma password&#42;' name='confirmPassword' type='password' placeholder="Ciao1234" />
+                                    <Input className={style.input_form} label='Nome&#42;' name='name' type='text' placeholder="Inserisci il nome" />
+                                    <Input className={style.input_form} label='Cognome&#42;' name='surName' type='text' placeholder="Inserisci il cofnome" />
+                                    <Input className={style.input_form} label="Email&#42;" name='email' type='email' placeholder="example@email.com" />
+                                    <Input className={style.input_form} label="Numero di telefono" name='number' type='text' placeholder="xxxxxxxxx" />
+                                    <Input className={style.input_form} label='Username&#42;' name='userName' type='text' placeholder="username..." />
+                                    <Input className={style.input_form} label='Password&#42;' name='password' type='password' placeholder="Ciao1234" />
+                                    <Input className={style.input_form} label='Conferma password&#42;' name='confirmPassword' type='password' placeholder="Ciao1234" />
                                     <div className={style.button_container}>
                                         <button disabled={isSubmitting} className={style.button_form} type='submit'>Registrati</button>
                                     </div>
