@@ -9,6 +9,7 @@ import GlobalContext from '../context/GlobalContext'
 import { useContext, useState } from 'react'
 import { useEffect } from 'react'
 import style from '../assets/modules/InsertPropertyPage.module.css'
+import img_newProperty from '../assets/houses/form_newProperty.jpg'
 
 export default function InsertPropertyPage() {
 
@@ -109,37 +110,51 @@ export default function InsertPropertyPage() {
             <Formik initialValues={{ title: '', description: '', room: 1, bed: 1, toilet: 1, square_meter: 2, address: '', city: '', province: '', type: '', image: '' }} validationSchema={propertySchema} onSubmit={(values, actions) => onSubmitProperties(values, actions)}>
                 {({ isSubmitting }) => (
 
-                    <div className="container">
-                        <h2>Inserisci la tua proprietà</h2>
-                        <Form className={`${style.form} card`} >
-                            <div className="card-body">
-                                <div className={style.form_group}>
-                                    <Input label='Nome della proprietà' name='title' type='text' placeholder="Es. Villetta sul lago di..." />
-                                    <Select label="Tipologia di immobile" name="type" />
-                                </div>
+                    <div className={`container ${style.form_container}`}>
 
-                                <div className={style.form_group}>
-                                    <Input label='Stanze' name='room' type='number' />
-                                    <Input label='Posti letto' name='bed' type='number' />
-                                </div>
+                        <div className='col-8'>
 
-                                <div className={style.form_group}>
-                                    <Input label='Bagni' name='toilet' type='number' />
-                                    <Input label='Dimensioni immobile (mq)' name='square_meter' type='number' placeholder='Es. 30' />
-                                </div>
+                            <Form className={`${style.form_new} card`} >
+                                <h2 className={style.title_form}>Inserisci la tua proprietà</h2>
+                                <div className={`${style.cardForm_container} card-body`}>
+                                    <div className={style.form_group}>
+                                        <Input className={style.input_form} label='Nome della proprietà' name='title' type='text' placeholder="Es. Villetta sul lago di..." />
+                                        <Select label="Tipologia" name="type" />
+                                    </div>
 
-                                <div className={style.form_group}>
-                                    <Input label='Indirizzo' name='address' type='text' placeholder="via esempio 15..." />
-                                    <Input label='Città' name='city' type='text' placeholder="Inserisci la città" />
-                                </div>
+                                    <div className={style.form_group}>
+                                        <Input label='Stanze' name='room' type='number' />
+                                        <Input label='Posti letto' name='bed' type='number' />
+                                    </div>
 
-                                <div className='toUppercase'><Input label='Provincia' name='province' type='text' minLength='2' maxLength='2' /></div>
-                                <Textarea label='Descrizione' name='description' rows="5" placeholder="Inserisci la descrizione qui..." />
-                                <button disabled={isSubmitting} type='reset'>Resetta Form</button>
-                                <button disabled={isSubmitting} type='submit' className='btn btn-primary'>Crea immobile</button>
-                                <input type='file' id='image' name='image' onChange={onImageChange} />
-                            </div>
-                        </Form>
+                                    <div className={style.form_group}>
+                                        <Input label='Bagni' name='toilet' type='number' />
+                                        <Input label='Dimensioni (mq)' name='square_meter' type='number' placeholder='Es. 30' />
+                                    </div>
+
+                                    <div className={style.form_group}>
+                                        <Input label='Indirizzo' name='address' type='text' placeholder="via esempio 15..." />
+                                        <Input label='Città' name='city' type='text' placeholder="Inserisci la città" />
+                                    </div>
+
+                                    <div className='toUppercase'><Input label='Provincia' name='province' type='text' minLength='2' maxLength='2' /></div>
+                                    <Textarea className={style.form_group} label='Descrizione' name='description' rows="5" placeholder="Inserisci la descrizione qui..." />
+                                    <div className={style.img_input}>
+                                        <label htmlFor="">Carica immagine: </label>
+                                        <input type='file' id='image' name='image' onChange={onImageChange} />
+                                    </div>
+
+                                    <div className={style.form_input}>
+                                        <button disabled={isSubmitting} type='reset' className={style.button_reset}>Resetta Form</button>
+                                        <button disabled={isSubmitting} type='submit' className={style.button_newProperty}>Crea immobile</button>
+                                    </div>
+                                </div>
+                            </Form>
+                        </div>
+                        <div className={`col-4 ${style.image_container}`}>
+                            <img src={img_newProperty} alt="Form immobile" className={style.image_prop} />
+                        </div>
+
                     </div>
 
 

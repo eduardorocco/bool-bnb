@@ -1,10 +1,106 @@
-.form {
+.title_form {
+    font-weight: lighter;
+    color: black;
+    margin-bottom: 20px;
+    /* border-bottom: solid 1px var(--main-bg-color); */
+    padding: 10px;
+}
+
+.form_container {
+    box-shadow: var(--box-shadow);
+    background-color: white;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    padding: 30px;
     display: flex;
+}
+
+.cardForm_container {
+    display: flex;
+    justify-content: space-between;
     flex-direction: column;
-    padding: 0 70px;
+}
+
+.form_new {
+    border: none !important;
 }
 
 .form_group {
     display: flex;
+    gap: 30px;
+}
+
+.image_prop {
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    padding-left: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.button_newProperty {
+    font-size: 20px;
+    border: none;
+    background-image: linear-gradient(to right, var(--main-bg-color), var(--secondary-bg-color));
+    color: rgb(0, 0, 0);
+    font-weight: lighter;
+    border-radius: 999px;
+    padding: 15px;
+    line-height: 10px;
+    background-size: 200% 100%;
+    transition: color 0.3s ease;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+.button_reset {
+    font-size: 20px;
+    border: none;
+    background-color: var(--secondary-bg-color);
+    color: rgb(0, 0, 0);
+    font-weight: lighter;
+    border-radius: 999px;
+    padding: 15px;
+    line-height: 10px;
+    background-size: 200% 100%;
+    transition: color 0.3s ease;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+.button_newProperty:hover {
+    animation-name: gradient-scroll;
+    animation-duration: 3s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+
+.button_reset:hover {
+    background-color: var(--main-bg-color);
+}
+
+@keyframes gradient-scroll {
+    0% {
+        background-position: 100% 0;
+    }
+
+    50% {
+        background-position: 0 0;
+    }
+
+    100% {
+        background-position: 100% 0;
+    }
+}
+
+.form_input {
+    display: flex;
     justify-content: space-between;
+}
+
+.img_input {
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
 }
