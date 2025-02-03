@@ -4,7 +4,7 @@ import GlobalContext from "../context/GlobalContext"
 import { useParams } from 'react-router'
 import style from '../assets/modules/PropertyDetails.module.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCalendarDays } from '@fortawesome/free-solid-svg-icons'
+import { faCalendarDays, faUser, faUserTie } from '@fortawesome/free-solid-svg-icons'
 import CardDetail from '../components/CardDetail'
 import heartIcon from '../assets/icon-gallery/heart-pink.png'
 import FormMail from '../components/FormMail'
@@ -29,19 +29,21 @@ export default function PropertyDetails() {
 
     const [property, setProperty] = useState({})
     const [formData, setFormData] = useState(initialFormData)
-
+    const [host, setHost] = useState({})
 
 
     function fetchProperty() {
         axios.get(`${API_URL}properties/${slug}`)
             .then(res => {
                 setProperty(res.data)
-                console.log(res.data.title.replaceAll(' ', '-').toLowerCase())
+                axios.get(`${API_URL}users/${res.data.user_id}`)
+                    .then(res => {
+                        setHost(res.data)
+                    })
             })
             .catch(err => {
                 console.error(err);
             })
-
     }
 
     function addHeart(id) {
@@ -85,7 +87,7 @@ export default function PropertyDetails() {
         }
     }, [])
 
-    const { description, reviews, user_id } = property
+    const { description, reviews, user_id, avg_vote } = property
 
 
     return (
@@ -93,17 +95,40 @@ export default function PropertyDetails() {
 
             {property && <CardDetail property={property} addHeart={addHeart} />}
             <div className="container">
+
+                <div>
+                    <p className={style.description}>
+                        {description}
+                    </p>
+                </div>
                 <div className="row">
 
-                    <div>
-                        <p className={style.description}>
-                            {description}
-                        </p>
+                    <div className="col-4">
+
+                        <div className={style.host_card}>
+
+                            <div className="row">
+
+                                <div className={` col-4 ${style.host_title}`}>
+                                    {host.username}
+                                    <FontAwesomeIcon className={style.host_placeholder} icon={faUserTie} />
+                                </div>
+
+                                <div className={` col-8 ${style.host_title}`}>
+                                    <p>recensioni</p>
+                                    {reviews && reviews.length}
+                                    <hr />
+                                    <p>media voto</p>
+                                    {avg_vote ? parseFloat(avg_vote).toFixed(1) : '-'}
+                                </div>
+                            </div>
+                        </div>
+                        {user.id !== user_id && <div>
+                            {isLogin && user_id ? <FormMail userId={user_id} /> : <p>Per contattare l'Host devi prima accedere</p>}
+                        </div>}
                     </div>
-                    {user.id !== user_id && <div className={`col-4 ${style.email_container}`}>
-                        {isLogin && user_id ? <FormMail userId={user.id} destinatarioId={user_id} /> : <p>Per contattare il proprietario devi prima accedere</p>}
-                        <Messages destinatarioId={user_id} />
-                    </div>}
+
+
 
                     {user.id !== user_id ? <div className={`${style.review_container} col-8`}>
 
@@ -145,7 +170,7 @@ export default function PropertyDetails() {
                                     Accedi
                                 </button>
                             </>}
-                        {reviews && reviews.length > 0 && <h5 className='text-center'>Recensioni({reviews && reviews.length})</h5>}
+                        {reviews && reviews.length > 0 && <h5 className='text-center'>Recensioni</h5>}
                         {
 
 

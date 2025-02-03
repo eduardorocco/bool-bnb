@@ -3,7 +3,7 @@ import heartIcon from '../assets/icon-gallery/heart-salmon.png'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBed } from '@fortawesome/free-solid-svg-icons'
 import { faHome } from '@fortawesome/free-solid-svg-icons'
-import { faSquare, faSprayCanSparkles, faTemperatureHigh, faCartFlatbed, faDumbbell, faTree, faSquareParking } from '@fortawesome/free-solid-svg-icons'
+import { faSquare, faSprayCanSparkles, faTemperatureHigh, faLocationDot, faDumbbell, faTree, faSquareParking } from '@fortawesome/free-solid-svg-icons'
 import { faToilet, faPersonSwimming, faTv, faDog, faSoap, faSnowflake, faUtensils, faHandsHoldingChild } from '@fortawesome/free-solid-svg-icons'
 import { useContext } from 'react'
 import GlobalContext from "../context/GlobalContext"
@@ -14,7 +14,7 @@ export default function CardDetail({ property, addHeart }) {
     const { title, room, toilet, square_meter, address, city, province,
         type, bed, image, heart, avg_vote, swim, tv, animals,
         washing_machine, air_conditioning, essential, cleaner, heating,
-        courtyard, parking, high_chair, gym, price, free_canc, id } = property
+        courtyard, parking, high_chair, gym, price, free_canc, id, distance_centre } = property
     const { API_URL } = useContext(GlobalContext)
 
     return (
@@ -185,6 +185,7 @@ export default function CardDetail({ property, addHeart }) {
                             <div>
                                 <p> <strong className={style.fontG}> {price} </strong> a notte</p>
                                 { free_canc ? <p>Cancellazione gratuita</p> : ''}
+                                <p><FontAwesomeIcon icon={faLocationDot}/> Distanza dal centro <strong>{distance_centre}</strong></p>
                             </div>
                         </div>
                     </div>

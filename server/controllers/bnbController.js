@@ -109,7 +109,21 @@ function storeProperty(req, res) {
         city,
         province,
         image,
-        type
+        type,
+        price,
+        distance_centre,
+        swim,
+        tv,
+        animals,
+        high_chair,
+        cleaner,
+        heating,
+        air_conditioning,
+        essential,
+        gym,
+        courtyard,
+        washing_machine,
+        parking
     } = req.body
 
 
@@ -122,7 +136,10 @@ function storeProperty(req, res) {
         isNaN(square_meter) ||
         !address ||
         !city ||
-        !province
+        !province ||
+        !image ||
+        isNaN(price) ||
+        isNaN(distance_centre)
 
     ) {
         return res.status(400).json({ message: 'Invalid data' })
@@ -140,7 +157,21 @@ function storeProperty(req, res) {
         city,
         province,
         image,
-        type) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`
+        type,
+        price,
+        distance_centre,
+        swim,
+        tv,
+         animals,
+        high_chair,
+        cleaner,
+        heating,
+        air_conditioning,
+        essential,
+        gym,
+        courtyard,
+        washing_machine,
+        parking) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?, ?, ?,?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`
 
     connection.query(sql, [
         user_id,
@@ -154,7 +185,21 @@ function storeProperty(req, res) {
         city,
         province,
         image,
-        type
+        type,
+        price,
+        distance_centre,
+        swim,
+        tv,
+        animals,
+        high_chair,
+        cleaner,
+        heating,
+        air_conditioning,
+        essential,
+        gym,
+        courtyard,
+        washing_machine,
+        parking
     ], (err, results) => {
         if (err) return res.status(500).json({ message: err.message })
         res.status(201).json({ message: 'Property created' })

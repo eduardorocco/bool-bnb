@@ -1,11 +1,15 @@
-.input {
+.input input[type="text"],
+.input input[type="number"],
+.input textarea {
     display: flex;
     flex-direction: column;
     row-gap: 10px;
     margin-bottom: 10px;
 }
 
-.classic {
+input[type="text"].classic,
+input[type="number"].classic,
+textarea.classic {
     font-size: 17px;
     font-weight: bold;
     display: block;
@@ -27,6 +31,11 @@
     outline: 1px solid gray;
 }
 
+.input [type="checkbox"] {
+    width: 50px;
+
+}
+
 .error {
     position: absolute;
 }
@@ -38,9 +47,9 @@
 
 
 
-
-
-.classic:hover {
+input[type="text"].classic:hover,
+input[type="number"].classic:hover,
+textarea.classic:hover {
     outline: 1px var(--main-bg-color) solid;
     box-shadow: 0px 0px 3px 3px var(--main-bg-color);
 }

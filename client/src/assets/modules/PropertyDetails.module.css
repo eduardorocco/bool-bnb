@@ -309,3 +309,30 @@
 .fontG{
     font-size: 22px;
 }
+.host_placeholder{
+    border: none;
+    border-radius: 999px;
+    padding: 10px;
+    font-size: 35px;
+    line-height: 10px;
+    background-image: var(--gradient);
+    color: black;
+    width: 35px;
+    align-self: center;
+}
+
+.host_card{
+    box-shadow: var(--box-shadow);
+    padding: var(--p20);
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    margin-bottom: 20px;
+}
+
+.host_title{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    row-gap: 10px;
+    font-weight: bold;
+}
