@@ -9,19 +9,22 @@ import { faHome } from '@fortawesome/free-solid-svg-icons'
 import { faSquare } from '@fortawesome/free-solid-svg-icons'
 import { faToilet } from '@fortawesome/free-solid-svg-icons'
 import profile from '../assets/logo-label/Bool_bnb_logo_gradient 2.png'
+import axios from "axios"
 
 export default function UserDetail() {
 
-    const { user, setUser } = useContext(GlobalContext)
+    const { user, setUser, API_URL } = useContext(GlobalContext)
     const navigate = useNavigate()
-    const { name, surname, number, email, username, property, city } = user
+    const { name, surname, number, email, username, property } = user
     console.log(property)
 
     useEffect(() => {
         const storedUser = localStorage.getItem("user")
-        if (storedUser) {
-            setUser(JSON.parse(storedUser))
-        }
+        console.log(JSON.parse(storedUser))
+        axios.get(`${API_URL}users/${JSON.parse(storedUser).id}`)
+            .then(res => {
+                setUser(res.data)
+            })
     }, [])
 
 
