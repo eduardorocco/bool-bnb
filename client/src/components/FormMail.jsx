@@ -73,7 +73,7 @@ export default function FormMail({ userId }) {
                 {({ isSubmitting }) => (
 
                     <>
-                        <h5 className={`${style.title_20} text-center`}>Contatta il propietario</h5>
+                        <h5 className={`${style.title_20} text-center`}>Contatta l'Host</h5>
                         <Form className={style.card_review}>
                             <div className={style.form_review_flex}>
                                 <Input
