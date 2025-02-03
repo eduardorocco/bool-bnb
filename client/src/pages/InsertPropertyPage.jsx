@@ -15,7 +15,7 @@ export default function InsertPropertyPage() {
 
     const { id } = useParams()
 
-    const { API_URL, setUser } = useContext(GlobalContext)
+    const { API_URL, setUser, user } = useContext(GlobalContext)
     const [newImage, setNewImage] = useState(null)
 
     const MAX_FILE_SIZE = 102400; //100KB
@@ -63,7 +63,7 @@ export default function InsertPropertyPage() {
             type: type,
             image: newImage.name
         }
-        const addProperties = await axios.post(`${API_URL}properties/${id}`, newProperties).then((_) => {
+        const addProperties = await axios.post(`${API_URL}properties/${user.id}`, newProperties).then((_) => {
 
         }).catch((err) => {
             console.log(err.response.data)

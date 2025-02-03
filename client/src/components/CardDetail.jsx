@@ -14,7 +14,7 @@ export default function CardDetail({ property, addHeart }) {
     const { title, room, toilet, square_meter, address, city, province,
         type, bed, image, heart, avg_vote, swim, tv, animals,
         washing_machine, air_conditioning, essential, cleaner, heating,
-        courtyard, parking, high_chair, gym, price, free_canc } = property
+        courtyard, parking, high_chair, gym, price, free_canc, id } = property
     const { API_URL } = useContext(GlobalContext)
 
     return (
