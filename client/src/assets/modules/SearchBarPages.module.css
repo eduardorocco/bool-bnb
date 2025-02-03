@@ -62,15 +62,21 @@
 @media (max-width: 768px) {
 
     .input {
-        font-size: 30px;
-        margin-left: 50px;
+        font-size: 15px;
         width: 90%;
+    }
+
+    .form {
+        flex-direction: column;
+        row-gap: 10px;
+        border-radius: 15px;
     }
 
 
     .button {
-        font-size: 25px;
+        font-size: 15px;
         padding: 5px 40px 5px 40px;
+        align-self: center;
     }
 }
 

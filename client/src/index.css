@@ -102,6 +102,10 @@ main {
 
 }
 
+.row {
+  row-gap: 20px;
+}
+
 @keyframes error {
   0% {
     transform: rotate(0deg);

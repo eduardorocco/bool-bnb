@@ -4,9 +4,11 @@ import { useContext } from "react"
 import styleHomePage from '../assets/modules/Header.module.css'
 import whiteLinear from '../assets/logo-gallery/white-linear.png'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faUser } from '@fortawesome/free-solid-svg-icons'
+import { faUser, faPlus } from '@fortawesome/free-solid-svg-icons'
 import stylePages from '../assets/modules/HeaderPages.module.css'
 import blackLinear from '../assets/logo-gallery/black-linear.png'
+import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
+import SearchBar from '../components/SearchBar'
 
 export default function Header() {
     const { setOverlayLogin, user, setUser, isLogin } = useContext(GlobalContext)
@@ -23,6 +25,7 @@ export default function Header() {
 
     return (
         <div>
+
             <nav className={styles.navbar}>
 
                 <Link to={'/'}>
@@ -64,6 +67,32 @@ export default function Header() {
                     </button> : <button className={styles.button} onClick={logOut}>Log Out</button>}
                 </div>
 
+            </nav>
+            {pathname !== '/' ? '' : <div className={`${styles.searchbar_mobile} ${styles.searchcontainer}`}>
+                <SearchBar />
+            </div>}
+
+            <nav className={styles.navbar_mobile}>
+                <div>
+                    <NavLink to='/properties'>
+                        <FontAwesomeIcon icon={faMagnifyingGlass} />
+                    </NavLink>
+                    <p>Cerca</p>
+                </div>
+                <div>
+                    {isLogin ? <NavLink to={`users/${user.username}/properties`}><FontAwesomeIcon icon={faPlus} /></NavLink> : <div className={styles.insertprop} onClick={() => (setOverlayLogin(true))}><FontAwesomeIcon icon={faPlus} />
+
+                    </div>}
+                    <p>Inserisci</p>
+                </div>
+                <div>
+                    {!isLogin ? <div className={styles.fakebtn}
+                        onClick={() => (setOverlayLogin(true))}
+                    >
+                        <FontAwesomeIcon icon={faUser} />
+                    </div> : <div className={styles.fakebtn} onClick={logOut}><FontAwesomeIcon icon={faUser} /></div>}
+                    <p>{isLogin ? 'LogOut' : 'Accedi'}</p>
+                </div>
             </nav>
         </div>
     )
