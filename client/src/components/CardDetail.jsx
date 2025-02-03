@@ -3,15 +3,18 @@ import heartIcon from '../assets/icon-gallery/heart-salmon.png'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBed } from '@fortawesome/free-solid-svg-icons'
 import { faHome } from '@fortawesome/free-solid-svg-icons'
-import { faSquare } from '@fortawesome/free-solid-svg-icons'
-import { faToilet } from '@fortawesome/free-solid-svg-icons'
+import { faSquare, faSprayCanSparkles, faTemperatureHigh, faCartFlatbed, faDumbbell, faTree, faSquareParking } from '@fortawesome/free-solid-svg-icons'
+import { faToilet, faPersonSwimming, faTv, faDog, faSoap, faSnowflake, faUtensils, faHandsHoldingChild } from '@fortawesome/free-solid-svg-icons'
 import { useContext } from 'react'
 import GlobalContext from "../context/GlobalContext"
 import { useParams } from 'react-router'
 
 
 export default function CardDetail({ property, addHeart }) {
-    const { title, room, toilet, square_meter, address, city, province, type, bed, image, heart, avg_vote, reviews } = property
+    const { title, room, toilet, square_meter, address, city, province,
+        type, bed, image, heart, avg_vote, swim, tv, animals,
+        washing_machine, air_conditioning, essential, cleaner, heating,
+        courtyard, parking, high_chair, gym, price, free_canc } = property
     const { API_URL } = useContext(GlobalContext)
     const { id } = useParams()
     return (
@@ -26,7 +29,7 @@ export default function CardDetail({ property, addHeart }) {
                     <div className={style.container}>
 
                         <div className={`${style.img_container} col-8`}>
-                            
+
                             <div>
                                 <button className={style.heart} onClick={() => addHeart(id)}>
                                     <img className={style.icon_heart} src={heartIcon} />
@@ -39,9 +42,9 @@ export default function CardDetail({ property, addHeart }) {
                             <p className={style.vote}>
                                 {avg_vote ? parseFloat(avg_vote).toFixed(1) : '-'}
                             </p>
-                            
+
                             <img className={style.img} src={`${API_URL}/img/${image}`} />
-                            
+
 
 
 
@@ -91,6 +94,97 @@ export default function CardDetail({ property, addHeart }) {
                                         <span className={style.text}>{toilet}</span>
                                     </div>
                                 </div>
+                            </div>
+                            <hr />
+                            <div className={style.secondary_icon_container}>
+                                {swim ? <div className={`${style.icon_container} col-2`}>
+                                    <FontAwesomeIcon icon={faPersonSwimming} />
+                                </div> :
+                                    <div className= {`${style.missing_container} col-2`}>
+                                        <FontAwesomeIcon icon={faPersonSwimming} />
+                                    </div>}
+
+                                    {tv ? <div className={`${style.icon_container} col-2`}>
+                                    <FontAwesomeIcon icon={faTv} />
+                                </div> :
+                                    <div  className= {`${style.missing_container} col-2`}>
+                                        <FontAwesomeIcon icon={faTv}/>
+                                    </div>}
+
+                                    {animals ? <div className={`${style.icon_container} col-2`}>
+                                    <FontAwesomeIcon icon={faDog} />
+                                </div> :
+                                    <div className= {`${style.missing_container} col-2`}>
+                                        <FontAwesomeIcon icon={faDog}/>
+                                    </div>}
+
+                                    {washing_machine ? <div className={`${style.icon_container} col-2`}>
+                                    <FontAwesomeIcon icon={faSoap} />
+                                </div> :
+                                    <div className= {`${style.missing_container} col-2`}>
+                                        <FontAwesomeIcon icon={faSoap}/>
+                                    </div>}
+
+                                    {air_conditioning ? <div  className={`${style.icon_container} col-2`}>
+                                    <FontAwesomeIcon icon={faSnowflake} />
+                                </div> :
+                                    <div className= {`${style.missing_container} col-2`}>
+                                        <FontAwesomeIcon icon={faSnowflake}/>
+                                    </div>}
+
+                                    {essential ? <div className={`${style.icon_container} col-2`}>
+                                    <FontAwesomeIcon icon={faUtensils} />
+                                </div> :
+                                    <div className= {`${style.missing_container} col-2`}>
+                                        <FontAwesomeIcon icon={faUtensils}/>
+                                    </div>}
+                                    
+                                    {cleaner ? <div  className={`${style.icon_container} col-2`}>
+                                    <FontAwesomeIcon icon={faSprayCanSparkles} />
+                                </div> :
+                                    <div className= {`${style.missing_container} col-2`}>
+                                        <FontAwesomeIcon icon={faSprayCanSparkles}/>
+                                    </div>}
+
+                                    {heating ? <div className={`${style.icon_container} col-2`}>
+                                    <FontAwesomeIcon icon={faTemperatureHigh} />
+                                </div> :
+                                    <div className= {`${style.missing_container} col-2`}>
+                                        <FontAwesomeIcon icon={faTemperatureHigh}/>
+                                    </div>}
+
+                                    {gym ? <div  className={`${style.icon_container} col-2`}>
+                                    <FontAwesomeIcon icon={faDumbbell} />
+                                </div> :
+                                    <div className= {`${style.missing_container} col-2`}>
+                                        <FontAwesomeIcon icon={faDumbbell}/>
+                                    </div>}
+
+                                    {courtyard ? <div  className={`${style.icon_container} col-2`}>
+                                    <FontAwesomeIcon icon={faTree} />
+                                </div> :
+                                    <div className= {`${style.missing_container} col-2`}>
+                                        <FontAwesomeIcon icon={faTree}/>
+                                    </div>}
+
+                                    {parking ? <div  className={`${style.icon_container} col-2`}>
+                                    <FontAwesomeIcon icon={faSquareParking} />
+                                </div> :
+                                    <div className= {`${style.missing_container} col-2`}>
+                                        <FontAwesomeIcon icon={faSquareParking}/>
+                                    </div>}
+
+                                    {high_chair ? <div  className={`${style.icon_container} col-2`}>
+                                    <FontAwesomeIcon icon={faHandsHoldingChild} />
+                                </div> :
+                                    <div className= {`${style.missing_container} col-2`}>
+                                        <FontAwesomeIcon icon={faHandsHoldingChild}/>
+                                    </div>}
+                            </div>
+                            <hr />
+                            <div>
+                                <p> {price} a notte</p>
+                                { free_canc ? <p>Cancellazione gratuita</p> : ''}
                             </div>
                         </div>
                     </div>
