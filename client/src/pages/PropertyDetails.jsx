@@ -61,7 +61,7 @@ export default function PropertyDetails() {
     function onSubmit(e) {
         e.preventDefault()
 
-        axios.post(`${API_URL}properties/${slug}/reviews`, formData)
+        axios.post(`${API_URL}properties/${property.id}/reviews`, formData)
             .then(res => {
                 console.log(res);
                 setFormData(initialFormData)
