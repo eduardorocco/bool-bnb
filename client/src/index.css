@@ -61,8 +61,28 @@ a {
   animation: error 0.3s 2;
 }
 
+input,
+select,
+textarea {
+  width: 100%;
+}
+
 .textarea {
   resize: none;
+}
+
+select {
+  border-radius: 6px;
+  font-size: 1rem;
+  line-height: 1.5;
+  height: 2.3em;
+  padding: 7px;
+  width: 100%;
+}
+
+.formComponents {
+  display: flex;
+  flex-direction: column;
 }
 
 .toUppercase input {

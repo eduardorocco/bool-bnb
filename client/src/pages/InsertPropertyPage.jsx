@@ -141,7 +141,7 @@ export default function InsertPropertyPage() {
 
                     <div className={`container ${style.form_container}`}>
 
-                        <div className='col-8'>
+                        <div className={`col-md-8 col-12 ${style.background_form}`}>
 
                             <Form className={`${style.form_new} card`} >
                                 <h2 className={style.title_form}>Inserisci la tua proprietà</h2>
@@ -177,7 +177,7 @@ export default function InsertPropertyPage() {
                                         <input type='file' id='image' name='image' onChange={onImageChange} />
                                     </div>
 
-                                    <div className={style.form_group}>
+                                    <div className={style.form_group_checkbox}>
                                         <Input label='piscina' name='swim' type='checkbox' />
                                         <Input label='tv' name='tv' type='checkbox' />
                                         <Input label='animali' name='animals' type='checkbox' />
@@ -185,8 +185,6 @@ export default function InsertPropertyPage() {
                                         <Input label='aria condizionata' name='air_conditioning' type='checkbox' />
                                         <Input label='posate' name='essential' type='checkbox' />
 
-                                    </div>
-                                    <div className={style.form_group}>
                                         <Input label='prodotti per pulire' name='cleaner' type='checkbox' />
                                         <Input label='riscaldamento' name='heating' type='checkbox' />
                                         <Input label='palestra' name='gym' type='checkbox' />
