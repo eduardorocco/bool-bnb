@@ -40,3 +40,7 @@
 .button:hover {
     background-color: var(--grey-hover);
 }
+
+.insertprop {
+    cursor: pointer;
+}

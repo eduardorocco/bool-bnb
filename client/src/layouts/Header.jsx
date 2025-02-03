@@ -36,9 +36,11 @@ export default function Header() {
                     <NavLink to='/properties'>
                         Soggiorni
                     </NavLink>
+                    {isLogin ? <NavLink to={`users/${user.username}/properties`}>Affitta con Boolbnb</NavLink> : <div className={styles.insertprop} onClick={() => (setOverlayLogin(true))}>Affitta con Boolbnb</div>}
                 </div>
 
                 <div className={styles.navlink}>
+
                     {
                         isLogin ? <Link to={`users/${user.username}`}>
                             <div className={styles.rounded}>

@@ -53,3 +53,7 @@
 .active {
     color: red !important;
 }
+
+.insertprop {
+    cursor: pointer;
+}
