@@ -1,0 +1,10 @@
+.form {
+    display: flex;
+    flex-direction: column;
+    padding: 0 70px;
+}
+
+.form_group {
+    display: flex;
+    justify-content: space-between;
+}
