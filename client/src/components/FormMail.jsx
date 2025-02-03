@@ -8,7 +8,7 @@ import * as yup from 'yup'
 import style from '../assets/modules/MailForm.module.css'
 import Loader from './Loader'
 
-export default function FormMail({ userId, propertyId }) {
+export default function FormMail({ userId, destinatarioId }) {
 
     const { API_URL, user, isLoading, setIsLoading } = useContext(GlobalContext)
     const [userEmail, setUserEmail] = useState()
@@ -46,7 +46,7 @@ export default function FormMail({ userId, propertyId }) {
             email: user.email,
             recipient: userEmail,
             mittente: userId,
-            destinatario: propertyId
+            destinatario: destinatarioId
         }
         const addMessage = await axios.post(`${API_URL}send/`, sendEmail).then((res) => {
             console.log('messaggio inviato')

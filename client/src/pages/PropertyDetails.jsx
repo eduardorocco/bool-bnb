@@ -100,7 +100,7 @@ export default function PropertyDetails() {
                         </p>
                     </div>
                     {user.id !== user_id && <div className={`col-4 ${style.email_container}`}>
-                        {isLogin && user_id ? <FormMail userId={user_id} propertyId={user_id} /> : <p>Per contattare il proprietario devi prima accedere</p>}
+                        {isLogin && user_id ? <FormMail userId={user_id} destinatarioId={user_id} /> : <p>Per contattare il proprietario devi prima accedere</p>}
                     </div>}
 
                     {user.id !== user_id ? <div className={`${style.review_container} col-8`}>
