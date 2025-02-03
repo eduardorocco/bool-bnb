@@ -99,11 +99,12 @@ export default function PropertyDetails() {
                             {description}
                         </p>
                     </div>
-                    <div className={`col-4 ${style.email_container}`}>
+                    {user.id !== user_id && <div className={`col-4 ${style.email_container}`}>
                         {isLogin && user_id ? <FormMail userId={user_id} /> : <p>Per contattare il proprietario devi prima accedere</p>}
-                    </div>
+                    </div>}
 
-                    <div className={`${style.review_container} col-8`}>
+                    {user.id !== user_id ? <div className={`${style.review_container} col-8`}>
+
                         {isLogin ?
                             <>
                                 <h5 className={`${style.title_20} text-center`}>Lascia una recensione</h5>
@@ -178,7 +179,45 @@ export default function PropertyDetails() {
                                     <strong>Non ci sono ancora recensioni</strong>
                                 </div>
                         }
-                    </div>
+                    </div> : <div className={`${style.review_container} col`}>
+                        {reviews && reviews.length > 0 && <h5 className='text-center'>Recensioni({reviews && reviews.length})</h5>}
+                        {
+
+
+                            reviews && reviews.length > 0 ?
+                                reviews.map((review, i) => {
+                                    return (
+                                        <div key={i}>
+                                            <div key={review.id} className={style.card_review}>
+                                                <div className={style.title_container}>
+                                                    <div className={style.review_title}>{review.title}</div>
+                                                    <div> / </div>
+                                                    <div className={style.review_user}>{review.username}</div>
+                                                </div>
+                                                <div>
+                                                    {review.text}
+                                                </div>
+                                                <div className={style.flex_review}>
+                                                    <div className={style.review_icon}>
+                                                        <FontAwesomeIcon icon={faCalendarDays} />
+                                                        {review.days_of_stays}
+                                                    </div>
+                                                    <div className={style.review_icon}>
+                                                        {review.vote}
+                                                        <img className={style.heart_static} src={heartIcon} alt="" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    )
+                                })
+                                :
+                                <div className='text-center'>
+                                    <strong>Non ci sono ancora recensioni</strong>
+                                </div>
+                        }
+                    </div>}
+
                 </div>
             </div>
             {/*  */}

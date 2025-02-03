@@ -61,9 +61,10 @@ export default function UserDetail() {
                         </h3>
 
                         {property ? property.map((prop) => (
-                            <div className={style.card_propInsert} key={prop.id} property={property}>
+                            <Link className={style.card_propInsert} key={prop.id} to={`/properties/${prop.title.replaceAll(' ', '-').toLowerCase()}`} >
                                 <div className="col-3">
                                     <p><strong>{prop.address}, {prop.city}</strong></p>
+
                                 </div>
                                 <div className="col-2">
                                     <div className={style.icon_container}>
@@ -98,7 +99,7 @@ export default function UserDetail() {
                                     </div>
                                     <span>{prop.square_meter}</span>
                                 </div>
-                            </div>
+                            </Link>
                         )) : <p>Non ci sono proprietà</p>}
                     </div>
                 </div>

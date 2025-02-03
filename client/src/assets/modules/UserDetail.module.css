@@ -71,6 +71,16 @@
     justify-content: space-between;
 }
 
+.card_propInsert:hover {
+    box-shadow: var(--box-shadow);
+    background-color: var(--gradient);
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    /* transform: scale(1.02); */
+    cursor: pointer;
+
+}
+
 .card_propInsert div {
     display: flex;
     gap: 10px;
@@ -141,6 +151,14 @@
     color: black;
     font-weight: bolder;
     font-size: 16px;
+}
+
+.prop {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    row-gap: 5px;
+    padding: 10px 20px;
 }
 
 /* p,
