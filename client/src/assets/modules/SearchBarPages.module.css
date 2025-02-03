@@ -4,6 +4,7 @@
     justify-content: space-between;
     padding: 10px;
     box-shadow: var(--box-shadow);
+    align-items: center;
     border-radius: 999px;
 }
 
@@ -56,6 +57,11 @@
     }
 }
 
+.searched_el {
+    position: absolute;
+    top: 230px;
+}
+
 /* Responsive styles */
 
 
@@ -78,6 +84,11 @@
         padding: 5px 40px 5px 40px;
         align-self: center;
     }
+
+    .searched_el {
+        position: absolute;
+        top: 25vh;
+    }
 }
 
 
@@ -94,9 +105,4 @@
         font-size: 16px;
         padding: 5px 20px;
     }
-}
-
-.searched_el {
-    position: absolute;
-    top: 230px;
 }

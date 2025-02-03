@@ -72,7 +72,7 @@
 
 .searchcontainer {
     padding: 20px;
-    /* background-image: var(--gradient); */
+    background-image: var(--gradient);
 }
 
 @media (max-width: 768px) {

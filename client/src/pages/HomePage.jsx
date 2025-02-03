@@ -13,8 +13,17 @@ import { Link } from 'react-router'
 
 
 export default function HomePage() {
+    const initialSearchData =
+    {
+        city: '',
+        type: '',
+        room: '',
+        bed: '',
+        toilet: ''
+    }
 
-    const { API_URL, setUser, setSearch } = useContext(GlobalContext)
+
+    const { API_URL, setUser, setSearch, setSearchCity } = useContext(GlobalContext)
     const [properties, setProperties] = useState([])
 
     function fetchProperties() {
@@ -83,7 +92,7 @@ export default function HomePage() {
                 </div>
             </div>
             <div className={`${style.shadow} container-fluid`}>
-                <Link className={style.showmore} to='/properties' onClick={() => setSearch({})}>Mostra di più <FontAwesomeIcon className={style.arrow} icon={faArrowRight} /></Link>
+                <Link className={style.showmore} to='/properties' onClick={() => { setSearch({}), setSearchCity({ initialSearchData }) }}>Mostra di più <FontAwesomeIcon className={style.arrow} icon={faArrowRight} /></Link>
             </div>
         </main>
 

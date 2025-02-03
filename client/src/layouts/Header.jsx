@@ -4,7 +4,7 @@ import { useContext } from "react"
 import styleHomePage from '../assets/modules/Header.module.css'
 import whiteLinear from '../assets/logo-gallery/white-linear.png'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faUser, faPlus } from '@fortawesome/free-solid-svg-icons'
+import { faUser, faPlus, faHouse } from '@fortawesome/free-solid-svg-icons'
 import stylePages from '../assets/modules/HeaderPages.module.css'
 import blackLinear from '../assets/logo-gallery/black-linear.png'
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
@@ -73,12 +73,18 @@ export default function Header() {
             </div>}
 
             <nav className={styles.navbar_mobile}>
-                <div>
+                {pathname === '/' ? <div>
                     <NavLink to='/properties'>
                         <FontAwesomeIcon icon={faMagnifyingGlass} />
                     </NavLink>
                     <p>Cerca</p>
-                </div>
+                </div> : <div>
+                    <NavLink to='/'>
+                        <FontAwesomeIcon icon={faHouse} />
+                    </NavLink>
+                    <p>Home</p>
+                </div>}
+
                 <div>
                     {isLogin ? <NavLink to={`users/${user.username}/properties`}><FontAwesomeIcon icon={faPlus} /></NavLink> : <div className={styles.insertprop} onClick={() => (setOverlayLogin(true))}><FontAwesomeIcon icon={faPlus} />
 

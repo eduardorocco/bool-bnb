@@ -64,16 +64,36 @@
 @media (max-width: 768px) {
 
     .input {
-        font-size: 30px;
-        margin-left: 50px;
+        font-size: 25px;
+        margin-left: 0px;
         width: 90%;
+    }
+
+    .form {
+        display: flex;
+        justify-content: space-around;
+        padding: 15px 30px;
+        box-shadow: var(--box-shadow);
+        border-radius: 999px;
+        background-color: white;
     }
 
 
     .button {
-        font-size: 25px;
-        padding: 5px 40px 5px 40px;
+        font-size: 30px;
+        border: none;
+        background-image: linear-gradient(to right, var(--main-bg-color), var(--secondary-bg-color));
+        color: rgb(255, 255, 255);
+        font-weight: lighter;
+        font-size: 20px;
+        border-radius: 999px;
+        padding: 20px;
+        line-height: 5px;
+        background-size: 200% 100%;
+        transition: color 0.3s ease;
+
     }
+
 }
 
 

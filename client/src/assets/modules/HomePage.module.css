@@ -104,9 +104,17 @@
         display: none;
     }
 
-    /* .card_container {
-        padding: 20px 40px 10px 40px;
-    } */
+    .card_container {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .card_container .row>* {
+        display: flex;
+        justify-content: center;
+    }
 
 
 
@@ -120,6 +128,10 @@
         font-size: 30px;
         padding-top: 0px;
         margin-bottom: 20px;
+    }
+
+    .shadow {
+        margin-bottom: 150px;
     }
 
 }

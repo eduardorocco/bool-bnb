@@ -34,3 +34,9 @@
         align-items: flex-start;
     }
 }
+
+@media (max-width: 768px) {
+    .footer {
+        display: none;
+    }
+}

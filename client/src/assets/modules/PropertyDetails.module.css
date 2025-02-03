@@ -297,19 +297,20 @@
     position: relative;
 }
 
-.secondary_icon_container{
- display: flex;
- gap: 30px;
- row-gap: 10px;
- flex-wrap: wrap;
- align-items: center;
- align-content: center;
+.secondary_icon_container {
+    display: flex;
+    gap: 30px;
+    row-gap: 10px;
+    flex-wrap: wrap;
+    align-items: center;
+    align-content: center;
 }
 
-.fontG{
+.fontG {
     font-size: 22px;
 }
-.host_placeholder{
+
+.host_placeholder {
     border: none;
     border-radius: 999px;
     padding: 10px;
@@ -321,7 +322,7 @@
     align-self: center;
 }
 
-.host_card{
+.host_card {
     box-shadow: var(--box-shadow);
     padding: var(--p20);
     border-top-left-radius: 20px;
@@ -329,10 +330,13 @@
     margin-bottom: 20px;
 }
 
-.host_title{
+.host_title {
     display: flex;
     flex-direction: column;
     text-align: center;
     row-gap: 10px;
     font-weight: bold;
 }
+
+
+@media (max-width: 768px) {}
