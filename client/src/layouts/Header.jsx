@@ -14,11 +14,10 @@ export default function Header() {
     const styles = pathname === '/' ? styleHomePage : stylePages
     const logo = pathname === '/' ? whiteLinear : blackLinear
 
-    const navigate = useNavigate()
+
 
     function logOut() {
         localStorage.removeItem("user")
-        navigate('/')
         setUser({})
     }
 

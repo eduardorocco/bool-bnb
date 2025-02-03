@@ -6,10 +6,11 @@ import Input from "./Input"
 import { Formik, Form } from 'formik'
 import * as yup from 'yup'
 import style from '../assets/modules/MailForm.module.css'
+import Loader from './Loader'
 
 export default function FormMail({ userId }) {
 
-    const { API_URL, user } = useContext(GlobalContext)
+    const { API_URL, user, isLoading, setIsLoading } = useContext(GlobalContext)
     const [userEmail, setUserEmail] = useState()
 
     // const initialMailInfo = {
@@ -38,6 +39,7 @@ export default function FormMail({ userId }) {
     // }
 
     async function onSubmit(values, action) {
+        setIsLoading(true)
         const sendEmail = {
             ...values,
             email: user.email,
@@ -45,6 +47,7 @@ export default function FormMail({ userId }) {
         }
         const addMessage = await axios.post(`${API_URL}send/`, sendEmail).then((res) => {
             console.log('messaggio inviato')
+            setIsLoading(false)
         }).catch((err) => {
             console.error(err)
         })
@@ -92,6 +95,7 @@ export default function FormMail({ userId }) {
 
                 )}
             </Formik>}
+            {isLoading && <Loader />}
         </>
     )
 }
