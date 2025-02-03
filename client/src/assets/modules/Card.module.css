@@ -8,6 +8,7 @@
     position: relative;
     z-index: 1;
     margin-bottom: 20px;
+    height: 100%;
 }
 
 .img {
@@ -137,8 +138,33 @@
     text-transform: capitalize;
 }
 
+.columnCard {
+    width: calc(100% / 6);
+}
+
+@media (max-width: 2100px) {
+    .columnCard {
+        width: calc(100% / 5);
+    }
+}
+
+@media (max-width: 1600px) {
+    .columnCard {
+        width: calc(100% / 4);
+    }
+}
+
+@media (max-width: 1400px) {
+    .columnCard {
+        width: calc(100% / 3);
+    }
+}
 
 @media (max-width: 992px) {
+    .columnCard {
+        width: calc(100% / 2);
+    }
+
     .card {
         width: 100%;
         margin-bottom: 20px;
@@ -166,8 +192,14 @@
 }
 
 @media (max-width: 768px) {
-    .card {
+    .columnCard {
         width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    .card {
+        width: 576px;
         margin-bottom: 20px;
     }
 
