@@ -14,6 +14,7 @@ export default function SearchPage() {
     const location = useLocation()
 
     const { API_URL, search, setUser } = useContext(GlobalContext)
+    // const filterOn = Object.keys(search).length !== 0;
     const [properties, setProperties] = useState([])
 
     let city, type, room, bed, toilet = '';
@@ -86,13 +87,17 @@ export default function SearchPage() {
     return (
         <div className="container-fluid">
             <SearchBar />
-            {search.city ? <strong className={style.searched_el}>
+            {search.city || search.room || search.toilet || search.bed || search.type ? <strong className={style.searched_el}>
                 {properties.length === 1 ? 'Trovato' : 'Trovati'}
                 &nbsp;
                 {properties.length}
                 &nbsp;
                 {properties.length === 1 ? 'alloggio' : 'alloggi'}
-                : per la città di {capitalizeFirstLetter(search.city)}
+                {search.city && <span> per la città di {capitalizeFirstLetter(search.city)}</span>}
+                {search.room && <span> con almeno {search.room} {search.room == 1 ? 'stanza' : 'stanze'}</span>}
+                {search.bed && <span> con almeno {search.bed} {search.bed == 1 ? 'letto' : 'letti'}</span>}
+                {search.toilet && <span> con almeno {search.toilet} {search.toilet == 1 ? 'bagno' : 'bagni'}</span>}
+                {search.type && <span> di tipo {capitalizeFirstLetter(search.type)}</span>}
             </strong> :
                 ''}
             <div className="row row-gap-4">
