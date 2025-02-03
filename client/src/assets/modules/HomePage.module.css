@@ -1,9 +1,9 @@
-.jumbo{
+.jumbo {
     height: calc(100vh - 64px);
-    background-image: linear-gradient(to right,var(--main-bg-color), var(--secondary-bg-color));
+    background-image: linear-gradient(to right, var(--main-bg-color), var(--secondary-bg-color));
 }
 
-.image_container{
+.image_container {
     max-width: 1200px;
     border-radius: 999px;
     position: absolute;
@@ -11,7 +11,7 @@
     left: 0px;
 }
 
-.image{
+.image {
     border-top-right-radius: 999px;
     border-bottom-right-radius: 999px;
 }
@@ -29,7 +29,7 @@
     align-content: center;
 }
 
-.slogan{
+.slogan {
     text-align: center;
     font-weight: lighter;
     color: var(--white);
@@ -41,16 +41,17 @@
 
 
 @media (max-width: 768px) {
-    
+
     .slogan {
         font-size: 50px;
     }
+
     .image_container {
         width: 600px;
         top: 250px;
     }
 
-    .searchbar {     
+    .searchbar {
         top: 550px;
         width: 400px;
         height: 150px;
@@ -60,6 +61,10 @@
         font-size: 50px;
         padding-top: 30px;
     }
+
+    .card_container {
+        padding: 50px;
+    }
 }
 
 @media (max-width: 480px) {
@@ -68,7 +73,7 @@
         font-size: 30px;
     }
 
-    .image_container{
+    .image_container {
         width: 400px;
     }
 
@@ -79,21 +84,21 @@
     }
 }
 
-.box{
+.box {
     height: 600px;
-    background-image: linear-gradient(to right,var(--main-bg-color), var(--secondary-bg-color));
+    background-image: linear-gradient(to right, var(--main-bg-color), var(--secondary-bg-color));
     position: relative;
     display: flex;
     justify-content: center;
     align-content: center;
 }
 
-.preview{
+.preview {
 
     width: 1200px;
 }
 
-.title{
+.title {
     font-weight: lighter;
     color: black;
     font-size: 50px;
@@ -101,11 +106,11 @@
     margin-bottom: 30px;
 }
 
-.card_container{
+.card_container {
     background-image: var(--gradient);
 }
 
-.shadow{
+.shadow {
     box-shadow: 20px 20px 50px 300px white;
     position: relative;
     background-color: white;
@@ -113,7 +118,7 @@
     margin-top: 30px;
 }
 
-.showmore{
+.showmore {
     text-align: center;
     font-weight: lighter;
     color: var(--white);
@@ -121,13 +126,13 @@
     padding-top: 50px;
 }
 
-.arrow{
+.arrow {
     color: black;
     transition: all 0.5s;
 }
 
-.showmore:hover{
-    .arrow{
+.showmore:hover {
+    .arrow {
         color: var(--main-bg-color);
         transform: translateX(6px);
     }
