@@ -32,36 +32,39 @@ export default function SearchPage() {
 
     function fetchProperties() {
 
-        search ?
-            axios.get(`${API_URL}properties`, {
-                params: {
-                    city: city,
-                    type: type,
-                    room: room,
-                    bed: bed,
-                    toilet: toilet,
-                    limit: ''
-                }
-            })
-                .then(res => {
-                    setProperties(res.data)
+        // search ?
+        axios.get(`${API_URL}properties`, {
+            params: {
+                city: search.city,
+                type: search.type,
+                room: search.room,
+                bed: search.bed,
+                toilet: search.toilet,
+                limit: ''
+            }
+        })
+            .then(res => {
+                setProperties(res.data)
+                console.log('siamo nel fetch', search)
+                console.log(res.data)
 
-                })
-                .catch(err => {
-                    console.error(err);
-                })
-            :
-            axios.get(`${API_URL}properties`,)
-                .then(res => {
-                    setProperties(res.data)
-                })
-                .catch(err => {
-                    console.error(err);
-                })
+            })
+            .catch(err => {
+                console.error(err);
+            })
+        // :
+        // axios.get(`${API_URL}properties`,)
+        //     .then(res => {
+        //         setProperties(res.data)
+        //     })
+        //     .catch(err => {
+        //         console.error(err);
+        //     })
 
     }
 
     function addHeart(id) {
+        console.log(search)
         axios.patch(`${API_URL}properties/${id}/heart`)
             .then(res => {
                 fetchProperties()
