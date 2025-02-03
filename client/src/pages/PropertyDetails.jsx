@@ -8,6 +8,7 @@ import { faCalendarDays } from '@fortawesome/free-solid-svg-icons'
 import CardDetail from '../components/CardDetail'
 import heartIcon from '../assets/icon-gallery/heart-pink.png'
 import FormMail from '../components/FormMail'
+import Messages from '../components/Messages'
 
 
 export default function PropertyDetails() {
@@ -100,7 +101,8 @@ export default function PropertyDetails() {
                         </p>
                     </div>
                     {user.id !== user_id && <div className={`col-4 ${style.email_container}`}>
-                        {isLogin && user_id ? <FormMail userId={user_id} destinatarioId={user_id} /> : <p>Per contattare il proprietario devi prima accedere</p>}
+                        {isLogin && user_id ? <FormMail userId={user.id} destinatarioId={user_id} /> : <p>Per contattare il proprietario devi prima accedere</p>}
+                        <Messages destinatarioId={user_id} />
                     </div>}
 
                     {user.id !== user_id ? <div className={`${style.review_container} col-8`}>
