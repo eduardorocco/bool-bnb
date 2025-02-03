@@ -7,7 +7,7 @@ import { faSquare, faSprayCanSparkles, faTemperatureHigh, faCartFlatbed, faDumbb
 import { faToilet, faPersonSwimming, faTv, faDog, faSoap, faSnowflake, faUtensils, faHandsHoldingChild } from '@fortawesome/free-solid-svg-icons'
 import { useContext } from 'react'
 import GlobalContext from "../context/GlobalContext"
-import { useParams } from 'react-router'
+
 
 
 export default function CardDetail({ property, addHeart }) {
@@ -16,7 +16,7 @@ export default function CardDetail({ property, addHeart }) {
         washing_machine, air_conditioning, essential, cleaner, heating,
         courtyard, parking, high_chair, gym, price, free_canc } = property
     const { API_URL } = useContext(GlobalContext)
-    const { id } = useParams()
+
     return (
         <>
             <div className="container">
