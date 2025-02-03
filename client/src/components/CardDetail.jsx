@@ -7,13 +7,13 @@ import { faSquare } from '@fortawesome/free-solid-svg-icons'
 import { faToilet } from '@fortawesome/free-solid-svg-icons'
 import { useContext } from 'react'
 import GlobalContext from "../context/GlobalContext"
-import { useParams } from 'react-router'
+
 
 
 export default function CardDetail({ property, addHeart }) {
-    const { title, room, toilet, square_meter, address, city, province, type, bed, image, heart, avg_vote, reviews } = property
+    const { title, room, toilet, square_meter, address, city, province, type, bed, image, heart, avg_vote, id } = property
     const { API_URL } = useContext(GlobalContext)
-    const { id } = useParams()
+
     return (
         <>
             <div className="container">
@@ -26,7 +26,7 @@ export default function CardDetail({ property, addHeart }) {
                     <div className={style.container}>
 
                         <div className={`${style.img_container} col-8`}>
-                            
+
                             <div>
                                 <button className={style.heart} onClick={() => addHeart(id)}>
                                     <img className={style.icon_heart} src={heartIcon} />
@@ -39,9 +39,9 @@ export default function CardDetail({ property, addHeart }) {
                             <p className={style.vote}>
                                 {avg_vote ? parseFloat(avg_vote).toFixed(1) : '-'}
                             </p>
-                            
+
                             <img className={style.img} src={`${API_URL}/img/${image}`} />
-                            
+
 
 
 
