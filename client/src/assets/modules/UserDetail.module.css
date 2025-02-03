@@ -1,0 +1,151 @@
+.button {
+    font-size: 20px;
+    border: none;
+    background-image: linear-gradient(to right, var(--main-bg-color), var(--secondary-bg-color));
+    color: rgb(255, 255, 255);
+    font-weight: lighter;
+    border-radius: 999px;
+    padding: 10px;
+    line-height: 5px;
+    background-size: 200% 100%;
+    transition: color 0.3s ease;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+.container_user {
+    box-shadow: var(--box-shadow);
+    background-color: white;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    padding: 0 0px 20px 30px;
+    margin-bottom: 30px;
+}
+
+.user_profile {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    row-gap: 5px;
+    padding: 10px 20px;
+}
+
+.profile_img {
+    width: 150px;
+    height: 150px;
+}
+
+.card_user {
+    display: flex;
+    justify-content: space-between;
+    align-items: space-between;
+    flex-direction: column;
+    margin-bottom: 20px;
+    row-gap: 5px;
+    padding: 10px;
+}
+
+.title {
+    font-weight: lighter;
+    color: black;
+    border-bottom: solid 1px var(--main-bg-color);
+}
+
+.container_newProp {
+    box-shadow: var(--box-shadow);
+    background-color: white;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    padding: 30px;
+}
+
+.title_prop {
+    font-weight: lighter;
+    color: black;
+    margin-bottom: 20px;
+}
+
+
+.card_propInsert {
+    display: flex;
+    justify-content: space-between;
+}
+
+.card_propInsert div {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+
+}
+
+.btn_property {
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 25px;
+}
+
+.button_newProp {
+    font-size: 20px;
+    border: none;
+    background-image: linear-gradient(to right, var(--main-bg-color), var(--secondary-bg-color));
+    font-weight: lighter;
+    border-radius: 999px;
+    padding: 20px;
+    line-height: 5px;
+    background-size: 200% 100%;
+    transition: color 0.3s ease;
+}
+
+.button:hover {
+    animation-name: gradient-scroll;
+    animation-duration: 3s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+
+.button_newProp:hover {
+    animation-name: gradient-scroll;
+    animation-duration: 3s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+
+@keyframes gradient-scroll {
+    0% {
+        background-position: 100% 0;
+    }
+
+    50% {
+        background-position: 0 0;
+    }
+
+    100% {
+        background-position: 100% 0;
+    }
+}
+
+.icon_container {
+    height: 30px;
+    width: 30px;
+    aspect-ratio: 1 /1;
+    background-size: 120% 100%;
+    background-image: var(--gradient);
+    border-radius: 6px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+
+.icon {
+    color: black;
+    font-weight: bolder;
+    font-size: 16px;
+}
+
+/* p,
+span {
+    font-size: 18px;
+    font-weight: lighter;
+    margin-right: 10px;
+} */

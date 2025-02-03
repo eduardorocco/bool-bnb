@@ -12,6 +12,13 @@
   --gradient: linear-gradient(to right, var(--main-bg-color), var(--secondary-bg-color));
   --p20: 20px;
   --grey-hover: rgb(247, 244, 244);
+
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
 * {
@@ -65,6 +72,14 @@ a {
 .active {
   font-weight: bolder;
   padding-bottom: 1px;
+}
+
+
+
+main {
+  flex-grow: 1;
+
+
 }
 
 @keyframes error {
