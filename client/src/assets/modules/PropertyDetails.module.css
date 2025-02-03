@@ -299,9 +299,13 @@
 
 .secondary_icon_container{
  display: flex;
- gap: 20px;
+ gap: 30px;
  row-gap: 10px;
  flex-wrap: wrap;
  align-items: center;
  align-content: center;
+}
+
+.fontG{
+    font-size: 22px;
 }

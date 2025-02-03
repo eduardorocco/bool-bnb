@@ -183,7 +183,7 @@ export default function CardDetail({ property, addHeart }) {
                             </div>
                             <hr />
                             <div>
-                                <p> {price} a notte</p>
+                                <p> <strong className={style.fontG}> {price} </strong> a notte</p>
                                 { free_canc ? <p>Cancellazione gratuita</p> : ''}
                             </div>
                         </div>
